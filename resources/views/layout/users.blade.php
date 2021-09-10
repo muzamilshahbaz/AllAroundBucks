@@ -8,13 +8,13 @@
 
     <link href="/assets/users/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/users/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
     <link href="/assets/users/css/style.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round"> --}}
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/fonts.google.icons.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/users/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/projects.css">
+    <link rel="stylesheet" href="/assets/css/userprofile.css">
     <!-- ============================================================== -->
 
 
@@ -189,9 +189,8 @@ button{
 
 @if ($LoggedUserInfo->profile_img == NULL)
 <img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36" class="img-circle">
-
 @else
-<img src="assets/users/userprofile/{{ $LoggedUserInfo -> profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
+<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
 
 @endif
 @endsection
@@ -202,7 +201,7 @@ button{
 <img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36" class="img-circle">
 
 @else
-<img src="assets/users/userprofile/{{ $LoggedUserInfo -> profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
+<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
 
 @endif
 @endsection

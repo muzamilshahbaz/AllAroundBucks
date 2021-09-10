@@ -1,16 +1,13 @@
 @extends('layout.users')
 
 @section('usercontent')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="\assets\css\userprofile.css">
 
 <div class="container emp-profile">
     <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="assets/users/userprofile/{{ $LoggedUserInfo -> profile_img }}" alt="user-img" width="50" class="img-circle">
-
+                    @yield('navProfileImg')
                 </div>
             </div>
             <div class="col-md-6">

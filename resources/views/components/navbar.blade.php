@@ -6,7 +6,7 @@
 @else
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-	<a href="/" class="navbar-brand"><b><span style="color: tomato">AllAround</span><span style="color: black">Bucks</span></b></a>
+	<a href="/" class="navbar-brand"><b><span>AllAroundBucks</span></b></a>
 	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -34,7 +34,7 @@
 				<a href="/signin" style="margin-right: 20px" class="nav-item nav-link">Login</a>
 			</div>
 			<div class="nav-item">
-				<a href="/signup" class="btn btn-primary sign-up-btn">Sign up</a>
+				<a href="/signup" class="btn btn-primary">Sign up</a>
 			</div>
         </div>
 	</div>

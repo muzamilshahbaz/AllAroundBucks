@@ -86,7 +86,7 @@ Route::get('/google', [LoginController::class, 'redirectToGoogle'])->middleware(
 Route::get('/callback/google', [LoginController::class, 'handleGoogleCallback'])->middleware('AlreadyLoggedIn');;
 
 Route::get('/facebook', [LoginController::class, 'redirectToFacebook'])->middleware('AlreadyLoggedIn');;
-Route::get('/callback/google', [LoginController::class, 'handleFacebookCallback'])->middleware('AlreadyLoggedIn');;
+Route::get('/callback/facebook', [LoginController::class, 'handleFacebookCallback'])->middleware('AlreadyLoggedIn');;
 
 Route::get('/verifyaccount', [RegisterController::class, 'verifyaccount']);
 
