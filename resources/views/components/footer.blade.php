@@ -24,7 +24,7 @@
                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required><br>
                                <textarea id="message" class="form-control" name="message" placeholder="Write Your Message To Us.." style="height:100px" required></textarea>
                                <br>
-                               <button type="submit" name="send" id="send" class="col-3 offset-2 btn btn-primary contact-us-btn">Send</button>
+                               <button type="submit" name="send" id="send" class="col-3 offset-2 btn btn-primary">Send</button>
 
                            </div>
                        </form>

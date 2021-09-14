@@ -14,13 +14,13 @@
             <div class="col-md-6">
                 <div class="profile-head">
                             <h3>
-                      {{ $LoggedUserInfo -> name }}
+                      {{ $LoggedUserInfo->name }}
                             </h3>
                             <h6>
-                              {{ $LoggedUserInfo -> profession }}
+                              {{ $LoggedUserInfo->profession }}
                             </h6>
                             <br>
-                            <p>{{ $LoggedUserInfo -> bio }}</p>
+                            <p>{{ $LoggedUserInfo->bio }}</p>
 
 
                             <p class="proile-rating">RATING :

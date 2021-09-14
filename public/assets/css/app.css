@@ -8,50 +8,49 @@ body {
     background-color: white;
 }
 
-.carousel-caption {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    bottom: auto;
-    color: tomato;
-}
-
-.carousel-caption h1 {
-    text-shadow: 1px 1px 1px #000;
-    font-weight: bolder !important;
-}
-
 .padding {
     padding-bottom: 2rem;
 }
 
-.get-started {
-    background-color: tomato !important;
-    font-size: larger;
-    border: #D5D5D5;
-    font-weight: bold;
-    box-shadow: 1px 1px 12px #000;
+#Join_the_worlds_best_Learning_ {
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 50px;
+    color: rgba(82, 152, 210, 1);
 }
 
-.get-started:hover {
-    background-color: orangered !important;
-    box-shadow: 1px 1px 20px #000;
+#Find_the_best_skills_for_you_B {
+    margin-top: 30px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(82, 152, 210, 1);
 }
 
-.learn-more {
-    color: tomato;
-    border: 1px solid tomato;
+.flex-box-1 {
+    margin-top: 30px;
 }
 
-.learn-more:hover {
-    color: white;
-    background-color: tomato;
+.flex-box-1 .container-1 {
+    padding-left: 60px;
+    padding-right: 10px;
 }
 
-.welcome {
-    width: 75%;
-    margin: 0 auto;
-    padding-top: 2rem;
+.flex-box-1 img {
+    margin-top: -140px;
+}
+
+.flex-box-2 {
+    background-color: rgba(239, 248, 255, 1);
+    margin-top: -100px;
+}
+
+#Rectangle_611 {
+    fill: rgba(239, 248, 255, 1);
 }
 
 .social a {
@@ -268,6 +267,11 @@ figure {
 }
 
 .column {
+    float: left;
+    width: 50%;
+}
+
+column {
     float: left;
     width: 50%;
 }
