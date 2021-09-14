@@ -25,7 +25,7 @@
                     <ul class="navbar-nav ml-auto d-flex align-items-center">
 
                         <!-- Search -->
-                        <li class="in">
+                        {{-- <li class="in">
                             <form role="search" class="app-search d-none d-md-block mr-3">
                                 @csrf
                                 <input type="text" placeholder="Search..." class="form-control mt-0">
@@ -33,7 +33,7 @@
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
-                        </li>
+                        </li> --}}
                         <!-- User profile and search -->
                         <li>
                             <button class="profile-pic" onclick="togglePopup()">
