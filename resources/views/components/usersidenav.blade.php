@@ -1,5 +1,5 @@
   <!-- Left Sidebar -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
+        <aside class="left-sidebar sticky-top sticky-offset" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -29,7 +29,7 @@
                         </li> --}}
 
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="/logout" class="btn btn-block btn-danger text-white" style="background-color: tomato">
+                            <a href="/logout" class="btn btn-primary" style="background-color: rgba(82, 152, 210, 1)">
                                 Sign Out</a>
                         </li>
                     </ul>

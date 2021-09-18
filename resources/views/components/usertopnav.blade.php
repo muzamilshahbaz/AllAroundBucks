@@ -1,19 +1,13 @@
    <!-- Topbar header-->
 
-        <header class="topbar" data-navbarbg="skin5">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark sticky-top">
-                <div class="navbar-header" data-logobg="skin6">
-                        <a href="/" class="navbar-brand"><b><span style="color: tomato">AllAround</span><span style="color: black">Bucks</span></b></a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+        <header class="topbar sticky-top" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark sticky-top" style="position: sticky;">
+                <a href="/" class="navbar-brand"><b><span>AllAroundBucks</span></b></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <!-- toggle and nav items -->
-
-                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                </div>
-
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="background-color: tomato !important">
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="background-color: #5298D2 !important">
                     <ul class="navbar-nav d-none d-md-block d-lg-none">
                         <li class="nav-item">
                             <a class="nav-toggler nav-link waves-effect waves-light text-white" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>

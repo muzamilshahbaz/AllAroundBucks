@@ -9,6 +9,7 @@ use App\Models\Proposal;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Seller;
+use App\Models\UserRole;
 use App\Notifications\ProposalReject;
 
 use Illuminate\Notifications\Notification;
@@ -21,7 +22,8 @@ class ProposalController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -38,7 +40,8 @@ class ProposalController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -80,7 +83,8 @@ class ProposalController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -98,7 +102,8 @@ class ProposalController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -116,7 +121,8 @@ class ProposalController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -148,7 +154,8 @@ class ProposalController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 

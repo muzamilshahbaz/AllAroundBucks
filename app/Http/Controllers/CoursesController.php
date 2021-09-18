@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\CourseVideo;
 use App\Models\Category;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\DB;
 
 class CoursesController extends Controller
@@ -20,7 +21,8 @@ class CoursesController extends Controller
         if (session()->has('LoggedUser')) {
             $trainer = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $trainer
+                'LoggedUserInfo' => $trainer,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -37,7 +39,8 @@ class CoursesController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -114,7 +117,8 @@ class CoursesController extends Controller
         if (session()->has('LoggedUser')) {
             $trainer = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $trainer
+                'LoggedUserInfo' => $trainer,
+                'roles' =>  UserRole::all()
             ];
         }
 

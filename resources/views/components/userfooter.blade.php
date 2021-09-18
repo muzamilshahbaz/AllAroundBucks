@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/assets/css/footer.css">
 
-<footer class="footer text-center" style="background-color: tomato">
+<footer class="footer text-center" style="background-color: rgba(82, 152, 210, 1)">
     <div class="template-demo">
        <hr class="light" style="border-color: white">
        <br>

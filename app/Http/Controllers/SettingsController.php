@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
@@ -13,7 +14,8 @@ class SettingsController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -40,7 +42,8 @@ class SettingsController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 

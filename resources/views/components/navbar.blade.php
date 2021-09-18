@@ -7,14 +7,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 	<a href="/" class="navbar-brand"><b><span>AllAroundBucks</span></b></a>
-	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+
 	<!-- Collection of nav links, forms, and other content for toggling -->
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<div class="navbar-nav">
 			<a href="/howitworks" class="nav-item nav-link">How it works</a>
-			<a href="#contact-us" class="nav-item nav-link">Contact Us</a>
+			<a href="/contact-us" class="nav-item nav-link">Contact Us</a>
 		</div>
 
 		<form class="navbar-form form-inline">

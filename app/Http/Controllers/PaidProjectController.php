@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Proposal;
 use App\Models\Seller;
 use App\Models\User;
+use App\Models\UserRole;
 use App\Notifications\ProposalAccept;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -20,7 +21,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
         $proposal = Proposal::find($proposal_id);
@@ -74,7 +76,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -93,7 +96,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -110,7 +114,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -150,7 +155,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -173,7 +179,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -213,7 +220,8 @@ class PaidProjectController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 

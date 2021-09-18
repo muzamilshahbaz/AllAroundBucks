@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Buyer;
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\UserRole;
 
 class ProjectsFeedController extends Controller
 {
@@ -16,7 +17,8 @@ class ProjectsFeedController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -34,7 +36,8 @@ class ProjectsFeedController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 

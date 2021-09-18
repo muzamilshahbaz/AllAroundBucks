@@ -28,14 +28,13 @@
 
 <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
         <div class="form-group">
-            <label for="user-role" style="color: black;">User Role:</label>
+            <label for="user-role">User Role:</label>
             <br>
             <span>**Select Your Role</span>
             <select id="user-role" class="form-control" name="user_role" value="{{ old('user_role') }}">
-      <option value="Seller">Seller / Freelancer</option>
-      <option value="Buyer">Buyer / Client</option>
-      <option value="Student">Student</option>
-      <option value="Trainer">Trainer</option>
+      @foreach ($roles as $role)
+          <option value="{{ $role->role_title }}">{{ $role->title }}</option>
+      @endforeach
     </select>
         </div>
 
@@ -44,7 +43,7 @@
             <span class="text-danger">@error('username') {{ $message }} @enderror</span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color: tomato; border: 0ch">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
         </div>
     </form>
 </div>

@@ -15,163 +15,12 @@
     <link rel="stylesheet" href="/assets/users/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/projects.css">
     <link rel="stylesheet" href="/assets/css/userprofile.css">
+
     <!-- ============================================================== -->
 
 
 
     <title>{{ $title }} - AllAroundBucks</title>
-
-    <style>
-html,
-body {
-    height: 100%;
-    width: 100%;
-    color: black;
-    overflow-x: hidden;
-    font-family:'Montserrat', sans-serif;
-    background-color: white;
-}
-/* Click on profile pic pop up */
-
-.popup .overlay {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-    display: none;
-}
-
-.popup .links{
-    background-color: tomato;
-    border:0ch;
-    font-weight: bold;
-}
-.popup .links:hover,.popup .links:focus,.popup .links:active{
-    background-color: tomato !important;
-    border:0ch !important;
-    font-weight: bold !important;
-}
-
-.popup .link-logout{
-    background-color: white;
-    color: tomato;
-    border:2px solid tomato;
-    font-weight: bold;
-}
-
-.popup .link-logout:hover,.popup .link-logout:active,.popup .link-logout:focus{
-    background-color: tomato !important;
-    color:white !important;
-    font-weight: bold !important;
-    border:0ch !important;
-}
-
-.popup .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: #fff;
-    width: 95%;
-    max-width: 500px;
-    height: 250px;
-    z-index: 2;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
-}
-
-.popup .close-btn {
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 30px;
-    height: 30px;
-    background:white;
-    color: tomato;
-    border: 1px solid tomato;
-    font-size: 25px;
-    font-weight: 600;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-}
-
-.popup .close-btn:hover{
-    background:tomato;
-    color: white;
-}
-
-.popup.active .overlay {
-    display: block;
-}
-
-.popup.active .content {
-    transition: all 300ms ease-in-out;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-button{
-    background-color: tomato;
-    border: 0ch;
-}
-
-/* Style the tab */
-
-.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
-
-
-/* Style the buttons inside the tab */
-
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-
-/* Change background color of buttons on hover */
-
-.tab button:hover {
-    background-color: tomato;
-    color: white;
-}
-
-
-/* Create an active/current tablink class */
-
-.tab button.active {
-    background-color: tomato;
-    color: white;
-}
-
-
-/* Style the tab content */
-
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-}
-
-/* End of pop up */
-
-    </style>
 
 </head>
 
@@ -198,10 +47,10 @@ button{
 @section('popProfileImg')
 
 @if ($LoggedUserInfo->profile_img == NULL)
-<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36" class="img-circle">
+<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="45" height="45" class="img-circle">
 
 @else
-<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
+<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="50" height="50" class="img-circle">
 
 @endif
 @endsection
@@ -370,11 +219,11 @@ button{
                                 @endif
 
                             </ol>
-                            <a class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" style="background-color: tomato">
+                            <button onclick="rolePopup()" class="btn btn-primary d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" style="background-color: #5298D2">
 
-                              Role: {{ $LoggedUserInfo -> user_role }}
+                              Role: {{ $LoggedUserInfo->user_role }}
 
-
+                            </button>
 
                             </a>
                         </div>
@@ -404,6 +253,43 @@ button{
         <!-- End Page wrapper  -->
 
     </div>
+    <div class="popup" id="popup-2">
+        <div class="overlay"></div>
+        <div class="content">
+          <div class="close-btn" onclick="rolePopup()">×</div>
+            @yield('popProfileImg')
+            <br>
+<div class="text-center" style="font-weight:bold">
+Your Current Role: {{ $LoggedUserInfo->user_role }}
+</div>
+      <br>    <div class="signup-form">
+               <form action="/change-role" method="post" enctype="multipart/form-data">
+                @method('PUT')
+                   @csrf
+
+                    <div class="form-group">
+                        <label for="user-role">Switch To:</label>
+                        <select class="form-control" name="user_role" style="border: 1px solid #5298D2 ">
+                        @foreach ($roles as $role)
+                        @if ($role->role_title != $LoggedUserInfo->user_role)
+                        <option value="{{ $role->role_title }}">{{ $role->role_title }}</option>
+                        @endif
+                        @endforeach
+
+
+                    </select>
+                </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" style="background-color: rgba(82, 152, 210, 1)">Submit</button>
+                        </div>
+
+
+               </form>
+           </div>
+
+
+       </div>
+      </div>
     <script src="/assets/users/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="/assets/users/plugins/bower_components/popper.js/dist/umd/popper.min.js"></script>

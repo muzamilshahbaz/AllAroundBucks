@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\PaidProject;
 use App\Models\Proposal;
 use App\Models\Seller;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -18,7 +19,8 @@ class ProjectsController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -46,7 +48,8 @@ class ProjectsController extends Controller
         if (session()->has('LoggedUser')) {
             $buyer = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $buyer
+                'LoggedUserInfo' => $buyer,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -62,7 +65,8 @@ class ProjectsController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -108,7 +112,8 @@ class ProjectsController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 
@@ -130,7 +135,8 @@ class ProjectsController extends Controller
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $user
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
             ];
         }
 

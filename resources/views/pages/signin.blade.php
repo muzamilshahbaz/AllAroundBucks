@@ -4,76 +4,93 @@
 
 <x-navbar></x->
 
+    <div class="signup-form">
 
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-          <!-- Tabs Titles -->
-<br><br>
-          <!-- Icon -->
-          <div class="fadeIn first">
-            <h3>Account Login</h3>
-          </div>
-<br>
-          <!-- Login Form -->
-          <form action="login" method="POST">
+        <form action="login" method="POST" enctype="multipart/form-data">
 
             @csrf
 
-            <div class="results">
-                @if (Session::get('success'))
 
-                <div class="alert alert-success">
-                    {{ Session::get('success') }}
+<div class="results">
+    @if (Session::get('success'))
 
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+
+    </div>
+
+    @endif
+
+    @if (Session::get('fail'))
+    <div class="alert alert-danger">
+            {{ Session::get('fail') }}
+    </div>
+
+    @endif
+</div>
+            <h3>Log in to AllAroundBucks</h3>
+            {{-- <p class="hint-text">Create your account. It's free and only takes a minute.</p> --}}
+
+
+          <div class="text-center">
+            <a href="/google">
+                <div class='g-sign-in-button'>
+                    <div class=content-wrapper>
+                        <div class='logo-wrapper'>
+                            <img src='/assets/images/g.png'>
+                        </div>
+                        <span class='text-container'>
+                      <span>Continue with Google</span>
+                    </span>
+                    </div>
                 </div>
-
-                @endif
-
-                @if (Session::get('fail'))
-                <div class="alert alert-danger">
-                        {{ Session::get('fail') }}
-                </div>
-
-                @endif
-            </div>
-            <div class="form-group">
-                <div class="col-12">
-                    <a href="/google" class="btn btn-danger btn-block" style="color: white">Login with Google</a>
-                    {{-- <a href="/facebook" class="btn btn-primary btn-block" style="color: white">Login with Facebook</a> --}}
-                </div>
-            </div>
-
-           <center> <h5 style="color: black">or</h5>
-           </center>
-            <br>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email" value="{{ old('login') }}">
-            <br>
-            <span class="text-danger">@error('login') {{ $message }}  @enderror</span>
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
-            <br>
-            <span class="text-danger">@error('password') {{ $message }}  @enderror</span>
-            <br><br>
-            <input type="submit" id="login-submit" class="fadeIn fourth" value="Log In" style="background-color: tomato; border: 0ch">
-
-            <!-- Remind Passowrd -->
-
-          <a class="underlineHover" href="#" style="color: tomato">Forgot Password?</a>
-
-          </form>
-
-          <div id="formFooter">
-
-<span>New To AllAroundBucks ?</span>
-<hr>
-
-<a href="/signup" class="btn btn-primary sign-up-btn" style="background-color: tomato; border: 0ch" >Sign up</a>
-
+               </a>
           </div>
+<center> <h5 style="color: rgba(82, 152, 210, 1);">or</h5>
+                </center>
 
-        </div>
 
+            {{-- <div class="form-group">
 
-      </div>
+                    <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{ old('name') }}">
+                    <span class="text-danger">@error('name') {{ $message }} @enderror</span>
+
+            </div> --}}
+            <div class="form-group">
+                <input type="email" class="form-control" name="login" placeholder="Email" value="{{ old('login') }}">
+                <span class="text-danger">@error('login') {{ $message }} @enderror</span>
+            </div>
+            {{-- Add Profile Image --}}
+            {{-- <div class="form-group">
+                <input type="file" class="form-control" name="profile_img" value="{{ old('profile_img') }}" onchange="previewFile(this)">
+                <img src="/assets/users/userprofile/defaultprofilepic.png" id="previewImg" alt="profile-image" style="max-width: 130px; margin-top: 20px;">
+                <span class="text-danger">@error('profile_img') {{ $message }} @enderror</span>
+            </div> --}}
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+                <span class="text-danger">@error('password') {{ $message }} @enderror</span>
+            </div>
+            {{-- <div class="form-group">
+                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                <span class="text-danger">@error('confirm_password') {{ $message }} @enderror</span>
+            </div> --}}
+            {{-- <div class="form-group">
+                <label class="form-check-label"><input type="checkbox" name="checkbox">
+                    I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+                    <br>
+                    <span class="text-danger">@error('checkbox') {{ $message }} @enderror</span>
+            </div> --}}
+            <div class="text-center">
+                <div class="form-group">
+                    <button type="submit" id="submit-btn" class="btn btn-primary btn-lg text-white">Log In</button>
+                </div>
+            </div>
+            <div class="text-center">Don't have an Account? Create One! <a href="/signup" style="color: rgba(82, 152, 210, 1);tomato">Sign Up</a></div>
+
+        </form>
+    </div>
+
 
 <x-footer></x->
 

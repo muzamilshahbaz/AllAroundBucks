@@ -24,6 +24,7 @@
 
 
 
+
 <title>{{ $title }}</title>
 
 </head>

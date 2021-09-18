@@ -6,6 +6,10 @@ function togglePopup() {
     document.getElementById("popup-1").classList.toggle("active");
 }
 
+function rolePopup() {
+    document.getElementById("popup-2").classList.toggle("active");
+}
+
 function previewFile(input, id) {
     id = id || '#previewImg';
     if (input.files && input.files[0]) {

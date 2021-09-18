@@ -4,11 +4,16 @@
 
 
 <div class="container emp-profile">
-    <form method="post">
+
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    @yield('navProfileImg')
+                    @if ($LoggedUserInfo->profile_img == NULL)
+<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36" class="img-circle">
+@else
+<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
+
+@endif
                 </div>
             </div>
             <div class="col-md-6">
@@ -144,7 +149,7 @@
                 </div>
             </div>
         </div>
-    </form>
+
 </div>
 
 @endsection

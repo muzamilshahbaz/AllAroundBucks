@@ -13,7 +13,7 @@ use App\Models\Trainer;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 use App\Mail\VerifyEmail;
-
+use App\Models\UserRole;
 use Softon\LaravelFaceDetect\Facades\FaceDetect;
 
 class RegisterController extends Controller
@@ -25,25 +25,25 @@ class RegisterController extends Controller
 
             'name'=>'required|regex:/^[\pL\s\-]+$/u',
             'email'=>'required|email|unique:users',
-            'profile_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            // 'profile_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'password'=>'required|min:6|max:50',
             'confirm_password'=>'required|min:6|max:50|same:password',
-            'checkbox'=>'required'
+            // 'checkbox'=>'required'
         ]);
 
 
 
-        $profileImage =  $request->file('profile_img');
+        // $profileImage =  $request->file('profile_img');
 
-        $profileImageName = $request->email.'.'.$profileImage->extension();
-        $profileImage->move(public_path('assets\users\userprofile'), $profileImageName);
+        // $profileImageName = $request->email.'.'.$profileImage->extension();
+        // $profileImage->move(public_path('assets\users\userprofile'), $profileImageName);
 
             $user = new User;
             $user->name = $request->name;
 
             $user->username = $request->email;
             $user->email = $request->email;
-            $user->profile_img = $profileImageName;
+            // $user->profile_img = $profileImageName;
             $user->password = Hash::make($request->password);
             $verifyCode = rand (10000, 99999);
             $allUsers = User::all();
@@ -122,7 +122,8 @@ class RegisterController extends Controller
 
         $title = 'Select Role and Username';
         $pageName = 'Select Role and Username';
-        return view('pages.roleAndUsername' , $data, compact('title', 'pageName'));
+        $roles = UserRole::all();
+        return view('pages.roleAndUsername' , $data, compact('title', 'pageName'. 'roles'));
 
     }
 

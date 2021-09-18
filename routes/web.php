@@ -42,6 +42,10 @@ use App\Models\PaidProject;
 Route::get('/', [PagesController::class, 'home'])->middleware('AlreadyLoggedIn');
 Route::get('howitworks', [PagesController::class, 'howitworks'])->middleware('AlreadyLoggedIn');
 Route::get('ourtrainers', [PagesController::class, 'ourtrainers'])->middleware('AlreadyLoggedIn');
+Route::get('/contact-us', function () {
+    $title = 'Contact Us - AllAroundBucks';
+    return view('pages.contact', compact('title'));
+});
 Route::get('signin', [PagesController::class, 'signin'])->middleware('AlreadyLoggedIn');
 Route::get('signup', [PagesController::class, 'signup'])->middleware('AlreadyLoggedIn');
 
@@ -157,6 +161,7 @@ Route::put('sellerFeedback/{id}', [PaidProjectController::class, 'sellerFeedback
 
 Route::get('search-projects', [ProjectsFeedController::class, 'searchProject'])->middleware('isLogged');
 
+Route::put('/change-role', [UserController::class, 'changeRole'])->middleware('isLogged');
 
 
 
