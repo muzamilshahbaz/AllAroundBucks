@@ -19,7 +19,8 @@
 
     @endif
     </div>
-<div class="card" style="width: 60rem;">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+
     <div class="card-body">
         <b>
             <h3 class="display-6">
@@ -57,9 +58,10 @@
                 <a href="/edit-project/{{ $project->project_id }}" class="btn btn-block btn-light text-white" style="background-color: tomato; text-align: right;"><center>Edit</center></a>
             </div> --}}
             <div class="col-3 offset-9">
-                <a href="/project-proposals/{{ $project->project_id }}" class="btn btn-block btn-danger text-white" style="background-color: tomato; text-align: right;"><center>View Proposals</center></a>
+                <a href="/project-proposals/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;"><center>View Proposals</center></a>
 
             </div>
+
             @elseif ($proposal)
                <div class="col-3 offset-8">
                 <button class="btn btn-block text-white" style="background-color: grey" disabled="disabled">Proposal Sent</button>
@@ -68,7 +70,7 @@
                @else
 
                <div class="col-3 offset-8">
-                <a href="/write-proposal/{{ $project->project_id }}" class="btn btn-block btn-light text-white" style="background-color: tomato; text-align: right;"><center>Send Proposal</center></a>
+                <a href="/write-proposal/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;"><center>Send Proposal</center></a>
                 </div>
                 @endif
 

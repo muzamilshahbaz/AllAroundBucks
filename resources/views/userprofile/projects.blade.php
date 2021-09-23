@@ -4,7 +4,7 @@
 
 <div class="col-lg-12">
 
-    <a href="newProject" class="btn btn-primary" style="background-color: tomato">Add New Project</a>
+    <a href="/newProject" class="btn btn-primary" style="background-color: #5298D2">Add New Project</a>
 
 </div>
 <br>
@@ -27,7 +27,7 @@
     </div>
 <br>
 
-<div class="tab">
+<div class="tab" style="border: 1px solid #5298D2">
     <button class="tablinks" onclick="openTab(event, 'All')">All</button>
     <button class="tablinks" onclick="openTab(event, 'Active')">Active</button>
     <button class="tablinks" onclick="openTab(event, 'Awaiting For Approval')">Awaiting For Approval</button>
@@ -36,7 +36,7 @@
 
   </div>
 
-  <div id="All" class="tabcontent">
+  <div id="All" class="tabcontent" style="border: 1px solid #5298D2">
 
 
     @foreach ($buyerProject as $project)
@@ -45,8 +45,8 @@
 
 
 
-            <div class="card" style="border: 0px">
-           <div class="card-body">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none;">
+        <div class="card-body">
             <div class="row">
                 <div class="col-6 card-title">
                     <h3>{{ $project -> project_title }}</h3>
@@ -54,13 +54,13 @@
 
                 <div class="col-2 offset-1">
                  <br>
-                 <a href="/project/{{ $project->project_id }}" class="btn btn-block btn-light text-white" style="background-color: tomato; text-align: right;"><center>View</center></a>
+                 <a href="/project/{{ $project->project_id }}" class="btn btn-primary btn-block text-white" style="background-color: #5298D2; text-align: right;"><center>View</center></a>
              </div>
 
 
              <div class="col-2">
                  <br>
-                 <a href="/delete-project/{{ $project->project_id }}" class="btn btn-block btn-danger"><center>Delete</center></a>
+                 <a href="/delete-project/{{ $project->project_id }}" class="btn btn-danger btn-block text-white"><center>Delete</center></a>
              </div>
                  </div>
 
@@ -95,8 +95,8 @@
     @if ($project->status == 'active')
 
 
-        <div class="card" style="border: 0px">
-      <div class="card-body">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+        <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
                 <h3><a href="/project/{{ $project->project_id }}">{{ $project -> project_title }}</a></h3>
@@ -140,8 +140,8 @@
     @if ($project->status == 'awaiting for approval')
 
 
-        <div class="card" style="border: 0px">
-      <div class="card-body">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+        <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
                 <h3><a href="/project/{{ $project->project_id }}">{{ $project -> project_title }}</a></h3>
@@ -203,7 +203,8 @@
     @if ($project->status == 'awaiting for feedback')
 
 
-        <div class="card" style="border: 0px">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+
       <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
@@ -269,7 +270,7 @@
 </div>
 
 <div class="form-group">
-    <button type="submit" class="btn btn-primary text-white" style="background-color: tomato">Submit</button>
+    <button type="submit" class="btn btn-primary text-white" style="background-color: #5298D2">Submit</button>
 </div>
 
 </form>
@@ -297,8 +298,8 @@
     @if ($project->status == 'completed')
 
 
-        <div class="card" style="border: 0px">
-      <div class="card-body">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+        <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
                 <h3><a href="/project/{{ $project->project_id }}">{{ $project -> project_title }}</a></h3>

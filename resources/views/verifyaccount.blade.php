@@ -4,7 +4,7 @@
 
 <x-navbar></x->
 
-<div class="signup-form">
+<div class="signup-form" style="height: 70%">
     <form action="verify" method="post">
         @csrf
 
@@ -36,8 +36,8 @@
         <input type="text" class="form-control" name="verify_code" placeholder="Paste the 5-digit verification code">
         <span class="text-danger">@error('verify_code') {{ $message }} @enderror</span>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Verify Now</button>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2">Verify Now</button>
     </div>
     </form>
 </div>

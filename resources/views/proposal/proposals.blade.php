@@ -3,11 +3,12 @@
 @section('usercontent')
 
 @foreach ($proposals as $proposal)
-<div class="card" style="width: 60rem;">
+<div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+
     <div class="card-body">
         <b>
             <h3>
-              <a href="/project/{{ $proposal->project_id }}" style="color: tomato">  {{ $proposal->project_title }}</a>
+              <a href="/project/{{ $proposal->project_id }}" style="color: #5298D2">  {{ $proposal->project_title }}</a>
             </h3>
 
         </b>

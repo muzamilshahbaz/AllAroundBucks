@@ -20,42 +20,50 @@
     @endif
 </div>
 
-@foreach ($allUser as $freelancer)
+@foreach ($allSeller as $seller)
 
-
-@if ($freelancer->user_role == 'Seller')
-
+@if ($seller->user_id != $LoggedUserInfo->user_id)
 <div class="col-12">
 
-    <div class="card" style="border: 0px">
-        <div class="row">
-            <img src="assets/users/userprofile/{{ $freelancer -> profile_img }}" alt="seller-img" width="100" height="100" class="img-circle">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+ <div class="card-body">
+    <div class="row">
+        @if ($seller->profile_img == NULL)
+        <img src="assets/users/userprofile/defaultprofilepic.png" alt="seller-img" width="100" height="100" class="img-circle" style="border-radius: 50%">
 
-            <div class="col-6">
-                <br>
-                <a class="" href="/user/{{ $freelancer->username }}">
-                    <h3>{{ $freelancer -> name }}</h3>
-                </a>
+        @else
+        <img src="assets/users/userprofile/{{ $seller->profile_img }}" alt="seller-img" width="100" height="100" class="img-circle" style="border-radius: 50%">
 
-            <div class="card-subtitle">
-                <h5>{{ $freelancer ->username }}</h4>
-            </div>
-            </div>
+        @endif
+        <div class="col-6">
+            <br>
+            <a class="card-title" href="/user/{{ $seller->username }}">
+                <h3>{{ $seller->name }}</h3>
+            </a>
 
-
-            <div class="col-2">
-                <br>
-                <a href="/user/{{ $freelancer->username }}" class="btn btn-block btn-danger text-white" style="background-color: tomato; text-align: right;"><center>Hire Now</center></a>
-            </div>
+        <div class="card-subtitle">
+            <h5>{{ $seller ->username }}</h4>
         </div>
+        <span>{{ $seller->profession }}</span>
+        <div>
+            @include('ratings.sellerrating')
+        </div>
+        </div>
+
+
+        <div class="col-2">
+            <br>
+            <a href="/user/{{ $seller->username }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;"><center>Hire Now</center></a>
+        </div>
+    </div>
+ </div>
     </div>
 
 </div>
+@endif
 
 <br>
 
-
-@endif
 
 
 @endforeach

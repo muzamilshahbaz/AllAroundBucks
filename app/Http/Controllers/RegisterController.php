@@ -123,7 +123,7 @@ class RegisterController extends Controller
         $title = 'Select Role and Username';
         $pageName = 'Select Role and Username';
         $roles = UserRole::all();
-        return view('pages.roleAndUsername' , $data, compact('title', 'pageName'. 'roles'));
+        return view('pages.roleAndUsername' , $data, compact('title', 'pageName', 'roles'));
 
     }
 

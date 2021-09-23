@@ -1,24 +1,48 @@
 @extends('layout.users')
 
 @section('usercontent')
+<div class="results">
+    @if (Session::get('success'))
 
-<form action="/search-projects" method="GET" enctype="multipart/form-data">
-@csrf
-<div class="row">
-    <div class="form-group col-3 offset-6">
-        <input type="text" name="project_search_query" class="form-control" placeholder="Search Projects......">
-        <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+
     </div>
-    <div class="col-2">
-        <button type="submit" class="btn btn-success text-white">Search</button>
+
+    @endif
+
+    @if (Session::get('fail'))
+    <div class="alert alert-danger">
+            {{ Session::get('fail') }}
     </div>
+
+    @endif
+    </div>
+
+
+
+@if ($projects->isEmpty())
+<div class="text-center">
+    <h3>There are no projects to show</h3>
 </div>
-</form>
-
+@else
+<form action="/search-projects" method="GET" enctype="multipart/form-data">
+    @csrf
+    <div class="row">
+        <div class="form-group col-3 offset-6">
+            <input type="text" name="project_search_query" class="form-control" placeholder="Search Projects......">
+            <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
+        </div>
+        <div class="col-2">
+            <button type="submit" style="background-color: #5298D2" class="btn btn-primary text-white">Search</button>
+        </div>
+    </div>
+    </form>
 @foreach ($projects as $project)
 
 
-        <div class="card" style="width:60rem; border: 0px">
+<div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+
            <div class="card-body">
             <div class="row">
 
@@ -32,7 +56,7 @@
                  <div class="row">
                      <div class="col-2 offset-9">
 
-                         <a href="/project/{{ $project->project_id}}" class="btn btn-block btn-danger text-white" style="background-color: tomato; text-align: right;"><center>View</center></a>
+                         <a href="/project/{{ $project->project_id}}" class="btn btn-block primary text-white" style="background-color: #5298D2; text-align: right;"><center>View</center></a>
 
                      </div>
                  </div>
@@ -60,6 +84,7 @@
     <br>
 
     @endforeach
+@endif
 
 
 

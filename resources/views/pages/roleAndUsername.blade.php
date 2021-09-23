@@ -2,7 +2,7 @@
 
 @section('usercontent')
 
-
+<link rel="stylesheet" href="assets/css/signup.css">
 <div class="signup-form">
     <form action="/roleAndUsername/{{ $LoggedUserInfo->user_id }}" method="POST">
         @csrf
@@ -24,27 +24,27 @@
 
             @endif
         </div>
-<h5>Select your User Role and Username</h5>
-
+<div class="text-center">
+    <h4  style="color:#5298D2">Select your User Role and Username</h5>
+<br>
 <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
         <div class="form-group">
-            <label for="user-role">User Role:</label>
-            <br>
-            <span>**Select Your Role</span>
-            <select id="user-role" class="form-control" name="user_role" value="{{ old('user_role') }}">
+
+            <select id="user-role" style="border: 1px solid #5298D2" class="form-control" name="user_role" value="{{ old('user_role') }}">
       @foreach ($roles as $role)
-          <option value="{{ $role->role_title }}">{{ $role->title }}</option>
+          <option  style="border: 1px solid #5298D2" value="{{ $role->role_title }}">{{ $role->role_title }}</option>
       @endforeach
     </select>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">
+            <input type="text" style="border: 1px solid #5298D2" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}">
             <span class="text-danger">@error('username') {{ $message }} @enderror</span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg" style="background-color:#5298D2">Submit</button>
         </div>
+</div>
     </form>
 </div>
 

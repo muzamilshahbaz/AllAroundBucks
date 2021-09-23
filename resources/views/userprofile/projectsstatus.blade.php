@@ -22,7 +22,7 @@
     </div>
 <br>
 
-<div class="tab">
+<div class="tab" style="border: 1px solid #5298D2">
     <button class="tablinks" onclick="openTab(event, 'All')">All</button>
     <button class="tablinks" onclick="openTab(event, 'Active')">Active</button>
     <button class="tablinks" onclick="openTab(event, 'Awaiting For Approval')">Awaiting For Approval</button>
@@ -31,12 +31,12 @@
 
   </div>
 
-  <div id="All" class="tabcontent">
+  <div id="All" class="tabcontent" style="border: 1px solid #5298D2">
 
 
     @foreach ($projects as $project)
 
-            <div class="card" style="border: 0px">
+            <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
            <div class="card-body">
             <div class="row">
                 <div class="col-6 card-title">
@@ -45,7 +45,7 @@
 
                 <div class="col-2 offset-1">
                  <br>
-                 <a href="/project/{{ $project->project_id }}" class="btn btn-block btn-light text-white" style="background-color: tomato; text-align: right;"><center>View</center></a>
+                 <a href="/project/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;"><center>View</center></a>
              </div>
 
 
@@ -76,13 +76,13 @@
         @endforeach
 </div>
 
-  <div id="Active" class="tabcontent">
+  <div id="Active" class="tabcontent" style="border: 1px solid #5298D2">
     @foreach ($projects as $project)
 
     @if ($project->status == 'active')
 
 
-        <div class="card" style="border: 0px">
+        <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
       <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
@@ -111,7 +111,7 @@
                </div>
 <br><br>
                <div class="col-4 offset-10">
-                   <a href="/send-project/{{ $project->id }}" class="btn btn-light text-white" style="background-color:tomato">Send Project</a>
+                   <a href="/send-project/{{ $project->id }}" class="btn btn-light text-white" style="background-color:#5298D2">Send Project</a>
                </div>
       </div>
 
@@ -125,13 +125,13 @@
     @endforeach
   </div>
 
-  <div id="Awaiting For Approval" class="tabcontent">
+  <div id="Awaiting For Approval" class="tabcontent" style="border: 1px solid #5298D2">
     @foreach ($projects as $project)
 
     @if ($project->status == 'awaiting for approval')
 
 
-        <div class="card" style="border: 0px">
+        <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
       <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
@@ -176,13 +176,13 @@
     @endforeach
   </div>
 
-  <div id="Awaiting For Feedback" class="tabcontent">
+  <div id="Awaiting For Feedback" class="tabcontent" style="border: 1px solid #5298D2">
     @foreach ($projects as $project)
 
     @if ($project->status == 'awaiting for feedback')
 
 
-        <div class="card" style="border: 0px">
+        <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
       <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
@@ -224,13 +224,13 @@
     @endforeach
   </div>
 
-  <div id="Completed" class="tabcontent">
+  <div id="Completed" class="tabcontent" style="border: 1px solid #5298D2">
     @foreach ($projects as $project)
 
     @if ($project->status == 'completed')
 
 
-        <div class="card" style="border: 0px">
+        <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
       <div class="card-body">
         <div class="row">
             <div class="col-6 card-title">
@@ -293,7 +293,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary text-white" style="background-color: tomato">Submit</button>
+                <button type="submit" class="btn btn-primary text-white" style="background-color: #5298D2">Submit</button>
             </div>
 
             </form>

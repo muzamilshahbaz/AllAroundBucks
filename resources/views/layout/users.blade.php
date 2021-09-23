@@ -4,12 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- Tell the browser to be responsive to screen width -->
 
     <link href="/assets/users/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/users/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <link href="/assets/users/css/style.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/fonts.google.icons.css">
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/users/css/font-awesome.min.css">
@@ -47,10 +51,10 @@
 @section('popProfileImg')
 
 @if ($LoggedUserInfo->profile_img == NULL)
-<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="45" height="45" class="img-circle">
+<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="60" height="60" class="img-circle" style="border-radius: 50%">
 
 @else
-<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="50" height="50" class="img-circle">
+<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="60" height="60" class="img-circle" style="border-radius: 50%">
 
 @endif
 @endsection
@@ -136,10 +140,21 @@
 
 @endif
 
-@if ($LoggedUserInfo -> user_role == 'Seller' || $LoggedUserInfo -> user_role == 'Trainer')
+@if ($LoggedUserInfo -> user_role == 'Seller')
 
 <li class="sidebar-item pt-2">
-    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/earnings" aria-expanded="false">
+    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/sellerearnings" aria-expanded="false">
+
+        <span class="hide-menu">Earnings</span>
+    </a>
+</li>
+
+@endif
+
+@if ($LoggedUserInfo -> user_role == 'Trainer')
+
+<li class="sidebar-item pt-2">
+    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/trainerearnings" aria-expanded="false">
 
         <span class="hide-menu">Earnings</span>
     </a>
@@ -156,7 +171,7 @@
     </a>
 </li>
 <li class="sidebar-item pt-2">
-    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/courses" aria-expanded="false">
+    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/student-courses" aria-expanded="false">
 
         <span class="hide-menu">Your Courses</span>
     </a>
@@ -236,7 +251,7 @@
 
  <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-color: rgba(252, 246, 246, 0.692) ">
 
               @yield('usercontent')
 
@@ -258,11 +273,11 @@
         <div class="content">
           <div class="close-btn" onclick="rolePopup()">×</div>
             @yield('popProfileImg')
-            <br>
+            <br><br>
 <div class="text-center" style="font-weight:bold">
 Your Current Role: {{ $LoggedUserInfo->user_role }}
 </div>
-      <br>    <div class="signup-form">
+      <br>
                <form action="/change-role" method="post" enctype="multipart/form-data">
                 @method('PUT')
                    @csrf
@@ -280,12 +295,12 @@ Your Current Role: {{ $LoggedUserInfo->user_role }}
                     </select>
                 </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" style="background-color: rgba(82, 152, 210, 1)">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg" style="background-color: rgba(82, 152, 210, 1); border-radius: 1em">Submit</button>
                         </div>
 
 
-               </form>
-           </div>
+               </form1
+
 
 
        </div>

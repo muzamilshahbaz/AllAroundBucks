@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\PaidProject;
+use App\Models\Project;
 use App\Models\Seller;
 use App\Models\Student;
 use App\Models\Trainer;
@@ -53,7 +54,10 @@ class UserController extends Controller
         function hiredirect()
         {
             $allUser = User::all();
-            $allSeller = Seller::all();
+            $allSeller = Seller::join('users', 'users.user_id', '=', 'sellers.user_id')
+                                ->select('sellers.*', 'users.username', 'users.profile_img',
+                                'users.name', 'users.profession')
+                                ->get();
 
         if (session()->has('LoggedUser')) {
             $user = User::where('user_id','=',session('LoggedUser'))->first();
@@ -62,6 +66,7 @@ class UserController extends Controller
                 'roles' =>  UserRole::all()
             ];
         }
+
 
             $pageName = 'Hire Directly !!';
             $title = 'Hire Freelancer';
@@ -88,7 +93,8 @@ class UserController extends Controller
         if ($user->user_role == 'Seller')
         {
             $seller = Seller::where('user_id',$user->user_id)->first();
-            return view('userprofile.sellerprofile', $data, compact('title','pageName','seller'));
+            $projects = PaidProject::where('seller_id', $seller->seller_id)->get();
+            return view('userprofile.sellerprofile', $data, compact('title','pageName','seller', 'projects'));
 
         }
 
@@ -395,6 +401,36 @@ class UserController extends Controller
             # code...
             return back()->with('fail','Something went wrong...Try Again');
         }
+
+    }
+
+    public function earnings()
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+
+            $pageName = ' Earnings';
+            $title = $user->user_role.$pageName;
+            if($user->user_role == 'Seller')
+            {
+                $seller = Seller::where('user_id', $user->user_id)->first();
+                $project = PaidProject::where('seller_id', $seller->seller_id);
+                $projects = $project->latest()->take(10)->get();
+                return view('userprofile.sellerearnings', $data, compact('title','pageName','seller', 'projects'));
+
+            }
+            elseif($user->user_role == 'Trainer')
+            {
+                $trainer = Trainer::where('user_id', $user->user_id)->first();
+                return view('userprofile.trainerearnings', $data, compact('title','pageName','trainer'));
+
+            }
+
 
     }
 }

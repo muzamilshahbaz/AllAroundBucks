@@ -1,6 +1,8 @@
 @extends('layout.users')
 
 @section('usercontent')
+<link rel="stylesheet" href="/assets/css/signup.css">
+
 <div class="results">
     @if (Session::get('success'))
 
@@ -19,43 +21,45 @@
     @endif
     </div>
 
-    <div class="card" style="border: 0ch">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
         <div class="card-body">
 
 <section><h1>Personal Info</h1>
 <br>
-                    <form action="/savePersonalInfo" method="PUT" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
+         <div class="signup-form" style="width: 90%">
+            <form action="/savePersonalInfo" method="PUT" enctype="multipart/form-data" style="color:#5298D2">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
 
-                      <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{ $LoggedUserInfo->email }}">
-                                <br>
-                                <span class="text-danger">@error('email') {{ $message }}  @enderror</span>
-                            </div>
-                        </div>
-                       <div class="col-6">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control"  name="username" value="{{ $LoggedUserInfo->username }}">
-                            <br>
-                            <span class="text-danger">@error('username') {{ $message }}  @enderror</span>
+              <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" value="{{ $LoggedUserInfo->email }}">
+                        <br>
+                        <span class="text-danger">@error('email') {{ $message }}  @enderror</span>
                     </div>
-                       </div>
+                </div>
+               <div class="col-6">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control"  name="username" value="{{ $LoggedUserInfo->username }}">
+                    <br>
+                    <span class="text-danger">@error('username') {{ $message }}  @enderror</span>
+            </div>
+               </div>
 
 
 
-                      </div>
+              </div>
 
-                      <div class="form-group col-2 offset-10">
-                        <button type="submit" class="btn btn-primary" style="background-color: tomato; border: 0ch">Save Changes</button>
-                    </div>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Save Changes</button>
+            </div>
 
-                    </form>
+            </form>
+         </div>
 
                 </section>
 <br>
@@ -63,7 +67,8 @@
                     <br>
 <section><h1>Security</h1>
     <br>
-                    <form action="/changePassword" method="PUT" enctype="multipart/form-data">
+                <div class="signup-form" style="width:90%">
+                    <form action="/changePassword" method="PUT" enctype="multipart/form-data" style="color:#5298D2">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
@@ -84,10 +89,11 @@
                          </div>
                            </div>
 <br>
-                           <div class="form-group col-3 offset-10">
-                            <button type="submit" class="btn btn-primary" style="background-color: tomato; border: 0ch">Change Password</button>
+                           <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Change Password</button>
                         </div>
                     </form>
+                </div>
                 </section>
                 <br>
                 <hr>
@@ -108,8 +114,8 @@
                         <li>Your earnings will be removed until you withdraw them before deactivation.</li>
                     </p>
                     <br>
-                    <div class="form-group col-3 offset-10">
-                        <a href="/deactivate_account/{{ $LoggedUserInfo->user_id }}" class="btn btn-danger">Deactivate Account</a>
+                    <div class="form-group offset-10">
+                        <a href="/deactivate_account/{{ $LoggedUserInfo->user_id }}" class="btn btn-danger" style="border-radius: 2em">Deactivate Account</a>
                     </div>
                 </section>
 

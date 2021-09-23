@@ -1,4 +1,4 @@
-<p class="proile-rating">RATING :
+<p class="profile-rating">RATING :
     @if ($course->rating == NULL)
     N/A
 @else

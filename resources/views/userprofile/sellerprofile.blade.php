@@ -3,152 +3,107 @@
 @section('usercontent')
 
 
-<div class="container emp-profile">
+<div class="container emp-profile" style="color: black">
 
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
                     @if ($LoggedUserInfo->profile_img == NULL)
-<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36" class="img-circle">
+<img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36" class="img-circle" style="border-radius: 50%">
 @else
-<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36" height="36" class="img-circle">
+<img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36" height="36" class="img-circle" style="border-radius: 50%">
 
 @endif
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
-                            <h3>
+                            <h3 style="font-weight: bold">
                       {{ $LoggedUserInfo->name }}
                             </h3>
                             <h6>
                               {{ $LoggedUserInfo->profession }}
                             </h6>
-                            <br>
-                            <p>{{ $LoggedUserInfo->bio }}</p>
-
-
-                            <p class="proile-rating">RATING :
+                            <span class="proile-rating">
 
                                 @include('ratings.sellerrating')
 
-                           </p>
-
-
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
-                    </ul>
+                            </span>
+<br><br>
+                            <div class="flex-box">
+                                <h4>About</h4><p>{{ $LoggedUserInfo->bio }}</p>
+                            </div>
                 </div>
             </div>
+
             <div class="col-md-2">
-                <a href="/editprofile/{{ $LoggedUserInfo->user_id }}" class="profile-edit-btn" name="btnAddMore" value="Edit Profile">Edit Profile</a>
+                <a href="/editprofile/{{ $LoggedUserInfo->user_id }}" class="btn btn-primary" style="background-color: #5298D2; border-radius: 2em" name="btnAddMore" value="Edit Profile">Edit Profile</a>
+            </div>
+
+        </div>
+        <br>
+        <div class="row" style="font-size: 17px; border: 1px solid black; padding: 10px">
+
+                <div class="col-4">
+                    <span style="font-weight: bold">Hourly Rate: </span><span>${{ $seller->hourly_rate }}/hour</span>
+                </div>
+                <div class="col-4">
+                    <span style="font-weight: bold">Total Projects: </span><span>{{ $seller->total_projects }}</span>
+                </div>
+                <div class="col-4">
+                    <span style="font-weight: bold">Experience: </span><span>${{ $seller->experience }}</span>
+                </div>
+
+        </div>
+        <div class="row" style="border: 1px solid black; padding: 10px">
+
+            <div class="col-12">
+                <span style="font-weight: bold; font-size: 17px;">Work History : </span> <br><br>
+                @foreach ($projects as $project)
+                    <div class="card" style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4><b>{{ $project->project_title }}</b></h4>
+                            </div>
+                            @include('userprofile.projectrating')
+
+                                  <div class="row">
+                                      <div class="col-6">
+                                        <span style="font-weight: bold">Buyer: </span><span> {{ $project->buyer_username }}</span>
+                                      </div>
+                                      <div class="col-6">
+                                        <span style="font-weight: bold">Earnings: </span><span> ${{ $project->price }}</span>
+
+                                      </div>
+                                  </div>
+
+
+<br>
+
+                            <span style="font-weight: bold">Buyer Feedback: </span><span>{{ $project->buyer_feedback }}</span>
+
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+    </div>
+
+    <div class="row" style="font-size: 17px; border: 1px solid black; padding: 10px">
+
+        <div class="col-12">
+            <span style="font-weight: bold; font-size: 17px;">Skills : </span> <br><br>
+            <div class="card" style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+<div class="card-body">
+    {{ $seller->skills }}
+</div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-
-                    <p>SKILLS</p>
-                    {{ $seller->skills }}
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Username</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{ $LoggedUserInfo -> username }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Full Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{ $LoggedUserInfo -> name }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{ $LoggedUserInfo -> email }}</p>
-                                    </div>
-                                </div>
-                                {{-- <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Phone</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p></p>
-                                    </div>
-                                </div> --}}
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Profession</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>{{ $LoggedUserInfo -> profession }}</p>
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-                              <div class="row">
-                                <div class="col-md-6">
-                                    <label>Experience</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>
-                                        {{ $seller -> experience }}
-
-                                    </p>
-                                </div>
-                            </div>
-
-                             <div class="row">
-                                <div class="col-md-6">
-                                    <label>Hourly Rate</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ $seller -> hourly_rate }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Total Projects</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ $seller -> total_projects }}</p>
-                                </div>
-                            </div>
 
 
-
-
-                                {{-- <div class="row">
-                                    <div class="col-md-6">
-                                        <label>English Level</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Expert</p>
-                                    </div>
-                                </div> --}}
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>
 
 </div>
 

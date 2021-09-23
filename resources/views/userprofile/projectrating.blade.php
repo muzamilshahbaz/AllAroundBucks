@@ -1,4 +1,4 @@
-<p class="proile-rating">
+<p class="profile-rating">
     <br>
     @if ($project->project_rating == NULL)
     Wait for buyer to rate this project.

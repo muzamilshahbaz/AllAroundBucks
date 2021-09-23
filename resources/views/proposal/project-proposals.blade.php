@@ -21,14 +21,14 @@
     </div>
 
 @if ($proposals->isEmpty())
-<center><h4>There is no proposal for this project</h3></center>
+<center><h3>There is no proposal for this project</h3></center>
 @else
 @foreach ($proposals as $proposal)
-<div class="card" style="width: 60rem;">
+<div class="card" style="padding: 5px; border-radius:0.5em; border:none">
     <div class="card-body">
         <b>
             <h3>
-              Seller: <a href="/user/{{ $proposal->seller_username}}" style="color: tomato">  {{ $proposal->seller_username }}</a>
+              Seller: <a href="/user/{{ $proposal->seller_username}}" style="color: #5298D2">  {{ $proposal->seller_username }}</a>
             </h3>
 
         </b>

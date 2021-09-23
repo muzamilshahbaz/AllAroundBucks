@@ -1,19 +1,12 @@
 @extends('layout.users')
 
 @section('usercontent')
+<link rel="stylesheet" href="/assets/css/signup.css">
+<div class="signup-form" style="width: 90%; color:#5298D2 !important">
 
-<div class="signup-form">
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-          <!-- Tabs Titles -->
-    <br><br>
-          <!-- Icon -->
-          <div class="fadeIn first">
-            <h3>Update Profile</h3>
-          </div>
-    <br>
+
           <!-- Login Form -->
-          <form action="/updateprofile/@if ($LoggedUserInfo->user_role == 'Seller')
+          <form style="color:#5298D2 !important" action="/updateprofile/@if ($LoggedUserInfo->user_role == 'Seller')
             @php
                 $id = $seller->seller_id
             @endphp
@@ -56,8 +49,10 @@
                 @endif
             </div>
 
+            <div class="text-center">
+                <h1 style="color:#5298D2">Update Profile</h1>
             <br>
-
+        </div>
             <input type="hidden" name="user_id" value="{{ $user->user_id }}">
             @if ($LoggedUserInfo->user_role == 'Seller')
 
@@ -79,7 +74,7 @@
 
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="assets/users/userprofile/{{ $LoggedUserInfo -> profile_img }}" alt="user-img" width="50" class="img-circle">
+                    <img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="50" class="img-circle">
                     <input type="file" class="form-control" name="profile_img" value="{{ $LoggedUserInfo->profile_img }}">
                 </div>
             </div>
@@ -104,7 +99,7 @@
            </div>
            <div class="form-group">
             <label for="bio">Bio</label>
-            <textarea class="form-control" name="bio" id="" cols="30" rows="10">{{ $user->bio }}</textarea>
+            <textarea style="border: 1px solid #5298D2;" class="form-control" name="bio" id="" cols="30" rows="10">{{ $user->bio }}</textarea>
             <br>
             <span class="text-danger">@error('bio') {{ $message }}  @enderror</span>
 
@@ -113,7 +108,7 @@
    <div class="form-group">
     <div class="col-4">
         <label for="experience">Experience</label>
-        <select id="experience" class="form-control" name="experience" value="{{ old('experience') }}">
+        <select style="border: 1px solid #5298D2;" id="experience" class="form-control" name="experience" value="{{ old('experience') }}">
     {{-- <span class="text-danger">@error('course_category') {{ $message }} @enderror</span> --}}
 
 
@@ -155,8 +150,9 @@
 <span class="text-danger">@error('skills') {{ $message }}  @enderror</span>
 </div>
   @endif
-            <input type="submit" id="login-submit"  class="col-md-2 offset-5 form-control"  value="Save" style="background-color: tomato; color:white; border: 0ch">
-
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-lg" style="background-color:#5298D2">Submit</button>
+</div>
 
 
 
@@ -166,10 +162,10 @@
 
           </div>
 
-        </div>
 
 
-      </div>
+
+
 
 </div>
 @endsection

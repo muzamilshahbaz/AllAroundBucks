@@ -13,6 +13,15 @@
     border-radius: 0;
 }
 
+.navbar .search-type {
+    border-radius: 25px;
+    font-size: 14px;
+    color: #5298D2;
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid #5298D2;
+}
+
 .nav-link img {
     border-radius: 50%;
     width: 36px;
@@ -27,7 +36,7 @@
     font-size: 25px;
     padding-right: 50px;
     /* font-weight: bold; */
-    -webkit-text-stroke: 0.05px white;
+    -webkit-text-stroke: 0.5px white;
     -webkit-text-fill-color: transparent;
 }
 
@@ -58,8 +67,7 @@
 
 .input-group>.custom-select:not(:last-child),
 .input-group>.form-control:not(:last-child) {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-radius: 25px;
 }
 
 .search-box input:hover {

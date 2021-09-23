@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use App\Events\Message;
 use App\Http\Controllers\PaidProjectController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingsController;
 use App\Models\PaidProject;
 
@@ -109,7 +110,9 @@ Route::get('/inbox', [UserController::class, 'inbox'])->middleware('isLogged');
 
 Route::get('/settings', [UserController::class, 'settings'])->middleware('isLogged');
 
-Route::get('/earnings', [UserController::class, 'earnings'])->middleware('isLogged');
+Route::get('/sellerearnings', [UserController::class, 'earnings'])->middleware('isLogged');
+Route::get('/trainerearnings', [UserController::class, 'earnings'])->middleware('isLogged');
+
 
 Route::get('/deactivate_account/{user_id }', [SettingsController::class, 'deactivate'])->middleware('isLogged');
 
@@ -164,4 +167,4 @@ Route::get('search-projects', [ProjectsFeedController::class, 'searchProject'])-
 Route::put('/change-role', [UserController::class, 'changeRole'])->middleware('isLogged');
 
 
-
+Route::post('/visitor/search', [SearchController::class, 'visitorSearch']);

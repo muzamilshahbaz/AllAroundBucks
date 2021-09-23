@@ -38,7 +38,7 @@
     </div>
 <br>
     <div class="form-group">
-        <button type="submit" class="col-3 offset-8 btn btn-primary btn-lg btn-block" style="background-color: tomato; border: 0ch">Send Project</button>
+        <button type="submit" class="col-3 offset-8 btn btn-primary btn-lg btn-block" style="background-color: #5298D2; border: 0ch">Send Project</button>
     </div>
 
 </form>

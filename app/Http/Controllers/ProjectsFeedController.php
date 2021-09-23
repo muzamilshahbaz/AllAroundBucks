@@ -22,7 +22,8 @@ class ProjectsFeedController extends Controller
             ];
         }
 
-            $projects = Project::all()->sortByDesc('project_id');
+            $projects = Project::where('buyer_username', '!=', $user->username)
+                                ->orderBy('project_id', 'DESC')->get();
 
 
             $pageName = 'Projects Feed';

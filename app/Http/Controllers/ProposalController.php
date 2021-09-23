@@ -48,7 +48,7 @@ class ProposalController extends Controller
         $request->validate([
             'duration'=>'required',
             'price'=>'required',
-            'cover_letter'=>'required|max:100'
+            'cover_letter'=>'required|max:1000'
         ]);
 
         $project = Project::find($project_id);
