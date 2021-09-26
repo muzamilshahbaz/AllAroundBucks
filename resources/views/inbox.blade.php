@@ -2,10 +2,10 @@
 
 @section('usercontent')
 
-<link rel="stylesheet" href="assets\js\inbox.css">
+<link rel="stylesheet" href="\assets\css\inbox.css">
 <div class="container p-0">
 
-    <div class="card" style="border: 0px;">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
         <div class="row g-0">
             <div class="col-12 col-lg-5 col-xl-3 border-right">
 

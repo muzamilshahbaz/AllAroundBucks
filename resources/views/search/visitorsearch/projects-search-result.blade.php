@@ -19,7 +19,7 @@
 @foreach ($projects as $project)
 
 
-<div class="card" id="project-search-result" style="padding: 5px; border-radius:0.5em; border:none">
+<div class="card" id="project-search-result" style="padding: 5px; border-radius:0.5em; border:none; width:90%">
 
            <div class="card-body" style="text-align:left">
             {{-- <div class="row"> --}}

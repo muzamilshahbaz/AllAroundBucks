@@ -19,10 +19,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Events\Message;
+use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\EducationHistoryController;
+use App\Http\Controllers\EmployementHistoryController;
 use App\Http\Controllers\PaidProjectController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingsController;
+use App\Models\EmployementHistory;
 use App\Models\PaidProject;
 
 /*
@@ -41,6 +45,9 @@ use App\Models\PaidProject;
 // });
 
 Route::get('/', [PagesController::class, 'home'])->middleware('AlreadyLoggedIn');
+Route::post('/visitor/search', [SearchController::class, 'visitorSearch']);
+
+Route::post('/send-query', [ContactFormController::class, 'send']);
 Route::get('howitworks', [PagesController::class, 'howitworks'])->middleware('AlreadyLoggedIn');
 Route::get('ourtrainers', [PagesController::class, 'ourtrainers'])->middleware('AlreadyLoggedIn');
 Route::get('/contact-us', function () {
@@ -162,9 +169,15 @@ Route::put('buyerFeedback/{id}', [PaidProjectController::class, 'buyerFeedback']
 
 Route::put('sellerFeedback/{id}', [PaidProjectController::class, 'sellerFeedback'])->middleware('isLogged');
 
-Route::get('search-projects', [ProjectsFeedController::class, 'searchProject'])->middleware('isLogged');
+Route::post('/user/project-search', [SearchController::class, 'project_search'])->middleware('isLogged');
+Route::post('/user/talent-search', [SearchController::class, 'talent_search'])->middleware('isLogged');
+Route::post('/user/course-search', [SearchController::class, 'course_search'])->middleware('isLogged');
 
 Route::put('/change-role', [UserController::class, 'changeRole'])->middleware('isLogged');
 
+Route::resource('employement-history', EmployementHistoryController::class)->middleware('isLogged');
+Route::resource('education-history', EducationHistoryController::class)->middleware('isLogged');
 
-Route::post('/visitor/search', [SearchController::class, 'visitorSearch']);
+Route::post('/ask-changes/{id}', [PaidProjectController::class, 'changes'])->middleware('isLogged');
+
+Route::get('/cancel-project/{id}', [PaidProjectController::class, 'cancel'])->middleware('isLogged');

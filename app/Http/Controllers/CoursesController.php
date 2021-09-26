@@ -57,7 +57,7 @@ class CoursesController extends Controller
         $trainer = Trainer::where('user_id',$user->user_id)->first();
         $courseImage =  $request->file('course_img');
 
-        $courseImageName = $trainer->username.'.'.$courseImage->extension();
+        $courseImageName = $request->course_title.'.'.$courseImage->extension();
         $courseImage->move(public_path('assets\users\userprofile\courses'), $courseImageName);
 
         $course = new Course;
@@ -66,7 +66,8 @@ class CoursesController extends Controller
         $course->trainer_id = $trainer->trainer_id;
         $course->trainer = $trainer->trainer_username;
         $course->category_id = $request->course_category;
-        $course->course_category = $request->course_category;
+        $category = Category::where('category_id', $request->course_category)->first();
+        $course->course_category = $category->category_name;
         $course->course_description = $request->course_description;
         $course->course_duration  = $request->course_duration;
         $course->course_price = $request->course_price;
@@ -124,12 +125,12 @@ class CoursesController extends Controller
 
         $course = Course::find($course_id);
 
-        $courseCategory = Category::find($course->category_id)->first();
+        // $courseCategory = Category::find($course->category_id)->first();
 
         $title =  $course->course_title;
         $pageName = $course->course_title;
 
-        return view('userprofile.coursedetails', $data, compact('courseCategory','title','pageName','course'));
+        return view('userprofile.coursedetails', $data, compact('title','pageName','course'));
     }
 
 }

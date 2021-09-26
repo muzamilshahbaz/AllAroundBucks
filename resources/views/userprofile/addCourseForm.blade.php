@@ -50,7 +50,7 @@
 
                 @foreach ($catData as $categories)
 
-                <option value="{{ $categories -> category_id }}">{{ $categories -> category_name }}</option>
+                <option value="{{ $categories->category_id }}">{{ $categories->category_name }}</option>
 
                 @endforeach
 

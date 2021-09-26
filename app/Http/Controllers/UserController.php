@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\EducationHistory;
+use App\Models\EmployementHistory;
 use App\Models\PaidProject;
 use App\Models\Project;
 use App\Models\Seller;
@@ -56,7 +58,7 @@ class UserController extends Controller
             $allUser = User::all();
             $allSeller = Seller::join('users', 'users.user_id', '=', 'sellers.user_id')
                                 ->select('sellers.*', 'users.username', 'users.profile_img',
-                                'users.name', 'users.profession')
+                                'users.name', 'users.profession', 'users.bio')
                                 ->get();
 
         if (session()->has('LoggedUser')) {
@@ -86,7 +88,8 @@ class UserController extends Controller
                 'roles' =>  UserRole::all()
             ];
         }
-
+        $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
+        $education_history = EducationHistory::where('user_id', $user->user_id)->get();
         $title =  $user->name;
         $pageName = 'Profile';
 
@@ -94,28 +97,36 @@ class UserController extends Controller
         {
             $seller = Seller::where('user_id',$user->user_id)->first();
             $projects = PaidProject::where('seller_id', $seller->seller_id)->get();
-            return view('userprofile.sellerprofile', $data, compact('title','pageName','seller', 'projects'));
+
+            return view('userprofile.sellerprofile', $data, compact('title','pageName','seller', 'projects','education_history', 'employement_history'));
 
         }
 
         elseif ($user->user_role == 'Buyer')
         {
             $buyer = Buyer::where('user_id',$user->user_id)->first();
-            return view('userprofile.buyerprofile', $data, compact('title','pageName','buyer'));
+            $projects = PaidProject::where('buyer_id', $buyer->buyer_id)
+                                    ->where('status', 'completed')
+                                    ->orWhere('status', 'awaiting for feedback')
+                                    ->get();
+
+            return view('userprofile.buyerprofile', $data, compact('title','pageName','buyer', 'projects', 'education_history','employement_history'));
 
         }
 
         elseif ($user->user_role == 'Trainer')
         {
             $trainer = Trainer::where('user_id',$user->user_id)->first();
-            return view('userprofile.trainerprofile', $data, compact('title','pageName','trainer'));
+            $courses = Course::where('trainer_id', $trainer->trainer_id)->get();
+
+            return view('userprofile.trainerprofile', $data, compact('title','pageName','trainer', 'courses', 'education_history','employement_history'));
 
         }
 
         elseif ($user->user_role == 'Student')
         {
             $student = Student::where('user_id',$user->user_id)->first();
-            return view('userprofile.studentprofile', $data, compact('title','pageName','student'));
+            return view('userprofile.studentprofile', $data, compact('title','pageName','student', 'education_history','employement_history'));
 
         }
 
@@ -263,8 +274,22 @@ class UserController extends Controller
             $trainer_id = $id;
             $trainer = Trainer::find($trainer_id);
             $trainer->experience = $request->experience;
-            $trainer->work_experience = $request->work_experience;
+            $trainer->skills = $request->skills;
             $trainer->update();
+        }
+        elseif($user->user_role == 'Buyer')
+        {
+            $buyer_id = $id;
+            $buyer = Buyer::find($buyer_id);
+            $buyer->organization = $request->organization;
+            $buyer->update();
+        }
+        elseif($user->user_role == 'Student')
+        {
+            $student_id = $id;
+            $student = Student::find($student_id);
+            $student->skills = $request->skills;
+            $student->update();
         }
 
         return redirect('profile')->with('success', 'Your changes have been updated');

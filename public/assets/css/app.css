@@ -81,6 +81,14 @@ body {
     padding: 20px;
 }
 
+.container #course-search-result:hover {
+    text-decoration: none !important;
+}
+
+.container #course-search-result {
+    text-align: left;
+}
+
 #Rectangle_611 {
     fill: rgba(239, 248, 255, 1);
 }

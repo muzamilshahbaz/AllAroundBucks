@@ -19,7 +19,7 @@ class PaidProjectController extends Controller
     function acceptAndPay($proposal_id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -48,16 +48,16 @@ class PaidProjectController extends Controller
         $paidProject->price = $proposal->price;
         $paidProject->status = 'active';
 
-             $proposal->status = 'accept';
+        $proposal->status = 'accept';
 
         $proposalAccept = [
-            'body'=>'You have got a news about your proposal.',
-            'acceptText' => 'Congratulations !! Your proposal for this project has been accepted by '.$proposal->buyer_username.'.',
-            'url'=> url('/'),
-            'thankyou'=> 'Visit Projects section and start working on this project.'
+            'body' => 'You have got a news about your proposal.',
+            'acceptText' => 'Congratulations !! Your proposal for this project has been accepted by ' . $proposal->buyer_username . '.',
+            'url' => url('/'),
+            'thankyou' => 'Visit Projects section and start working on this project.'
         ];
 
-       $seller->notify(new ProposalAccept($proposalAccept));
+        $seller->notify(new ProposalAccept($proposalAccept));
 
         $proposal->update();
 
@@ -68,13 +68,12 @@ class PaidProjectController extends Controller
         } else {
             return back()->with('fail', 'Something went wrong!!');
         }
-
     }
 
     function projectsstatus()
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -85,16 +84,31 @@ class PaidProjectController extends Controller
 
         $project = PaidProject::where('seller_id', $seller->seller_id)->get();
         $projects = $project->sortByDesc('id');
+
+        $activeProjects = PaidProject::where('seller_id', $seller->seller_id)
+            ->where('status', 'active')
+            ->orderBy('id', 'DESC')->get();
+        $completeProjects = PaidProject::where('seller_id', $seller->seller_id)
+            ->where('status', 'completed')
+            ->orderBy('id', 'DESC')->get();
+        $awaitApproveProjects = PaidProject::where('seller_id', $seller->seller_id)
+            ->where('status', 'awaiting for approval')
+            ->orderBy('id', 'DESC')->get();
+
+        $awaitFeedbackProjects = PaidProject::where('seller_id', $seller->seller_id)
+            ->where('status', 'awaiting for feedback')
+            ->orderBy('id', 'DESC')->get();
+
         $pageName = 'Projects Status';
         $title = 'Projects Status';
 
-        return view('userprofile.projectsstatus', $data, compact('projects', 'title', 'pageName'));
+        return view('userprofile.projectsstatus', $data, compact('projects', 'title', 'pageName', 'activeProjects', 'awaitFeedbackProjects', 'awaitApproveProjects', 'completeProjects'));
     }
 
     function sendProject($id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -112,7 +126,7 @@ class PaidProjectController extends Controller
     function projectSend(Request $request, $id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -121,23 +135,24 @@ class PaidProjectController extends Controller
 
         $project = PaidProject::find($id);
 
-        $request->validate([
-            'message'=>'required',
-            'project_file'=>'required|max:120000'
-        ]);
+        $request->validate(
+            [
+                'message' => 'required',
+                'project_file' => 'required|file|mimes:zip,rar',
+            ]
+
+        );
 
         $project->message = $request->message;
 
-        if($request->hasFile('project_file'))
-        {
-            $destination = 'assets/users/projects/'.$project->project_file;
-            if(File::exists($destination))
-            {
+        if ($request->hasFile('project_file')) {
+            $destination = 'assets/users/projects/' . $project->project_file;
+            if (File::exists($destination)) {
                 File::delete($destination);
             }
             $projectFile =  $request->file('project_file');
-            $projectFileName = $project->buyer_username.'-'.$project->seller_username.'-'.$project->project_title.'.'.$projectFile->extension();
-            $projectFile->move(public_path('assets\users\userprofile'),  $projectFileName);
+            $projectFileName = $projectFile->getClientOriginalName();
+            $projectFile->move(public_path('assets\users\userprofile\projects'),  $projectFileName);
             $project->project_file = $projectFileName;
         }
         $project->status = 'awaiting for approval';
@@ -149,11 +164,31 @@ class PaidProjectController extends Controller
             return back()->with('fail', 'Something went wrong....Try Again !!');
         }
     }
+    public function changes($id, Request $request)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
 
+        $project = PaidProject::find($id);
+        $project->status = 'active';
+        $project->buyer_feedback = $request->buyer_feedback;
+        $query = $project->update();
+
+        if ($query) {
+            return redirect('projects')->with('success', 'You have asked buyer for changes.');
+        } else {
+            return back()->with('fail', 'Something went wrong....Try Again !!');
+        }
+    }
     function approveProject($id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -177,7 +212,7 @@ class PaidProjectController extends Controller
     function buyerFeedback(Request $request, $id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -187,8 +222,8 @@ class PaidProjectController extends Controller
         $project = PaidProject::find($id);
 
         $request->validate([
-            'buyer_feedback'=>'required',
-            'project_rating'=>'required'
+            'buyer_feedback' => 'required',
+            'project_rating' => 'required'
         ]);
 
         $project->buyer_feedback = $request->buyer_feedback;
@@ -212,13 +247,12 @@ class PaidProjectController extends Controller
         } else {
             return back()->with('fail', 'something went wrong.');
         }
-
     }
 
     function sellerFeedback(Request $request, $id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -228,8 +262,8 @@ class PaidProjectController extends Controller
         $project = PaidProject::find($id);
 
         $request->validate([
-            'seller_feedback'=>'required',
-            'buyer_project_rating'=>'required'
+            'seller_feedback' => 'required',
+            'buyer_project_rating' => 'required'
         ]);
 
         $project->seller_feedback = $request->seller_feedback;
@@ -242,7 +276,7 @@ class PaidProjectController extends Controller
 
 
 
-        $buyer->rating = $projects->sum('`buyer_project_rating') / ($buyer->total_projects);
+        $buyer->rating = $projects->sum('buyer_project_rating') / ($buyer->total_projects);
         $query1 = $project->update();
         $query2 = $buyer->update();
 
@@ -251,9 +285,16 @@ class PaidProjectController extends Controller
         } else {
             return back()->with('fail', 'something went wrong.');
         }
-
-
     }
 
+    public function cancel($id)
+    {
+        $query = PaidProject::find($id)->delete();
 
+        if ($query) {
+            return redirect('projects')->with('success', 'You have cancelled the project.');
+        } else {
+            return back()->with('fail', 'Something went wrong....Try Again !!');
+        }
+    }
 }

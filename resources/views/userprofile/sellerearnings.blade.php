@@ -70,25 +70,21 @@
               </tr>
             </thead>
             <tbody>
-        @if ($projects->isEmpty())
-        <tr>
-           <td>
 
-                <h4>No data to show</h4>
-
-           </td>
-        </tr>
-        @else
-        @foreach ($projects as $project)
+        @forelse ($projects as $project)
         @if ($project->status == 'completed' || $project->status == 'awaiting for feedback')
         <tr>
             <td>{{ $project->created_at->format('Y-m-d') }}</td>
             <td><a href="/project/{{ $project->project_id}}">{{ $project->project_title }}</a></td>
-            <td>{{ $project->project_price }}</td>
+            <td>${{ $project->price }}</td>
           </tr>
         @endif
-    @endforeach
-        @endif
+        @empty
+        <div class="text-center">
+            <h4>No earnings to show</h4>
+        </div>
+    @endforelse
+
             </tbody>
           </table>
     </div>

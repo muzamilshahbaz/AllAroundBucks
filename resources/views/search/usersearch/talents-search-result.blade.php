@@ -1,40 +1,33 @@
 @extends('layout.users')
 
 @section('usercontent')
-
-<div class="results">
-    @if (Session::get('success'))
-
-    <div class="alert alert-success">
-        {{ Session::get('success') }}
-
-    </div>
-
-    @endif
-
-    @if (Session::get('fail'))
-    <div class="alert alert-danger">
-            {{ Session::get('fail') }}
-    </div>
-
-    @endif
-</div>
-<form action="/user/talent-search/" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="row">
-        <div class="form-group col-3 offset-6">
-            <input type="text" name="search_query" class="form-control" placeholder="Search Talent......">
-            <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
+    <form action="/user/talent-search/" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            <div class="form-group col-3 offset-6">
+                <input type="text" name="search_query" class="form-control" placeholder="Search Talent......">
+                <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
+            </div>
+            <div class="col-2">
+                <button type="submit" style="background-color: #5298D2" class="btn btn-primary text-white">Search Talent</button>
+            </div>
         </div>
-        <div class="col-2">
-            <button type="submit" style="background-color: #5298D2" class="btn btn-primary text-white">Search</button>
-        </div>
-    </div>
-</form>
-@foreach ($allSeller as $seller)
+    </form>
 
-@if ($seller->user_id != $LoggedUserInfo->user_id)
-<div class="card" id="project-search-result"
+
+    @if ($sellers->isEmpty())
+        <div class="text-center">
+            <h4>There are no sellers / freelancers against your search query.</h4>
+        </div>
+    @else
+        <div class="text-center">
+            <h4>Following are the results against your talent search query.</h4>
+        </div>
+        <br>
+        @foreach ($sellers as $seller)
+
+
+            <div class="card" id="project-search-result"
                 style="padding: 5px; border-radius:0.5em; border:none; width: 100%;">
 
                 <div class="card-body" style="text-align:left">
@@ -63,10 +56,10 @@
                                 <span style="color: #615b5b94 !important">{{ $seller->profession }}</span>
                             </div>
 
-
+                            <div>
                                 <span style="font-size:0.8em !important">@include('ratings.sellerrating')</span>
 
-
+                            </div>
                         </div>
 
 
@@ -91,8 +84,8 @@
 
 
 
-
 <br>
+
 
                     <div class="row" style="font-size:14px">
 
@@ -129,15 +122,10 @@
 
 
             </div>
-@endif
 
-<br>
+            <br>
 
-
-
-@endforeach
+        @endforeach
+    @endif
 
 @endsection
-
-
-

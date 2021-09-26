@@ -17,7 +17,7 @@ class ProjectsController extends Controller
     public function projects()
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -25,28 +25,35 @@ class ProjectsController extends Controller
         }
 
 
-            $pageName = ' Your Posted Projects';
-            $title = $user->username.' '.'Projects';
+        $pageName = ' Your Posted Projects';
+        $title = $user->username . ' ' . 'Projects';
 
 
-            $buyer = Buyer::where('user_id', $user->user_id)->first();
-            $project = Project::where('buyer_id', $buyer->buyer_id)->get();
+        $buyer = Buyer::where('user_id', $user->user_id)->first();
+        $buyerProject = Project::where('buyer_id', $buyer->buyer_id)->orderBy('project_id', 'DESC')->get();
 
-            $paid = PaidProject::where('buyer_id', $buyer->buyer_id)->get();
+        $activeProjects = PaidProject::where('buyer_id', $buyer->buyer_id)
+            ->where('status', 'active')
+            ->orderBy('id', 'DESC')->get();
+        $completeProjects = PaidProject::where('buyer_id', $buyer->buyer_id)
+            ->where('status', 'completed')
+            ->orderBy('id', 'DESC')->get();
+        $awaitApproveProjects = PaidProject::where('buyer_id', $buyer->buyer_id)
+            ->where('status', 'awaiting for approval')
+            ->orderBy('id', 'DESC')->get();
 
-            $paidProjects = $paid->sortByDesc('id');
+        $awaitFeedbackProjects = PaidProject::where('buyer_id', $buyer->buyer_id)
+            ->where('status', 'awaiting for feedback')
+            ->orderBy('id', 'DESC')->get();
 
-            $buyerProject = $project->sortByDesc('project_id');
-
-        return view('userprofile.projects', $data, compact('title','pageName', 'buyerProject', 'paidProjects'));
-
+        return view('userprofile.projects', $data, compact('title', 'pageName', 'buyerProject', 'activeProjects', 'awaitFeedbackProjects', 'awaitApproveProjects', 'completeProjects'));
     }
 
 
     public function newProject()
     {
         if (session()->has('LoggedUser')) {
-            $buyer = User::where('user_id','=',session('LoggedUser'))->first();
+            $buyer = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $buyer,
                 'roles' =>  UserRole::all()
@@ -57,13 +64,13 @@ class ProjectsController extends Controller
         $pageName = 'Add New Course';
 
         $catData = Category::all();
-        return view('userprofile.newProject', $data, compact('title','pageName','catData'));
+        return view('userprofile.newProject', $data, compact('title', 'pageName', 'catData'));
     }
 
     public function addProject(Request $request)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -75,12 +82,12 @@ class ProjectsController extends Controller
         $buyer = Buyer::where('buyer_username', $buyerUsername)->first();
 
         $request->validate([
-            'project_title'=>'required',
-            'project_category'=>'required',
-            'project_description'=>'required',
-            'project_duration'=>'required|min:1',
-            'project_duration_format'=>'required',
-            'project_price'=>'required|min:1'
+            'project_title' => 'required',
+            'project_category' => 'required',
+            'project_description' => 'required',
+            'project_duration' => 'required|min:1',
+            'project_duration_format' => 'required',
+            'project_price' => 'required|min:1'
         ]);
 
         $project = new Project;
@@ -99,18 +106,16 @@ class ProjectsController extends Controller
         $projectQuery = $project->save();
 
         if ($projectQuery) {
-            return redirect('projects')->with('success','Your Project has been added, wait for the proposals from the sellers');
-
+            return redirect('projects')->with('success', 'Your Project has been added, wait for the proposals from the sellers');
         } else {
-            return back()->with('fail','Something went wrong...Try Again');
+            return back()->with('fail', 'Something went wrong...Try Again');
         }
-
     }
 
     function deleteProject($project_id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -121,19 +126,16 @@ class ProjectsController extends Controller
         $query = $project->delete();
 
         if ($query) {
-            return redirect('projects')->with('success','Your Project has been deleted successfully');
-
+            return redirect('projects')->with('success', 'Your Project has been deleted successfully');
         } else {
-            return back()->with('fail','Something went wrong...Try Again');
+            return back()->with('fail', 'Something went wrong...Try Again');
         }
-
-
     }
 
     function viewProject($project_id)
     {
         if (session()->has('LoggedUser')) {
-            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
@@ -147,38 +149,21 @@ class ProjectsController extends Controller
         $seller = Seller::where('user_id', $user->user_id)->first();
         $project_category = Category::where('category_id', $project->category_id)->first();
 
-        if($user->user_role == 'Seller')
-        {
+        if ($user->user_role == 'Seller') {
             $proposals = Proposal::where('seller_id', $seller->seller_id)->get();
-        foreach ($proposals as $prop)
-        {
-            if($prop->project_id != $project->project_id)
-            {
-               continue;
+            foreach ($proposals as $prop) {
+                if ($prop->project_id != $project->project_id) {
+                    continue;
+                } else {
+                    $proposal = Proposal::where('project_id', $project->project_id)->first();
+                    return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName', 'proposal'));
+                }
             }
-            else
-            {
-                $proposal = Proposal::where('project_id', $project->project_id)->first();
-                return view('userprofile.viewProject', $data, compact('project','project_category','title','pageName', 'proposal'));
-            }
+
+            $proposal = Proposal::where('project_id', $project->project_id)->first();
+            return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName', 'proposal'));
+        } else {
+            return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName'));
         }
-
-        $proposal = Proposal::where('project_id', $project->project_id)->first();
-        return view('userprofile.viewProject', $data, compact('project','project_category','title','pageName', 'proposal'));
-
-        }
-
-        else
-        {
-            return view('userprofile.viewProject', $data, compact('project','project_category','title','pageName'));
-
-        }
-
-
     }
-
-
-
-
-
 }

@@ -26,11 +26,11 @@
     <h3>There are no projects to show</h3>
 </div>
 @else
-<form action="/search-projects" method="GET" enctype="multipart/form-data">
+<form action="/user/project-search/" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="form-group col-3 offset-6">
-            <input type="text" name="project_search_query" class="form-control" placeholder="Search Projects......">
+            <input type="text" name="search_query" class="form-control" placeholder="Search Projects......">
             <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
         </div>
         <div class="col-2">
@@ -38,52 +38,82 @@
         </div>
     </div>
     </form>
-@foreach ($projects as $project)
+    @foreach ($projects as $project)
 
 
-<div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+    <div class="card" id="project-search-result"
+        style="padding: 5px; border-radius:0.5em; border:none; width:100%">
 
-           <div class="card-body">
-            <div class="row">
+        <div class="card-body" style="text-align:left">
+            {{-- <div class="row"> --}}
 
-                <div class="card-title col-6">
+            <div class="card-title" style="color: #5298D2;">
 
-                    <h3>{{ $project -> project_title }}</h3>
+                <h3>{{ $project->project_title }}</h3>
+            </div>
+
+            {{-- </div> --}}
+
+            {{-- <div class="row">
+             <div class="col-2 offset-9">
+
+                 <a href="/signup" class="btn btn-block primary text-white" style="background-color: #5298D2; text-align: right;"><center>View</center></a>
+
+             </div>
+         </div> --}}
+
+
+            <div class="card-subtitle" style="font-size:0.8em">
+                <span style="color:#746d6da6">Posted By: <a
+                        href="/signup">{{ $project->buyer_username }}</a></span>
+            </div>
+
+            <div class="row" style="font-size:14px">
+                <div class="col-4">
+                    <span style="color: #5298D2">Price: <span
+                            style="color: #000000">${{ $project->project_price }}</span></span>
                 </div>
 
-                 </div>
+                <div class="col-4">
+                    <span style="color: #5298D2">Category: <span
+                            style="color: #000000">{{ $project->project_category }}</span></span>
+                </div>
 
-                 <div class="row">
-                     <div class="col-2 offset-9">
+                <div class="col-4">
+                    <span style="color: #5298D2">Duration: <span
+                            style="color: #000000">{{ $project->project_duration }}
+                            {{ $project->project_duration_format }}</span></span>
 
-                         <a href="/project/{{ $project->project_id}}" class="btn btn-block primary text-white" style="background-color: #5298D2; text-align: right;"><center>View</center></a>
-
-                     </div>
-                 </div>
-
-
-                 <div class="card-subtitle col-4">
-                     <h4>Posted By: <a href="/user/{{ $project->buyer_username }}">{{ $project -> buyer_username }}</a></h4>
-                 </div>
-
-                 <div class="card-subtitle col-8">
-                     <h5>Project Price: ${{ $project -> project_price }} </h5>
-
-                     <h5>Project Category: {{ $project->project_category }}</h5>
-
-                     <h5> Project Duration: {{ $project -> project_duration }} {{ $project -> project_duration_format }}</h5>
-
-
-                 </div>
-
-           </div>
-
+                </div>
 
             </div>
+            <br>
+            <div class="row" style="font-size:14px">
+                <div class="col-12">
+                    <span style="color: #5298D2">Description: <span
+                            style="color: #000000; font-size:14px">{{ $project->project_description }}</span></span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 offset-9">
+
+                    <a href="/project/{{ $project->project_id }}" class="btn btn-block primary text-white"
+                        style="background-color: #5298D2; text-align: right;">
+                        <center>View</center>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
 
     <br>
 
-    @endforeach
+@endforeach
 @endif
 
 

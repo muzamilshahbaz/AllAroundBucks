@@ -12,7 +12,25 @@
 
         <div id="contact-form">
             <div class="container">
-                <form action="#" method="POST" id="contact-us">
+                <form action="/send-query" method="POST" id="contact-us">
+                    @csrf
+                    <div class="results">
+                        @if (Session::get('success'))
+
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+
+                        </div>
+
+                        @endif
+
+                        @if (Session::get('fail'))
+                        <div class="alert alert-danger">
+                                {{ Session::get('fail') }}
+                        </div>
+
+                        @endif
+                    </div>
                     <div class="col-12">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Your Full Name..." required><br>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Your Email Address.." required><br>

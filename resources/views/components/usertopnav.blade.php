@@ -3,7 +3,7 @@
         <header class="topbar sticky-top" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark sticky-top" style="position: sticky;">
                 <a href="/" class="navbar-brand"><b><span>AllAroundBucks</span></b></a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
