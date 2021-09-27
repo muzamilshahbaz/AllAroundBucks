@@ -5,11 +5,11 @@
 
     <div class="signup-form" style="width: 90%; color:#5298D2 !important">
 
-        <form style="color:#5298D2 !important" action="/addProject" method="POST" enctype="multipart/form-data">
+        <form style="color:#5298D2 !important" action="/update/{{ $project->project_id }}" method="PUT" enctype="multipart/form-data">
 
             @csrf
 
-
+            @method('PUT')
             <div class="results">
                 @if (Session::get('success'))
 
@@ -27,9 +27,10 @@
 
                 @endif
             </div>
-            <h3>Add New Project To Hire Top Notch Talent</h3>
+            <h3>Update Project</h3>
 
             <br><br>
+            <input type="hidden" name="project_id" value="{{ $project->project_id }}">
 <div class="row">
     <div class="col-8">
             <div class="form-group">
@@ -37,7 +38,7 @@
 
 
                     <label for="project-title">Project Title</label> <br>
-                    <input type="text" class="form-control" name="project_title" value="{{ old('project_title') }}" required>
+                    <input type="text" class="form-control" name="project_title" value="{{ $project->project_title }}" required>
                     <span class="text-danger">@error('project_title') {{ $message }} @enderror</span>
                 </div>
             </div>
@@ -51,7 +52,7 @@
 
                     <label for="project-category">Project Category</label>
                     <select id="project-category" class="form-control" name="project_category"
-                        value="{{ old('project_category') }}" style="border: 1px solid #5298D2">
+                        value="{{ $project->project_category }}" style="border: 1px solid #5298D2">
                         <option value="">Select Project Category</option>
 
                         @foreach ($catData as $categories)
@@ -73,7 +74,7 @@
 
                     <label for="project-description">Project Description</label>
                     <textarea type="text" class="form-control" name="project_description"
-                        value="{{ old('project_description') }}" required>{{ old('project_description') }}</textarea>
+                        value="{{ $project->project_description }}" required>{{ $project->project_description }}</textarea>
                     <span class="text-danger">@error('project_description') {{ $message }} @enderror</span>
                 </div>
             </div>
@@ -88,7 +89,7 @@
 
                         <label for="project-duration">Project Duration</label>
                         <input type="number" class="form-control" name="project_duration"
-                            value="{{ old('project_duration') }}" required>
+                            value="{{ $project->project_duration }}" required>
 
                         <span class="text-danger">@error('project_duration') {{ $message }} @enderror</span>
 
@@ -109,7 +110,7 @@
                         <div class="form-group">
                             <label for="project-price">Project Price (write in dollars $)</label>
                         <input type="number" class="form-control" name="project_price"
-                            value="{{ old('project_price') }}" required>
+                            value="{{ $project->project_price }}" required>
                         <span class="text-danger">@error('project_price') {{ $message }} @enderror</span>
                         </div>
                     </div>
@@ -119,7 +120,7 @@
             <br><br>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2; border: 0ch">Add
+                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2; border: 0ch">Update
                     Project</button>
             </div>
 

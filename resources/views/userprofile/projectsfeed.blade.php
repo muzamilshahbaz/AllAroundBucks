@@ -34,7 +34,7 @@
             <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
         </div>
         <div class="col-2">
-            <button type="submit" style="background-color: #5298D2" class="btn btn-primary text-white">Search</button>
+            <button type="submit" style="background-color: #5298D2; border-radius:0.5rem" class="btn btn-primary text-white">Search</button>
         </div>
     </div>
     </form>
@@ -96,11 +96,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-2 offset-9">
+                <div class="offset-9">
 
-                    <a href="/project/{{ $project->project_id }}" class="btn btn-block primary text-white"
-                        style="background-color: #5298D2; text-align: right;">
-                        <center>View</center>
+                    <a href="/project/{{ $project->project_id }}" class="btn btn-primary text-white"
+                        style="background-color: #5298D2; border-radius:0.5rem">
+                       View
                     </a>
 
                 </div>

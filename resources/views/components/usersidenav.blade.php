@@ -29,7 +29,7 @@
                         </li> --}}
 
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="/logout" class="btn btn-primary" style="background-color: rgba(82, 152, 210, 1)">
+                            <a href="/logout" class="btn btn-primary" style="background-color: rgba(82, 152, 210, 1); border-radius: 0.5rem">
                                 Sign Out</a>
                         </li>
                     </ul>

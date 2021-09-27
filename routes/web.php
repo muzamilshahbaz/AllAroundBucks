@@ -58,6 +58,12 @@ Route::get('signin', [PagesController::class, 'signin'])->middleware('AlreadyLog
 Route::get('signup', [PagesController::class, 'signup'])->middleware('AlreadyLoggedIn');
 
 Route::post('register', [RegisterController::class, 'register'])->name('register');
+Route::get('/google', [LoginController::class, 'redirectToGoogle'])->middleware('AlreadyLoggedIn');
+Route::get('/callback/google', [LoginController::class, 'handleGoogleCallback'])->middleware('AlreadyLoggedIn');
+
+Route::get('/facebook', [LoginController::class, 'redirectToFacebook'])->middleware('AlreadyLoggedIn');
+Route::get('/callback/facebook', [LoginController::class, 'handleFacebookCallback'])->middleware('AlreadyLoggedIn');
+
 
 Route::post('login', [LoginController::class, 'login'])->name('login');
 
@@ -78,11 +84,13 @@ Route::get('/courses',[UserController::class, 'courses'])->middleware('isLogged'
 
 Route::get('addCourseForm',[CoursesController::class, 'addCourseForm'])->middleware('isLogged');
 
-Route::post('addCourse',[CoursesController::class, 'addVideo'])->middleware('isLogged');
-
 Route::post('addCourse',[CoursesController::class, 'addCourse'])->middleware('isLogged');
 
+
 Route::get('coursedetails/{course_id}',[CoursesController::class, 'coursedetails'])->middleware('isLogged');
+
+Route::get('/edit-course/{course_id}',[CoursesController::class, 'edit'])->middleware('isLogged');
+Route::put('/update/{course_id}',[CoursesController::class, 'update'])->middleware('isLogged');
 
 Route::get('projects',[ProjectsController::class, 'projects'])->middleware('isLogged');
 
@@ -94,11 +102,6 @@ Route::get('projectsfeed',[ProjectsFeedController::class, 'projectsfeed'])->midd
 
 
 
-Route::get('/google', [LoginController::class, 'redirectToGoogle'])->middleware('AlreadyLoggedIn');;
-Route::get('/callback/google', [LoginController::class, 'handleGoogleCallback'])->middleware('AlreadyLoggedIn');;
-
-Route::get('/facebook', [LoginController::class, 'redirectToFacebook'])->middleware('AlreadyLoggedIn');;
-Route::get('/callback/facebook', [LoginController::class, 'handleFacebookCallback'])->middleware('AlreadyLoggedIn');;
 
 Route::get('/verifyaccount', [RegisterController::class, 'verifyaccount']);
 
@@ -112,6 +115,10 @@ Route::put('/updateprofile/{id}', [UserController::class, 'updateprofile'])->mid
 Route::get('/delete-project/{project_id}', [ProjectsController::class, 'deleteProject'])->middleware('isLogged');;
 
 Route::get('/project/{project_id}', [ProjectsController::class, 'viewProject'])->middleware('isLogged');
+
+
+Route::get('/edit-project/{project_id}', [ProjectsController::class, 'edit'])->middleware('isLogged');
+Route::get('/update/{project_id}', [ProjectsController::class, 'update'])->middleware('isLogged');
 
 Route::get('/inbox', [UserController::class, 'inbox'])->middleware('isLogged');
 
@@ -181,3 +188,4 @@ Route::resource('education-history', EducationHistoryController::class)->middlew
 Route::post('/ask-changes/{id}', [PaidProjectController::class, 'changes'])->middleware('isLogged');
 
 Route::get('/cancel-project/{id}', [PaidProjectController::class, 'cancel'])->middleware('isLogged');
+

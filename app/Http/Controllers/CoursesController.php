@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\CourseVideo;
 use App\Models\Category;
 use App\Models\UserRole;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
 class CoursesController extends Controller
@@ -45,9 +46,9 @@ class CoursesController extends Controller
         }
 
         $request->validate([
-            'course_title'=>'required',
+            'course_title'=>'required|max:100',
             'course_category'=>'required',
-            'course_description'=>'required',
+            'course_description'=>'required|1200',
             'course_duration'=>'required|min:1',
             'course_price'=>'required|min:1',
             'course_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -57,7 +58,7 @@ class CoursesController extends Controller
         $trainer = Trainer::where('user_id',$user->user_id)->first();
         $courseImage =  $request->file('course_img');
 
-        $courseImageName = $request->course_title.'.'.$courseImage->extension();
+        $courseImageName = $trainer->trainer_username.$request->course_title.'.'.$courseImage->extension();
         $courseImage->move(public_path('assets\users\userprofile\courses'), $courseImageName);
 
         $course = new Course;
@@ -133,4 +134,78 @@ class CoursesController extends Controller
         return view('userprofile.coursedetails', $data, compact('title','pageName','course'));
     }
 
+    public function edit($course_id)
+    {
+        if (session()->has('LoggedUser')) {
+            $trainer = User::where('user_id','=',session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $trainer,
+                'roles' =>  UserRole::all()
+            ];
+        }
+
+        $title =  'Add New Course';
+        $pageName = 'Add New Course';
+        $course = Course::find($course_id);
+        // return $course;
+        $catData = Category::all();
+        return view('userprofile.edit-course', $data, compact('title','pageName','catData', 'course'));
+    }
+
+    public function update(Request $request, $course_id)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id','=',session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+
+        $request->validate([
+            'course_title'=>'required|max:100',
+            'course_category'=>'required',
+            'course_description'=>'required|max:1200',
+            'course_duration'=>'required|min:1',
+            'course_price'=>'required|min:1',
+            'course_img' => 'image|mimes:jpeg,png,jpg|max:2048',
+
+        ]);
+
+        $course = Course::find($course_id);
+
+        if($request->hasFile('course_img'))
+        {
+            $destination = 'assets/users/userprofile/courses/'.$course->course_img;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $courseImage =  $request->file('course_img');
+
+        $courseImageName = $request->course_title.'.'.$courseImage->extension();
+        $courseImage->move(public_path('assets\users\userprofile\courses'), $courseImageName);
+        $course->course_img = $courseImageName;
+        }
+
+
+
+        $course->course_title = $request->course_title;
+        $course->category_id = $request->course_category;
+        $category = Category::where('category_id', $request->course_category)->first();
+        $course->course_category = $category->category_name;
+        $course->course_description = $request->course_description;
+        $course->course_duration  = $request->course_duration;
+        $course->course_price = $request->course_price;
+
+
+        $courseQuery = $course->update();
+
+        if ($courseQuery) {
+            return redirect('courses')->with('success','Your Course has been updated');
+
+        } else {
+            return back()->with('fail','Something went wrong...Try Again');
+        }
+    }
 }

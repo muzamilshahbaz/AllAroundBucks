@@ -82,9 +82,9 @@ class ProjectsController extends Controller
         $buyer = Buyer::where('buyer_username', $buyerUsername)->first();
 
         $request->validate([
-            'project_title' => 'required',
-            'project_category' => 'required',
-            'project_description' => 'required',
+            'project_title' => 'required|string|max:100',
+            'project_category' => 'required|min:1',
+            'project_description' => 'required|max:1000',
             'project_duration' => 'required|min:1',
             'project_duration_format' => 'required',
             'project_price' => 'required|min:1'
@@ -164,6 +164,67 @@ class ProjectsController extends Controller
             return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName', 'proposal'));
         } else {
             return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName'));
+        }
+    }
+
+    public function edit($id)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+
+        $project = Project::find($id);
+        $title = 'Edit Project';
+        $pageName = 'Edit Project';
+        $catData = Category::all();
+        return view('userprofile.edit-project', $data, compact('project', 'title', 'pageName', 'catData'));
+    }
+    public function update(Request $request, $project_id)
+    {
+        // if (session()->has('LoggedUser')) {
+        //     $user = User::where('user_id', '=', session('LoggedUser'))->first();
+        //     $data = [
+        //         'LoggedUserInfo' => $user,
+        //         'roles' =>  UserRole::all()
+        //     ];
+        // }
+
+        // $buyerUsername = $user->username;
+
+        // $buyer = Buyer::where('buyer_username', $buyerUsername)->first();
+
+        $request->validate([
+            'project_title' => 'required|string|max:100',
+            'project_category' => 'required|min:1',
+            'project_description' => 'required|max:1000',
+            'project_duration' => 'required|min:1',
+            'project_duration_format' => 'required',
+            'project_price' => 'required|min:1'
+        ]);
+
+        $project = Project::find($project_id);
+
+        $project->project_title = $request->project_title;
+        $category = Category::where('category_id', $request->project_category)->first();
+        $project->project_category = $category->category_name;
+        $project->category_id = $request->project_category;
+        $project->project_description = $request->project_description;
+        $project->project_duration = $request->project_duration;
+        $project->project_duration_format = $request->project_duration_format;
+        $project->project_price = $request->project_price;
+        // $project->buyer_username = $buyer->buyer_username;
+        // $project->buyer_id = $buyer->buyer_id;
+
+        $projectQuery = $project->update();
+
+        if ($projectQuery) {
+            return redirect('projects')->with('success', 'Your Project has been updated');
+        } else {
+            return back()->with('fail', 'Something went wrong...Try Again');
         }
     }
 }

@@ -64,7 +64,7 @@
 
                         <label for="project-duration">Project Duration</label>
                         <input type="number" class="form-control" name="duration" style="border: 1px solid #5298D2"
-                            value="{{ old('duration') }}">
+                            value="{{ old('duration') }}" required>
 
                         <span class="text-danger">@error('duration') {{ $message }} @enderror</span>
 
@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label for="price">Project Price (write in dollars $)</label>
                     <input type="number" class="form-control" name="price" value="{{ old('price') }}"
-                        style="border: 1px solid #5298D2">
+                        style="border: 1px solid #5298D2" required>
                     <span class="text-danger">@error('price') {{ $message }} @enderror</span>
                 </div>
                </div>
@@ -95,7 +95,7 @@
                     <div class="form-group">
                         <label for="duration_format">Cover Letter</label>
                         <textarea name="cover_letter" id="" cols="115" rows="10"
-                            style="border: 1px solid #5298D2">{{ old('cover_letter') }}</textarea>
+                            style="border: 1px solid #5298D2" required>{{ old('cover_letter') }}</textarea>
                         <span class="text-danger">@error('cover_letter') {{ $message }} @enderror</span>
 
                     </div>

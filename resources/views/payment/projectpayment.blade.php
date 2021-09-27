@@ -19,7 +19,7 @@
 </div>
 <br><br><br>
 <div class="text-center">
-    <a href="/acceptAndPay/{{ $proposal->proposal_id }}" class="btn btn-primary" style="background-color: #5298D2">Pay ${{ $proposal->price }}</a>
+    <a href="/acceptAndPay/{{ $proposal->proposal_id }}" class="btn btn-primary" style="background-color: #5298D2; border-radius:0.5em">Pay ${{ $proposal->price }}</a>
 </div>
  </div>
 </div>

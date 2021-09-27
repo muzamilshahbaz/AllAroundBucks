@@ -25,7 +25,7 @@
 
 
         <div class="col-4">
-           <a id="course-search-result" href="/signup">
+           <a id="course-search-result" href="/coursedetails/{{ $course->course_id }}">
             <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
                 <div class="card-img-top">
                     <img src="/assets/users/userprofile/courses/{{ $course->course_img }}" width="100%">

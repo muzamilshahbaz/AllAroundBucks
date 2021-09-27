@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="/assets/css/signup.css">
     <div class="col-lg-12">
 
-        <a href="/newProject" class="btn btn-primary" style="background-color: #5298D2">Add New Project</a>
+        <a href="/newProject" class="btn btn-primary" style="background-color: #5298D2; border-radius:0.5em">Add New
+            Project</a>
 
     </div>
     <br>
@@ -48,41 +49,43 @@
 
                 <div class="card" style="padding: 5px; border-radius:0.5em; border:none;">
                     <div class="card-body">
+
+                        <div class="card-title">
+                            <h3>{{ $project->project_title }}</h3>
+                        </div>
+                        <div class="card-subtitle">
+                            <h5><b>Project Category:</b> {{ $project->project_category }}</h5>
+                        </div>
+
+
+                        <br>
+
+
                         <div class="row">
-                            <div class="col-6 card-title">
-                                <h3>{{ $project->project_title }}</h3>
+                            <div class="col-4">
+                                <h5><b>Project Price: </b> ${{ $project->project_price }}</h5>
                             </div>
 
-                            <div class="col-2 offset-1">
-                                <br>
-                                <a href="/project/{{ $project->project_id }}" class="btn btn-primary btn-block text-white"
-                                    style="background-color: #5298D2; text-align: right;">
-                                    <center>View</center>
+                            <div class="col-4">
+                                <h5><b>Project Duration: </b>{{ $project->project_duration }}
+                                    {{ $project->project_duration_format }}
+                                </h5>
+                            </div>
+
+
+                            <div class="col-4">
+
+                                <a href="/project/{{ $project->project_id }}" class="btn btn-primary text-white mr-3"
+                                    style="background-color: #5298D2; border-radius:0.4em">
+                                    View
+                                </a>
+
+
+                                <a href="/delete-project/{{ $project->project_id }}" class="btn btn-danger text-white"
+                                    style="border-radius:0.4em">
+                                    Delete
                                 </a>
                             </div>
-
-
-                            <div class="col-2">
-                                <br>
-                                <a href="/delete-project/{{ $project->project_id }}"
-                                    class="btn btn-danger btn-block text-white">
-                                    <center>Delete</center>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card-subtitle">
-                            <h5>Project Category: {{ $project->project_category }}</h4>
-                        </div>
-
-                        <div class="card-subtitle">
-                            <h5>Project Price: ${{ $project->project_price }}</h4>
-                        </div>
-
-                        <div class="card-subtitle">
-                            <h5>Project Duration: {{ $project->project_duration }}
-                                {{ $project->project_duration_format }}
-                                </h4>
                         </div>
 
 
@@ -136,14 +139,14 @@
                     </div>
                     <br>
                     @if ($project->buyer_feedback != null)
-                    <div class="row">
+                        <div class="row">
 
-                    <div class="col-6">
-                        <h5>Your Revision Feedback</h5>
+                            <div class="col-6">
+                                <h5>Your Revision Feedback</h5>
 
-                               <span style="color: #979797"> {{ $project->buyer_feedback }}</span>
+                                <span style="color: #979797"> {{ $project->buyer_feedback }}</span>
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
 

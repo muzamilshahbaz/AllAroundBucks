@@ -212,7 +212,7 @@ class UserController extends Controller
        {
         $pageName = 'Courses Marketplace !!';
         $title = 'Courses Marketplace';
-        $allCourse = Course::all();
+        $allCourse = Course::where('trainer', '!=', $user->username)->get();
         return view('userprofile.courses', $data, compact('title','pageName', 'allCourse'));
 
        }

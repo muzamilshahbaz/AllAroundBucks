@@ -214,7 +214,7 @@
                             <h4 class="page-title text-uppercase font-medium font-14">
                                 {{ $LoggedUserInfo->user_role }} {{ $pageName }}</h4>
 
-                        @elseif ($LoggedUserInfo -> user_role == 'Student' || $LoggedUserInfo -> user_role ==
+                        @elseif ($LoggedUserInfo->user_role == 'Student' || $LoggedUserInfo->user_role ==
                             'Buyer')
 
                             <h4 class="page-title text-uppercase font-medium font-14">{{ $pageName }}</h4>
@@ -244,7 +244,7 @@
                             </ol>
                             <button onclick="rolePopup()"
                                 class="btn btn-primary d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light"
-                                style="background-color: #5298D2">
+                                style="background-color: #5298D2; border-radius:0.5em">
 
                                 Role: {{ $LoggedUserInfo->user_role }}
 

@@ -55,16 +55,16 @@
 
       @if ($proposal->status == NULL)
       <div class="col-2 offset-8">
-        <a href="/accept-proposal/{{ $proposal->proposal_id }}" class="btn btn-block btn-success text-white"><center>Accept</center></a>
+        <a href="/accept-proposal/{{ $proposal->proposal_id }}" style="border-radius:0.5em"  class="btn btn-block btn-success text-white"><center>Accept</center></a>
     </div>
     <div class="col-2">
-        <a href="/reject-proposal/{{ $proposal->proposal_id }}" class="btn btn-block btn-danger"><center>Reject</center></a>
+        <a href="/reject-proposal/{{ $proposal->proposal_id }}" style="border-radius:0.5em" class="btn btn-block btn-danger"><center>Reject</center></a>
 
     </div>
       @elseif ($proposal->status == 'accept')
-      <button class="col-3 offset-8 btn btn-block text-white" style="background-color: green" disabled="disabled">Accepted</button>
+      <button class="col-3 offset-8 btn btn-block text-white" style="background-color: green; border-radius:0.5em" disabled="disabled">Accepted</button>
       @elseif ($proposal->status == 'reject')
-      <button class="col-3 offset-8  btn btn-block text-white" style="background-color: rgb(207, 41, 41)" disabled="disabled">You Rejected this Proposal</button>
+      <button class="col-3 offset-8  btn btn-block text-white" style="background-color: rgb(207, 41, 41); border-radius:0.5em" disabled="disabled">You Rejected this Proposal</button>
 
       @endif
 

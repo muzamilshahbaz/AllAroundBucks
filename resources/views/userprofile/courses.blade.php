@@ -22,26 +22,39 @@
 
 @if ($LoggedUserInfo -> user_role == 'Student')
 
+@if ($allCourse->isEmpty())
+    <div class="text-center">
+        <h4>There is no course to show.</h4>
+    </div>
+@else
 <div class="row">
 
     @foreach ($allCourse as $course)
 
 
 
-        <div class="col-lg-4">
-           <a href="coursedetails/{{ $course->course_id}}">
-            <div class="card"  style="height: 20rem;">
+        <div class="col-4">
+           <a id="course-search-result" href="/coursedetails/{{ $course->course_id }}">
+            <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
+                <div class="card-img-top">
+                    <img src="/assets/users/userprofile/courses/{{ $course->course_img }}" width="100%">
+                </div>
 
-                <img  class="card-img-top" src="/assets/users/userprofile/courses/{{ $course->course_img }}"  width="100%">
-                <div class="card-body">
+                <div class="card-body" style="padding: 10px">
                     <div class="card-title">
-                        <h3>{{ $course->course_title }}</h3>
+                        <h5>{{ $course->course_title }}</h5>
                     </div>
 
                     <div class="card-subtitle">
                         <span>by {{  $course->trainer }}</span>
-                        <h3 style="text-align: right; color:tomato">Price: ${{ $course -> course_price }}</h2>
-
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <span style="font-size:0.9em !important">@include('userprofile.courserating')</span>
+                        </div>
+                        <div class="col-5">
+                            <span style="font-size:0.9em !important; text-align: right; color:#5298D2">Price: ${{ $course->course_price }}</span>
+                        </div>
                     </div>
 
                 </div>
@@ -55,6 +68,8 @@
     @endforeach
 
 </div>
+@endif
+
 
 @endif
 
@@ -62,7 +77,7 @@
 
 <div class="col-lg-12">
 
-    <a href="addCourseForm" class="btn btn-primary" style="background-color: tomato">Add New Course</a>
+    <a href="/addCourseForm" class="btn btn-primary" style="background-color:#5298D2; border-radius:0.5em">Add New Course</a>
 
 </div>
 
@@ -70,44 +85,53 @@
 
 
 @if ($trainerCourse->isEmpty())
-    <span>You have not added any course in your collection. Click on Add New Course to teach and earn.</span>
+    <div class="text-center">
+        <h4>You have not added any course in your collection. Click on Add New Course to teach and earn.</h4>
+    </div>
 @else
 <div class="col-12">
-    <h1>Following is the list of your added courses.</h1>
+    <h3>Following is the list of your added courses.</h3>
 </div>
 <br>
 <div class="row">
+
     @foreach ($trainerCourse as $course)
 
-<div class="col-lg-4">
-    <a href="coursedetails/{{ $course->course_id}}">
-     <div class="card" style="height: 20rem;">
-         <img class="card-img-top" src="\assets\users\userprofile\courses\{{ $course->course_img }}"  width="100%">
-         <div class="card-body">
-             <div class="card-title">
-                 <h3>{{ $course->course_title }}</h3>
-             </div>
 
-             <div class="card-subtitle">
 
-                 <div class="row">
-                    <div class="col-8 offset-4">
-                        <h3 style="text-align: right; color:tomato">Price: ${{ $course -> course_price }}</h2>
-                     </div>
-                     <div class="col-12">
-                        @include('userprofile.courserating')
-                     </div>
+        <div class="col-4">
+           <a id="course-search-result" href="/coursedetails/{{ $course->course_id }}">
+            <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
+                <div class="card-img-top">
+                    <img src="/assets/users/userprofile/courses/{{ $course->course_img }}" width="100%">
+                </div>
 
-                 </div>
+                <div class="card-body" style="padding: 10px">
+                    <div class="card-title">
+                        <h5>{{ $course->course_title }}</h5>
+                    </div>
 
-             </div>
+                    <div class="card-subtitle">
+                        <span>by {{  $course->trainer }}</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">
+                            <span style="font-size:0.9em !important">@include('userprofile.courserating')</span>
+                        </div>
+                        <div class="col-5">
+                            <span style="font-size:0.9em !important; text-align: right; color:#5298D2">Price: ${{ $course->course_price }}</span>
+                        </div>
+                    </div>
 
-         </div>
-     </div>
-    </a>
- </div>
+                </div>
+            </div>
+           </a>
+        </div>
 
-@endforeach
+
+
+
+    @endforeach
 
 </div>
 @endif

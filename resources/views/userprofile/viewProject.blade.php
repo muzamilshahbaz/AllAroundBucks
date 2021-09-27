@@ -54,23 +54,22 @@
            <br><br>
            <div class="row">
             @if ($LoggedUserInfo->user_role == 'Buyer')
-            {{-- <div class="col-2 offset-8">
-                <a href="/edit-project/{{ $project->project_id }}" class="btn btn-block btn-light text-white" style="background-color: tomato; text-align: right;"><center>Edit</center></a>
-            </div> --}}
-            <div class="col-3 offset-9">
-                <a href="/project-proposals/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;"><center>View Proposals</center></a>
+            <div class="row offset-9">
+                <a href="/edit-project/{{ $project->project_id }}" class="btn btn-primary text-white mr-3" style="background-color: #5298D2; border-radius:0.5em">Edit</a>
+
+                <a href="/project-proposals/{{ $project->project_id }}" class="btn btn-primary text-white" style="background-color: #5298D2; border-radius:0.5em">View Proposals</a>
 
             </div>
 
             @elseif ($proposal)
                <div class="col-3 offset-8">
-                <button class="btn btn-block text-white" style="background-color: grey" disabled="disabled">Proposal Sent</button>
+                <button class="btn btn-block text-white" style="background-color: grey; border-radius:0.5em" disabled="disabled">Proposal Sent</button>
                </div>
 
                @else
 
                <div class="col-3 offset-8">
-                <a href="/write-proposal/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;"><center>Send Proposal</center></a>
+                <a href="/write-proposal/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;border-radius:0.5em"><center>Send Proposal</center></a>
                 </div>
                 @endif
 

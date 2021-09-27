@@ -36,7 +36,50 @@
 
 
         @forelse ($projects as $project)
-            <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+        <div class="card" style="padding: 5px; border-radius:0.5em; border:none;">
+            <div class="card-body">
+
+                <div class="card-title">
+                    <h3>{{ $project->project_title }}</h3>
+                </div>
+                <div class="card-subtitle">
+                    <h5><b>Project Category:</b> {{ $project->project_category }}</h5>
+                </div>
+
+
+                <br>
+
+
+                <div class="row">
+                    <div class="col-4">
+                        <h5><b>Project Price: </b> ${{ $project->price }}</h5>
+                    </div>
+
+                    <div class="col-4">
+                        <h5><b>Project Duration: </b>{{ $project->duration }}
+                            {{ $project->duration_format }}
+                        </h5>
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <a href="/project/{{ $project->project_id }}" class="btn btn-primary text-white mr-3"
+                            style="background-color: #5298D2; border-radius:0.4em">
+                            View
+                        </a>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+            {{-- <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
@@ -45,7 +88,7 @@
 
                         <div class="col-2 offset-1">
                             <br>
-                            <a href="/project/{{ $project->project_id }}" class="btn btn-block btn-primary text-white"
+                            <a href="/project/{{ $project->project_id }}" class="btn btn-primary text-white"
                                 style="background-color: #5298D2; text-align: right;">
                                 <center>View</center>
                             </a>
@@ -70,7 +113,7 @@
                 </div>
 
 
-            </div>
+            </div> --}}
         @empty
             <div class="text-center">
                 <h4>There no projects to show</h4>
