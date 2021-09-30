@@ -103,7 +103,7 @@
            <a id="course-search-result" href="/coursedetails/{{ $course->course_id }}">
             <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
                 <div class="card-img-top">
-                    <img src="/assets/users/userprofile/courses/{{ $course->course_img }}" width="100%">
+                    <img src="/assets/users/userprofile/courses/{{ $course->course_img }}" width="100%" height="100%">
                 </div>
 
                 <div class="card-body" style="padding: 10px">

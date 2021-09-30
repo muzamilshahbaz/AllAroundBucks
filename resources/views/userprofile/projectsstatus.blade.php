@@ -169,7 +169,7 @@
                     @endif
                     <div class="col-4 offset-10">
                         <a href="/send-project/{{ $project->id }}" class="btn btn-primary text-white"
-                            style="background-color:#5298D2">Send Project</a>
+                            style="background-color:#5298D2;border-radius:0.5em">Send Project</a>
                     </div>
                 </div>
 
@@ -221,7 +221,7 @@
                         <div class="col-12">
                             <span style="color: #5298D2">Project File: </span><span><a
                                 href="/assets/users/userprofile/projects/{{ $project->project_file }}"
-                                class="btn btn-primary btn-sm" style="background-color: #5298D2">{{ $project->project_file }}</a></span>
+                                class="btn btn-primary btn-sm" style="background-color: #5298D2; border-radius:0.4em">{{ $project->project_file }}</a></span>
                         </div>
                     </div>
                 </div>

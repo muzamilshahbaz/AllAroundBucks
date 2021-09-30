@@ -20,9 +20,11 @@ use Illuminate\Http\Request;
 
 use App\Events\Message;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\CourseVideoController;
 use App\Http\Controllers\EducationHistoryController;
 use App\Http\Controllers\EmployementHistoryController;
 use App\Http\Controllers\PaidProjectController;
+use App\Http\Controllers\ProjectPaymentController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingsController;
@@ -67,39 +69,46 @@ Route::get('/callback/facebook', [LoginController::class, 'handleFacebookCallbac
 
 Route::post('login', [LoginController::class, 'login'])->name('login');
 
-Route::get('dashboard',[UserController::class, 'dashboard'])->middleware('isLogged');
+Route::get('dashboard', [UserController::class, 'dashboard'])->middleware('isLogged');
 
-Route::get('hiredirect',[UserController::class, 'hiredirect'])->middleware('isLogged');
+Route::get('hiredirect', [UserController::class, 'hiredirect'])->middleware('isLogged');
 
-Route::get('/profile',[UserController::class, 'profile'])->middleware('isLogged');
+Route::get('/profile', [UserController::class, 'profile'])->middleware('isLogged');
 //Route::get('coursefeed',[UserController::class, 'courses'])->middleware('isLogged');
 
 
-Route::get('logout',[LogoutController::class, 'logout']);
-Route::get('index',[LogoutController::class, 'index'])->middleware('AlreadyLoggedIn');
+Route::get('logout', [LogoutController::class, 'logout']);
+Route::get('index', [LogoutController::class, 'index'])->middleware('AlreadyLoggedIn');
 
-Route::get('user/{username}',[UserController::class, 'user'])->middleware('isLogged');
+Route::get('user/{username}', [UserController::class, 'user'])->middleware('isLogged');
 
-Route::get('/courses',[UserController::class, 'courses'])->middleware('isLogged');
+Route::get('/courses', [UserController::class, 'courses'])->middleware('isLogged');
 
-Route::get('addCourseForm',[CoursesController::class, 'addCourseForm'])->middleware('isLogged');
+Route::get('addCourseForm', [CoursesController::class, 'addCourseForm'])->middleware('isLogged');
 
-Route::post('addCourse',[CoursesController::class, 'addCourse'])->middleware('isLogged');
+Route::post('addCourse', [CoursesController::class, 'addCourse'])->middleware('isLogged');
 
 
-Route::get('coursedetails/{course_id}',[CoursesController::class, 'coursedetails'])->middleware('isLogged');
+Route::get('coursedetails/{course_id}', [CoursesController::class, 'coursedetails'])->middleware('isLogged');
 
-Route::get('/edit-course/{course_id}',[CoursesController::class, 'edit'])->middleware('isLogged');
-Route::put('/update/{course_id}',[CoursesController::class, 'update'])->middleware('isLogged');
+Route::get('/edit-course/{course_id}', [CoursesController::class, 'edit'])->middleware('isLogged');
+Route::put('/update/{course_id}', [CoursesController::class, 'update'])->middleware('isLogged');
+Route::get('/delete-course/{course_id}', [CoursesController::class, 'delete'])->middleware('isLogged');
 
-Route::get('projects',[ProjectsController::class, 'projects'])->middleware('isLogged');
+Route::get('/course-video/create/{course_id}', [CourseVideoController::class, 'create'])->middleware('isLogged');
+Route::post('/course-video/store/{course_id}', [CourseVideoController::class, 'store'])->middleware('isLogged');
+Route::get('/course-video/watch/{id}', [CourseVideoController::class, 'watch'])->middleware('isLogged');
+Route::get('/course-video/edit/{id}', [CourseVideoController::class, 'edit'])->middleware('isLogged');
+Route::get('/course-video/update/{id}', [CourseVideoController::class, 'update'])->middleware('isLogged');
+Route::get('/course-video/delete/{id}', [CourseVideoController::class, 'delete'])->middleware('isLogged');
 
-Route::get('newProject',[ProjectsController::class, 'newProject'])->middleware('isLogged');
+Route::get('projects', [ProjectsController::class, 'projects'])->middleware('isLogged');
 
-Route::post('addProject',[ProjectsController::class, 'addProject'])->middleware('isLogged');
+Route::get('newProject', [ProjectsController::class, 'newProject'])->middleware('isLogged');
 
-Route::get('projectsfeed',[ProjectsFeedController::class, 'projectsfeed'])->middleware('isLogged');
+Route::post('addProject', [ProjectsController::class, 'addProject'])->middleware('isLogged');
 
+Route::get('projectsfeed', [ProjectsFeedController::class, 'projectsfeed'])->middleware('isLogged');
 
 
 
@@ -107,12 +116,12 @@ Route::get('/verifyaccount', [RegisterController::class, 'verifyaccount']);
 
 Route::post('/verify', [RegisterController::class, 'verify']);
 
-Route::get('/editprofile/{user_id}',[UserController::class, 'editprofile'])->middleware('isLogged');
+Route::get('/editprofile/{user_id}', [UserController::class, 'editprofile'])->middleware('isLogged');
 
 
 Route::put('/updateprofile/{id}', [UserController::class, 'updateprofile'])->middleware('isLogged');
 
-Route::get('/delete-project/{project_id}', [ProjectsController::class, 'deleteProject'])->middleware('isLogged');;
+Route::get('/delete-project/{project_id}', [ProjectsController::class, 'deleteProject'])->middleware('isLogged');
 
 Route::get('/project/{project_id}', [ProjectsController::class, 'viewProject'])->middleware('isLogged');
 
@@ -142,13 +151,13 @@ Route::post('/send-message', function (Request $request) {
         )
     );
 
-    return ['success'=> true];
+    return ['success' => true];
 });
 
 
 Route::get('write-proposal/{project_id}', [ProposalController::class, 'writeProposal'])->middleware('isLogged');
 
-Route::post('send-proposal/{project_id}',[ProposalController::class, 'sendProposal'])->middleware('isLogged');
+Route::post('send-proposal/{project_id}', [ProposalController::class, 'sendProposal'])->middleware('isLogged');
 
 Route::get('proposals', [ProposalController::class, 'proposals']);
 
@@ -162,7 +171,7 @@ Route::get('roleName', [RegisterController::class, 'roleName']);
 
 Route::put('roleAndUsername/{user_id}', [RegisterController::class, 'roleAndUserName'])->middleware('isLogged');
 
-Route::get('acceptAndPay/{proposal_id}', [PaidProjectController::class, 'acceptAndPay'])->middleware('isLogged');
+Route::post('acceptAndPay/{proposal_id}', [ProjectPaymentController::class, 'acceptAndPay'])->middleware('isLogged');
 
 Route::get('projectsstatus', [PaidProjectController::class, 'projectsstatus'])->middleware('isLogged');
 
@@ -170,7 +179,7 @@ Route::get('send-project/{id}', [PaidProjectController::class, 'sendProject'])->
 
 Route::put('projectSend/{id}', [PaidProjectController::class, 'projectSend'])->middleware('isLogged');
 
-Route::get('approve-project/{id}', [PaidProjectController::class,'approveProject'])->middleware('isLogged');
+Route::get('approve-project/{id}', [ProjectPaymentController::class, 'approveProject'])->middleware('isLogged');
 
 Route::put('buyerFeedback/{id}', [PaidProjectController::class, 'buyerFeedback'])->middleware('isLogged');
 
@@ -188,4 +197,3 @@ Route::resource('education-history', EducationHistoryController::class)->middlew
 Route::post('/ask-changes/{id}', [PaidProjectController::class, 'changes'])->middleware('isLogged');
 
 Route::get('/cancel-project/{id}', [PaidProjectController::class, 'cancel'])->middleware('isLogged');
-

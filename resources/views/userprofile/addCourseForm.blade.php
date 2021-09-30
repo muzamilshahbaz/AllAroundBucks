@@ -73,7 +73,7 @@
 
                     <label for="course-description">Course Description</label>
                     <textarea type="text" class="form-control"  rows="5" name="course_description"
-                         value="{{ old('course_description') }}" required></textarea>
+                         value="{{ old('course_description') }}" required>{{ old('course_description') }}</textarea>
                     <span class="text-danger">@error('course_description') {{ $message }} @enderror</span>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                         <label for="course-price">Course Price (write in dollars $)</label>
                         <input type="number" class="form-control" name="course_price"
                              value="{{ old('course_price') }}" required>
-                        <span class="text-danger">@error('course_price') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('course_price') {{ $message }} Valid Dimensions: width: 1280px, height: 720px. @enderror</span>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
@@ -105,30 +105,6 @@
                 </div>
             </div>
 
-
-
-            {{-- <center><h3>Add Videos for this Course</h3></center>
-        <form action="addVideo" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="video-title">Video Title</label>
-                <input type="text" class="form-control" name="video_title" value="{{ old('video_title') }}" style="border: 2px solid tomato">
-                <span class="text-danger">@error('video_title') {{ $message }} @enderror</span>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="video_description">Video Description</label>
-                <textarea type="text" class="form-control" name="video_description" style="height:200px; border: 2px solid tomato" value="{{ old('video_description') }}"></textarea>
-                <span class="text-danger">@error('video_description') {{ $message }} @enderror</span>
-            </div>
-            <div class="form-group">
-                <label for="course-videos">Upload Video</label>
-                <input type="file" class="form-control" name="course_videos" value="{{ old('course_videos') }}" onchange="previewFile(this)">
-
-                <span class="text-danger">@error('profile_img') {{ $message }} @enderror</span>
-            </div>
-            <button  type="submit" class="btn btn-primary" style="background-color: tomato; border: 0ch">Add Video</button>
-        </form> --}}
 
 
             <div class="text-center">

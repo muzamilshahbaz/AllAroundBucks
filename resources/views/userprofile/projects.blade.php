@@ -201,7 +201,7 @@
                             <span style="color: #5298D2">Download Project File: </span><span><a
                                     href="/assets/users/userprofile/projects/{{ $project->project_file }}"
                                     class="btn btn-primary btn-sm"
-                                    style="background-color: #5298D2">{{ $project->project_file }}</a></span>
+                                    style="background-color: #5298D2; border-radius:0.4em">{{ $project->project_file }}</a></span>
                         </div>
                     </div>
 
@@ -226,11 +226,11 @@
 
 
                         <div class="mr-3">
-                            <a href="/approve-project/{{ $project->id }}" class="btn btn-success text-white">Approve</a>
+                            <a href="/approve-project/{{ $project->id }}" class="btn btn-success text-white" style="border-radius:0.4em">Approve</a>
                         </div>
 
                         <div class="mr-3">
-                            <a href="/cancel-project/{{ $project->id }}" class="btn btn-danger">Cancel Project</a>
+                            <a href="/cancel-project/{{ $project->id }}" class="btn btn-danger" style="border-radius:0.4em">Cancel Project</a>
                         </div>
 
                     </div>

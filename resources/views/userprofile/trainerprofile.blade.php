@@ -66,7 +66,7 @@
         <div class="row" style="font-size: 17px; border: 1px solid black; padding: 10px">
 
             <div class="col-3">
-                <span style="font-weight: bold">Total Courses: </span><span>{{ $trainer->total_courses }}</span>
+                <span style="font-weight: bold">Total Courses: </span><span>{{ $courses->count('course_id') }}</span>
             </div>
             <div class="col-3">
                 <span style="font-weight: bold">Sold Courses: </span><span>{{ $trainer->courses_sell }}</span>

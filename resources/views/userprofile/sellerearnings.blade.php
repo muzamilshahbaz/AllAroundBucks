@@ -18,7 +18,7 @@
                         <li class="ml-auto">
                             <span class="counter text-info">
 
-                                ${{ $seller->earnings }}
+                                ${{ $seller_projects->sum('price') }}
 
                             </span>
                         </li>
@@ -39,7 +39,7 @@
                         <li class="ml-auto">
                             <span class="counter text-info">
 
-                                ${{ $seller->earnings }}
+                                ${{ $seller->amount_for_withdrawals }}
 
                             </span>
                         </li>

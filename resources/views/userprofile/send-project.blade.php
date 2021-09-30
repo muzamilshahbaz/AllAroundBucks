@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-group">
-        <label for="project-file" style="color: #5298D2">Upload Project File <br> (Note: If it is a folder upload the zip folder.)</label> <br>
+        <label for="project-file" style="color: #5298D2">Upload Project File <br> (Note: File must be in zip or rar.)</label> <br>
         <input type="file" class="form-control" name="project_file" required>
         <span class="text-danger">@error('project_file') {{ $message }} @enderror</span>
     </div>

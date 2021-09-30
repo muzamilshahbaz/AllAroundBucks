@@ -48,10 +48,10 @@ class CoursesController extends Controller
         $request->validate([
             'course_title'=>'required|max:100',
             'course_category'=>'required',
-            'course_description'=>'required|1200',
+            'course_description'=>'required|max:2000',
             'course_duration'=>'required|min:1',
             'course_price'=>'required|min:1',
-            'course_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'course_img' => 'required|image|mimes:jpeg,png,jpg|max:4000|dimensions:width=1280,height=720',
 
         ]);
 
@@ -125,13 +125,16 @@ class CoursesController extends Controller
         }
 
         $course = Course::find($course_id);
-
+                        // ->join('course_videos', 'course_videos.course_id', '= ', 'courses.course_id')
+                        // ->select('courses.*', 'count(course_videos.id) as total_videos')
+                        // ->get();
+        $course_videos = CourseVideo::where('course_id', $course->course_id)->get();
         // $courseCategory = Category::find($course->category_id)->first();
 
         $title =  $course->course_title;
         $pageName = $course->course_title;
 
-        return view('userprofile.coursedetails', $data, compact('title','pageName','course'));
+        return view('userprofile.coursedetails', $data, compact('title','pageName','course', 'course_videos'));
     }
 
     public function edit($course_id)
@@ -144,8 +147,8 @@ class CoursesController extends Controller
             ];
         }
 
-        $title =  'Add New Course';
-        $pageName = 'Add New Course';
+        $title =  'Update Course';
+        $pageName = 'Update Course';
         $course = Course::find($course_id);
         // return $course;
         $catData = Category::all();
@@ -165,10 +168,10 @@ class CoursesController extends Controller
         $request->validate([
             'course_title'=>'required|max:100',
             'course_category'=>'required',
-            'course_description'=>'required|max:1200',
+            'course_description'=>'required|max:2000',
             'course_duration'=>'required|min:1',
             'course_price'=>'required|min:1',
-            'course_img' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'course_img' => 'image|mimes:jpeg,png,jpg|max:4000|dimensions:width=1280,height=720',
 
         ]);
 
@@ -203,6 +206,18 @@ class CoursesController extends Controller
 
         if ($courseQuery) {
             return redirect('courses')->with('success','Your Course has been updated');
+
+        } else {
+            return back()->with('fail','Something went wrong...Try Again');
+        }
+    }
+
+    public function delete($course_id)
+    {
+        $query = Course::find($course_id)->delete();
+
+        if ($query) {
+            return redirect('courses')->with('success','Your Course has been deleted');
 
         } else {
             return back()->with('fail','Something went wrong...Try Again');

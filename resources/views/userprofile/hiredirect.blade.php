@@ -54,7 +54,7 @@
 
                         <div class="col-8">
                             <div class="card-title">
-                                <a href="/signup">
+                                <a href="/user/{{ $seller->username }}">
                                     <h3>{{ $seller->name }}</h3>
                                 </a>
                             </div>
@@ -73,8 +73,8 @@
                         <div class="col-2">
 
                             <a href="/user/{{ $seller->seller_username }}" class="btn btn-primary text-white"
-                                style="background-color: #5298D2; text-align: right;">
-                                <center>Hire Now</center>
+                                style="background-color: #5298D2; border-radius:0.5em">
+                                Hire Now
                             </a>
                         </div>
                     </div>

@@ -106,7 +106,7 @@
                                 width="180" id="previewImg" style="border-radius: 0.5em">
                             {{-- <img src="\assets\users\userprofile\courses\default course thumbnail.jpg" id="previewImg"
                                 alt="profile-image" style="width: 640px; height: 480px; margin-top: 20px;"> --}}
-                            <span class="text-danger">@error('course_img') {{ $message }} @enderror</span>
+                            <span class="text-danger">@error('course_img') {{ $message }} Valid Dimensions: width: 1280px, height: 720px.@enderror</span>
                         </div>
                     </div>
                 </div>

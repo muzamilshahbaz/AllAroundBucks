@@ -65,7 +65,7 @@
                                 </li>
                                 <li class="ml-auto"><span class="counter text-info">
 
-                                    ${{ $seller->earnings }}
+                                    ${{ $seller_projects->sum('price') }}
 
                                 </span>
                                 </li>
@@ -96,14 +96,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($projects as $project)
+                                      @forelse ($projects as $project)
                                       <tr>
                                         <td>{{ $project->project_title }}</td>
                                         <td class="txt-oflo">{{ $project->buyer_username }}</td>
                                         <td>{{ $project->status }}</td>
                                         <td><span class="text-success">${{ $project->price }}</span></td>
                                     </tr>
-                                      @endforeach
+                                    @empty
+                                    <tr>
+                                       <td>
+
+                                           <div class="text-center">
+                                            <h4>No recent projects to show</h4>
+
+                                           </div>
+                                       </td>
+                                    </tr>
+                                      @endforelse
 
                                     </tbody>
                                 </table>

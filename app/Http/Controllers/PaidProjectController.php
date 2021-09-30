@@ -16,60 +16,6 @@ use Illuminate\Support\Facades\File;
 
 class PaidProjectController extends Controller
 {
-    function acceptAndPay($proposal_id)
-    {
-        if (session()->has('LoggedUser')) {
-            $user = User::where('user_id', '=', session('LoggedUser'))->first();
-            $data = [
-                'LoggedUserInfo' => $user,
-                'roles' =>  UserRole::all()
-            ];
-        }
-        $proposal = Proposal::find($proposal_id);
-        $seller = User::where('username', $proposal->seller_username)->first();
-        $project = Project::where('project_id', $proposal->project_id)->first();
-
-        $project->status = 'active';
-        $project->update();
-
-        $paidProject = new PaidProject;
-
-        $paidProject->project_id = $project->project_id;
-        $paidProject->project_title = $project->project_title;
-        $category = Category::where('category_id', $project->category_id)->first();
-        $paidProject->project_category = $category->category_name;
-        $paidProject->proposal_id = $proposal->proposal_id;
-        $paidProject->buyer_id = $project->buyer_id;
-        $paidProject->buyer_username = $project->buyer_username;
-        $paidProject->seller_id = $proposal->seller_id;
-        $paidProject->seller_username = $proposal->seller_username;
-        $paidProject->duration = $proposal->duration;
-        $paidProject->duration_format = $proposal->duration_format;
-        $paidProject->price = $proposal->price;
-        $paidProject->status = 'active';
-
-        $proposal->status = 'accept';
-
-        $proposalAccept = [
-            'body' => 'You have got a news about your proposal.',
-            'acceptText' => 'Congratulations !! Your proposal for this project has been accepted by ' . $proposal->buyer_username . '.',
-            'url' => url('/'),
-            'thankyou' => 'Visit Projects section and start working on this project.'
-        ];
-
-        $seller->notify(new ProposalAccept($proposalAccept));
-
-        $proposal->update();
-
-        $query = $paidProject->save();
-
-        if ($query) {
-            return redirect('projects')->with('success', 'You accepted the proposal and paid for the project. Wait for the seller to complete the project.');
-        } else {
-            return back()->with('fail', 'Something went wrong!!');
-        }
-    }
-
     function projectsstatus()
     {
         if (session()->has('LoggedUser')) {
@@ -185,29 +131,7 @@ class PaidProjectController extends Controller
             return back()->with('fail', 'Something went wrong....Try Again !!');
         }
     }
-    function approveProject($id)
-    {
-        if (session()->has('LoggedUser')) {
-            $user = User::where('user_id', '=', session('LoggedUser'))->first();
-            $data = [
-                'LoggedUserInfo' => $user,
-                'roles' =>  UserRole::all()
-            ];
-        }
 
-        $project = PaidProject::find($id);
-        $project->status = 'awaiting for feedback';
-        $seller = Seller::where('seller_id', $project->seller_id)->first();
-        $seller->increment('total_projects');
-        $seller->earnings = $seller->earnings + $project->price;
-        $project->update();
-        $seller->update();
-        $buyer = Buyer::where('buyer_id', $project->buyer_id)->first();
-        $buyer->increment('total_projects');
-        $buyer->update();
-
-        return redirect('projects')->with('success', 'Project has been approved, give feedback and rate this project.');
-    }
 
     function buyerFeedback(Request $request, $id)
     {
