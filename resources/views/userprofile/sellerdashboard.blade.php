@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Completed Projects</h3>
+                            <h3 class="box-title">Total Projects</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash2"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
@@ -64,8 +64,17 @@
                                     </div>
                                 </li>
                                 <li class="ml-auto"><span class="counter text-info">
-
-                                    ${{ $seller_projects->sum('price') }}
+                                    @php
+                                        $total_earnings = 0;
+                                        foreach($seller_projects as $project)
+                                        {
+                                            if($project->status == 'completed' || $project->status == 'awaiting for feedback')
+                                            {
+                                                $total_earnings += $project->price;
+                                            }
+                                        }
+                                    @endphp
+                                    ${{ $total_earnings }}
 
                                 </span>
                                 </li>

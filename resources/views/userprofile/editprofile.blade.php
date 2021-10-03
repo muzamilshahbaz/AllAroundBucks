@@ -165,7 +165,7 @@
 
             <div class="form-group">
                 <label for="Skills">Skills (Seperated by commas(,))</label>
-                <input type="text" class="form-control" name="skills" value="{{ $seller->skills }}">
+                <input type="text" class="form-control" name="skills" value="{{ $buyer->skills }}">
                 <br>
                 <span class="text-danger">@error('skills') {{ $message }} @enderror</span>
             </div>

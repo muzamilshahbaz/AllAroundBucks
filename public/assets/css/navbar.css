@@ -91,6 +91,11 @@
     padding-bottom: 7px;
 }
 
+.input-group-text:active,
+.input-group-text:focus {
+    outline: none;
+}
+
 .navbar .sign-up-btn {
     min-width: 110px;
     max-height: 36px;

@@ -98,19 +98,20 @@
                 <br>
                 <hr>
                 <br>
-                <section><h1>Payment Method</h1>
+                {{-- <section><h1>Payment Method</h1>
                     <br>
 
                 </section>
                 <br>
 <hr>
-<br>
+<br> --}}
                 <section><h1>Account Deactivation</h1>
                     <br>
                     <p>
                         <b>What happens when you deactivate your account?</b>
-                        <li>Your profile and services won't show on AllAroundBucks anymore.</li>
+                        <li>Your profile and courses won't show on AllAroundBucks anymore.</li>
                         <li>Active Projects will be cancelled and your ratings go down.</li>
+                        <li>Your Courses will be deleted permanently</li>
                         <li>Your earnings will be removed until you withdraw them before deactivation.</li>
                     </p>
                     <br>

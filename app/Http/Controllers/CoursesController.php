@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\CourseVideo;
 use App\Models\Category;
+use App\Models\PaidCourse;
+use App\Models\Student;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
@@ -117,24 +119,28 @@ class CoursesController extends Controller
     function coursedetails($course_id)
     {
         if (session()->has('LoggedUser')) {
-            $trainer = User::where('user_id','=',session('LoggedUser'))->first();
+            $user= User::where('user_id','=',session('LoggedUser'))->first();
             $data = [
-                'LoggedUserInfo' => $trainer,
+                'LoggedUserInfo' => $user,
                 'roles' =>  UserRole::all()
             ];
         }
 
         $course = Course::find($course_id);
+        $student = Student::where('user_id', $user->user_id)->first();
+        $paid = PaidCourse::where('student_id', $student->student_id);
+        $paid_course = $paid->where('course_id', $course->course_id)->first();
                         // ->join('course_videos', 'course_videos.course_id', '= ', 'courses.course_id')
                         // ->select('courses.*', 'count(course_videos.id) as total_videos')
                         // ->get();
         $course_videos = CourseVideo::where('course_id', $course->course_id)->get();
         // $courseCategory = Category::find($course->category_id)->first();
-
+        $first_video = $course_videos->first();
+        $trainer = Trainer::where('user_id', $user->user_id)->first();
         $title =  $course->course_title;
         $pageName = $course->course_title;
 
-        return view('userprofile.coursedetails', $data, compact('title','pageName','course', 'course_videos'));
+        return view('userprofile.coursedetails', $data, compact('title','pageName','first_video','trainer','course', 'course_videos', 'paid_course'));
     }
 
     public function edit($course_id)

@@ -2,7 +2,7 @@
 
 @section('usercontent')
 
-@foreach ($proposals as $proposal)
+@forelse ($proposals as $proposal)
 <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
 
     <div class="card-body">
@@ -47,6 +47,10 @@
     </div>
 
 </div>
-@endforeach
+@empty
+<div class="text-center">
+    <h4>There is no proposal to show</h4>
+</div>
+@endforelse
 
 @endsection

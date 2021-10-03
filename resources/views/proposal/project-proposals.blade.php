@@ -62,9 +62,9 @@
 
     </div>
       @elseif ($proposal->status == 'accept')
-      <button class="col-3 offset-8 btn btn-block text-white" style="background-color: green; border-radius:0.5em" disabled="disabled">Accepted</button>
+      <button class="col-3 offset-8 btn btn-success text-white" style="border-radius:0.5em" disabled="disabled">Accepted</button>
       @elseif ($proposal->status == 'reject')
-      <button class="col-3 offset-8  btn btn-block text-white" style="background-color: rgb(207, 41, 41); border-radius:0.5em" disabled="disabled">You Rejected this Proposal</button>
+      <button class="col-3 offset-8  btn btn-danger text-white" style="border-radius:0.5em" disabled="disabled">You Rejected this Proposal</button>
 
       @endif
 

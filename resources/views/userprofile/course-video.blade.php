@@ -65,15 +65,29 @@
                     <br> --}}
                 </div>
                 <div class="col-4">
-                    <h4 style="font-style:bolder"><b>Other Videos of this Course:</b></h4>
-                    <ul>
+                    <h4 style="font-style:bolder"><b>Course Playlist:</b>
+                        @if ($LoggedUserInfo->user_role == 'Trainer')
+                            <span class="offset-1"> <a href="/course-video/create/{{ $course_video->course_id }}"
+                                    class="btn btn-primary btn-sm mr-3"
+                                    style="background-color: #5298D2; border-radius:0.5em">Add Video</a></span>
+                        @endif
+                    </h4>
+                    <ol style="overflow-y:scroll; height:300px; padding:3px">
                         @forelse ($course_videos as $video)
-                            @if ($video->id != $course_video->id)
+                            {{-- @if ($video->id != $course_video->id) --}}
 
-                                <li><a href="/course-video/watch/{{ $video->id }}"
-                                        style="color: #5298D2; text-decoration:none">{{ $video->video_title }}</a></li>
-                                <br>
-                            @endif
+                            <a href="/course-video/watch/{{ $video->id }}"
+                                style="text-decoration:none; ">
+                               <div class="card" style="color: #5298D2; border-radius: 0.5em; text-align:left;">
+                                   <div class="card-body">
+                                    <li style="padding: 8px;">
+                                           <span style="color:#5298D2"> {{ $video->video_title }}</span>
+
+                                    </li>
+                                   </div>
+                               </div>
+                            </a>
+                            {{-- @endif --}}
 
                         @empty
                             <div class="text-center">
@@ -82,7 +96,7 @@
                                     style="background-color: #5298D2; border-radius:0.5em">Add Video</a>
                             </div>
                         @endforelse
-                    </ul>
+                    </ol>
                     @if ($LoggedUserInfo->user_role == 'Trainer')
 
                         <div class="text-center">

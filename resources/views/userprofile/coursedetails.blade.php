@@ -32,14 +32,25 @@
                     <div class="row">
                         <div class="col-12">
                             @if ($LoggedUserInfo->user_role == 'Student')
-                                <a href="#" class="btn btn-primary"
-                                    style="background-color: #5298D2; border-radius:0.5em">Buy Course</a>
-                            @else
+                                @if ($paid_course)
+                                    @if ($first_video)
+                                    <a href="/course-video/watch/{{ $first_video->id }}" class="btn btn-primary"
+                                        style="background-color: #5298D2; border-radius:0.5em">Watch Videos</a>
+                                    @endif
+                                @else
+                                    <a href="/course-payment/{{ $course->course_id }}" class="btn btn-primary"
+                                        style="background-color: #5298D2; border-radius:0.5em">Buy Course</a>
+                                @endif
+                            @elseif ($LoggedUserInfo->username == $course->trainer_username)
 
                                 <a href="/edit-course/{{ $course->course_id }}" class="btn btn-primary mr-3"
                                     style="background-color: #5298D2; border-radius:0.5em">Edit</a>
                                 <a href="/delete-course/{{ $course->course_id }}" class="btn btn-danger"
                                     style="border-radius:0.5em">Delete</a>
+                            @else
+                            <div class="text-center">
+                                <h4 style="color: #5298D2">Change your role to student to buy this course.</h4>
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -53,7 +64,7 @@
                     <p>{{ $course->course_description }}</p>
                 </div>
             </div>
-            @if ($LoggedUserInfo->user_role == 'Trainer')
+            @if ($LoggedUserInfo->username == $course->trainer_username)
                 <div class="row my-4">
                     <div class="col-12">
                         <h4><b>Course Videos:</b><span class="offset-7"> <a
@@ -68,7 +79,7 @@
                                         style="color: #5298D2; text-decoration:none">{{ $video->video_title }}</a></li>
 
                             @empty
-                            <br>
+                                <br>
                                 <div class="text-center">
                                     <h4 style="color: #5298D2; text-decoration:none">There is no video for this course.</h4>
 
@@ -79,7 +90,32 @@
                 </div>
             @endif
 
+            @if ($LoggedUserInfo->user_role == 'Student')
+                @if ($paid_course)
+                    <div class="row my-4">
+                        <div class="col-12">
+                            <h4><b>Course Videos:</b></h4>
 
+                            <ol>
+                                @forelse ($course_videos as $video)
+
+                                    <li><a href="/course-video/watch/{{ $video->id }}"
+                                            style="color: #5298D2; text-decoration:none">{{ $video->video_title }}</a>
+                                    </li>
+
+                                @empty
+                                    <br>
+                                    <div class="text-center">
+                                        <h4 style="color: #5298D2; text-decoration:none">There is no video for this course. Wait for the Trainer to add videos.
+                                        </h4>
+
+                                    </div>
+                                @endforelse
+                            </ol>
+                        </div>
+                    </div>
+                @endif
+            @endif
 
         </div>
     </div>

@@ -10,6 +10,10 @@ function rolePopup() {
     document.getElementById("popup-2").classList.toggle("active");
 }
 
+function withdrawPopup() {
+    document.getElementById("popup-3").classList.toggle("active");
+}
+
 function previewFile(input, id) {
     id = id || '#previewImg';
     if (input.files && input.files[0]) {

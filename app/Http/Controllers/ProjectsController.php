@@ -151,16 +151,16 @@ class ProjectsController extends Controller
 
         if ($user->user_role == 'Seller') {
             $proposals = Proposal::where('seller_id', $seller->seller_id)->get();
-            foreach ($proposals as $prop) {
-                if ($prop->project_id != $project->project_id) {
-                    continue;
-                } else {
-                    $proposal = Proposal::where('project_id', $project->project_id)->first();
-                    return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName', 'proposal'));
-                }
-            }
+            // foreach ($proposals as $prop) {
+            //     if ($prop->project_id != $project->project_id) {
+            //         continue;
+            //     } else {
+            //         $proposal = Proposal::where('project_id', $project->project_id)->first();
+            //         return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName', 'proposal'));
+            //     }
+            // }
 
-            $proposal = Proposal::where('project_id', $project->project_id)->first();
+            $proposal = $proposals->where('project_id', $project->project_id)->first();
             return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName', 'proposal'));
         } else {
             return view('userprofile.viewProject', $data, compact('project', 'project_category', 'title', 'pageName'));

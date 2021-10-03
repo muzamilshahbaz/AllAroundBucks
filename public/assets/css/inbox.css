@@ -9,18 +9,36 @@
 .chat-messages {
     display: flex;
     flex-direction: column;
-    max-height: 380px;
+    height: 375px;
     overflow-y: scroll
 }
 
 .chat-message-left,
 .chat-message-right {
     display: flex;
-    flex-shrink: 0
+    color: #516575;
+    width: 50%;
+    font-size: 0.7rem;
 }
 
 .chat-message-left {
-    margin-right: auto
+    margin-right: auto;
+}
+
+.message-text-left {
+    background-color: #FFF89A !important;
+    border-radius: 0px 25px 25px 25px !important;
+    border: 1px solid #6d6e7169 !important;
+}
+
+.message-text-right {
+    background-color: #ABD8FF!important;
+    border-radius: 25px 25px 0px 25px !important;
+    border: 1px solid #6d6e7169 !important;
+}
+
+.username {
+    color: #5298D2;
 }
 
 .chat-message-right {
@@ -28,9 +46,25 @@
     margin-left: auto
 }
 
+.send-button:active,
+.send-button:focus {
+    border: 1px solid #5298D2 !important;
+    text-decoration: none !important;
+    outline: none;
+}
+
+.fa-send:hover {
+    color: #FFF89A !important;
+}
+
+.fa-send:active,
+.fa-send:focus {
+    color: #ABD8FF !important;
+}
+
 .py-3 {
-    padding-top: 1rem!important;
-    padding-bottom: 1rem!important;
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
 }
 
 .px-4 {

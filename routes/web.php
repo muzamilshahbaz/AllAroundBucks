@@ -19,15 +19,19 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Events\Message;
+use App\Http\Controllers\ChangeRoleController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\CoursePaymentController;
 use App\Http\Controllers\CourseVideoController;
 use App\Http\Controllers\EducationHistoryController;
 use App\Http\Controllers\EmployementHistoryController;
+use App\Http\Controllers\PaidCourseController;
 use App\Http\Controllers\PaidProjectController;
 use App\Http\Controllers\ProjectPaymentController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\WithdrawController;
 use App\Models\EmployementHistory;
 use App\Models\PaidProject;
 
@@ -67,7 +71,7 @@ Route::get('/facebook', [LoginController::class, 'redirectToFacebook'])->middlew
 Route::get('/callback/facebook', [LoginController::class, 'handleFacebookCallback'])->middleware('AlreadyLoggedIn');
 
 
-Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('AlreadyLoggedIn');;
 
 Route::get('dashboard', [UserController::class, 'dashboard'])->middleware('isLogged');
 
@@ -80,7 +84,11 @@ Route::get('/profile', [UserController::class, 'profile'])->middleware('isLogged
 Route::get('logout', [LogoutController::class, 'logout']);
 Route::get('index', [LogoutController::class, 'index'])->middleware('AlreadyLoggedIn');
 
-Route::get('user/{username}', [UserController::class, 'user'])->middleware('isLogged');
+Route::get('/user/{username}', [UserController::class, 'user'])->middleware('isLogged');
+Route::get('/seller/{username}', [UserController::class, 'seller'])->middleware('isLogged');
+Route::get('/buyer/{username}', [UserController::class, 'buyer'])->middleware('isLogged');
+Route::get('/trainer/{username}', [UserController::class, 'trainer'])->middleware('isLogged');
+Route::get('/student/{username}', [UserController::class, 'student'])->middleware('isLogged');
 
 Route::get('/courses', [UserController::class, 'courses'])->middleware('isLogged');
 
@@ -131,7 +139,7 @@ Route::get('/update/{project_id}', [ProjectsController::class, 'update'])->middl
 
 Route::get('/inbox', [UserController::class, 'inbox'])->middleware('isLogged');
 
-Route::get('/settings', [UserController::class, 'settings'])->middleware('isLogged');
+Route::get('/settings', [SettingsController::class, 'settings'])->middleware('isLogged');
 
 Route::get('/sellerearnings', [UserController::class, 'earnings'])->middleware('isLogged');
 Route::get('/trainerearnings', [UserController::class, 'earnings'])->middleware('isLogged');
@@ -189,11 +197,23 @@ Route::post('/user/project-search', [SearchController::class, 'project_search'])
 Route::post('/user/talent-search', [SearchController::class, 'talent_search'])->middleware('isLogged');
 Route::post('/user/course-search', [SearchController::class, 'course_search'])->middleware('isLogged');
 
-Route::put('/change-role', [UserController::class, 'changeRole'])->middleware('isLogged');
+Route::put('/change-role', [ChangeRoleController::class, 'changeRole'])->middleware('isLogged');
 
 Route::resource('employement-history', EmployementHistoryController::class)->middleware('isLogged');
 Route::resource('education-history', EducationHistoryController::class)->middleware('isLogged');
 
 Route::post('/ask-changes/{id}', [PaidProjectController::class, 'changes'])->middleware('isLogged');
 
-Route::get('/cancel-project/{id}', [PaidProjectController::class, 'cancel'])->middleware('isLogged');
+Route::get('/cancel-project/{id}', [ProjectPaymentController::class, 'cancel'])->middleware('isLogged');
+
+
+Route::get('/course-payment/{course_id}', [CoursePaymentController::class, 'payment_page'])->middleware('isLogged');
+
+Route::post('/course-paid/{course_id}', [CoursePaymentController::class, 'course_payment'])->middleware('isLogged');
+
+Route::get('/student-courses', [PaidCourseController::class, 'student_courses'])->middleware('isLogged');
+
+Route::get('/withdrawal', [WithdrawController::class, 'withdrawal_form'])->middleware('isLogged');
+
+Route::post('/withdraw-earnings', [WithdrawController::class, 'withdraw_earnings'])->middleware('isLogged');
+

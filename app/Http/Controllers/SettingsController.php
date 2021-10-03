@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
+    public function settings()
+    {
+        if (session()->has('LoggedUser')) {
+            $users = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $users,
+                'roles' =>  UserRole::all()
+            ];
+        }
+        $pageName = 'Settings';
+        $title = 'Settings';
+
+        return view('userprofile.settings', $data, compact('title', 'pageName'));
+    }
+
     function savePersonalInfo(Request $request)
     {
         if (session()->has('LoggedUser')) {
@@ -68,5 +83,10 @@ class SettingsController extends Controller
                 return back()->with('fail', 'Something went wrong.');
             }
         }
+    }
+
+    public function deactivate($user_id)
+    {
+
     }
 }

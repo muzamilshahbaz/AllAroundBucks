@@ -211,14 +211,5 @@ class PaidProjectController extends Controller
         }
     }
 
-    public function cancel($id)
-    {
-        $query = PaidProject::find($id)->delete();
 
-        if ($query) {
-            return redirect('projects')->with('success', 'You have cancelled the project.');
-        } else {
-            return back()->with('fail', 'Something went wrong....Try Again !!');
-        }
-    }
 }

@@ -77,7 +77,8 @@ class CourseVideoController extends Controller
         $course_videos = CourseVideo::where('course_id', $course_video->course_id)->get();
 
 
-        return view('userprofile.course-video', $data, compact('title', 'pageName', 'course_video', 'course_videos'));
+
+        return view('userprofile.course-video', $data, compact('title', 'pageName','course_video', 'course_videos'));
     }
     public function edit($id)
     {

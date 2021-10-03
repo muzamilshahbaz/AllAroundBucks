@@ -25,10 +25,10 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     @if ($LoggedUserInfo->profile_img == null)
-                        <img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36"
+                        <img src="/assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36"
                             class="img-circle" style="border-radius: 50%">
                     @else
-                        <img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36"
+                        <img src="/assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36"
                             height="36" class="img-circle" style="border-radius: 50%">
 
                     @endif

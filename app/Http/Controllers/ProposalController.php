@@ -89,7 +89,7 @@ class ProposalController extends Controller
         }
 
         $seller = Seller::where('user_id', $user->user_id)->first();
-        $proposals = Proposal::where('seller_id', $seller->seller_id)->get()->sortByDesc('proposal_id');
+        $proposals = Proposal::where('seller_id', $seller->seller_id)->orderBy('proposal_id', 'DESC')->get();
 
         $pageName = 'Proposals';
         $title = 'Proposals';

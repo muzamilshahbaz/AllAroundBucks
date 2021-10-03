@@ -25,10 +25,10 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     @if ($LoggedUserInfo->profile_img == null)
-                        <img src="assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36"
+                        <img src="/assets/users/userprofile/defaultprofilepic.png" alt="user-img" width="36" height="36"
                             class="img-circle" style="border-radius: 50%">
                     @else
-                        <img src="assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36"
+                        <img src="/assets/users/userprofile/{{ $LoggedUserInfo->profile_img }}" alt="user-img" width="36"
                             height="36" class="img-circle" style="border-radius: 50%">
 
                     @endif
@@ -65,16 +65,16 @@
         <br>
         <div class="row" style="font-size: 17px; border: 1px solid black; padding: 10px">
 
-            <div class="col-3">
+            <div class="col-4">
                 <span style="font-weight: bold">Total Courses: </span><span>{{ $courses->count('course_id') }}</span>
             </div>
-            <div class="col-3">
+            {{-- <div class="col-3">
                 <span style="font-weight: bold">Sold Courses: </span><span>{{ $trainer->courses_sell }}</span>
+            </div> --}}
+            <div class="col-4">
+                <span style="font-weight: bold">Total Sales: </span><span>{{ $sold_courses->count('id') }}</span>
             </div>
-            <div class="col-3">
-                <span style="font-weight: bold">Total Sales: </span><span>{{ $trainer->total_sales }}</span>
-            </div>
-            <div class="col-3">
+            <div class="col-4">
                 <span style="font-weight: bold">Experience: </span><span>{{ $trainer->experience }}</span>
             </div>
 
@@ -158,7 +158,13 @@
                 <div class="card"
                     style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
                     <div class="card-body">
+                        @if ($trainer->skills == NULL)
+                            <div class="text-center">
+                                No skills has been added.
+                            </div>
+                        @else
                         {{ $trainer->skills }}
+                        @endif
                     </div>
                 </div>
             </div>

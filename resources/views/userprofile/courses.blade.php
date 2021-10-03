@@ -33,7 +33,7 @@
 
 
 
-        <div class="col-4">
+        <div class="col-3">
            <a id="course-search-result" href="/coursedetails/{{ $course->course_id }}">
             <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
                 <div class="card-img-top">
@@ -41,12 +41,12 @@
                 </div>
 
                 <div class="card-body" style="padding: 10px">
-                    <div class="card-title">
-                        <h5>{{ $course->course_title }}</h5>
+                    <div class="card-title display-4">
+                        {{ $course->course_title }}
                     </div>
 
-                    <div class="card-subtitle">
-                        <span>by {{  $course->trainer }}</span>
+                    <div class="card-subtitle" style="font-size: 0.7rem">
+                        by {{ $course->trainer }}
                     </div>
                     <div class="row">
                         <div class="col-7">
@@ -89,17 +89,14 @@
         <h4>You have not added any course in your collection. Click on Add New Course to teach and earn.</h4>
     </div>
 @else
-<div class="col-12">
-    <h3>Following is the list of your added courses.</h3>
-</div>
-<br>
+
 <div class="row">
 
     @foreach ($trainerCourse as $course)
 
 
 
-        <div class="col-4">
+        <div class="col-3">
            <a id="course-search-result" href="/coursedetails/{{ $course->course_id }}">
             <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
                 <div class="card-img-top">
@@ -107,12 +104,12 @@
                 </div>
 
                 <div class="card-body" style="padding: 10px">
-                    <div class="card-title">
-                        <h5>{{ $course->course_title }}</h5>
+                    <div class="card-title display-4">
+                        {{ $course->course_title }}
                     </div>
 
-                    <div class="card-subtitle">
-                        <span>by {{  $course->trainer }}</span>
+                    <div class="card-subtitle" style="font-size: 0.7rem">
+                        by {{ $course->trainer }}
                     </div>
                     <div class="row">
                         <div class="col-7">

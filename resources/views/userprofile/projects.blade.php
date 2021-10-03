@@ -3,14 +3,14 @@
 @section('usercontent')
 
     <link rel="stylesheet" href="/assets/css/signup.css">
-    <div class="col-lg-12">
+    <div class="col-6">
 
         <a href="/newProject" class="btn btn-primary" style="background-color: #5298D2; border-radius:0.5em">Add New
             Project</a>
 
     </div>
-    <br>
-    <div class="results">
+
+    <div class="results mt-2">
         @if (Session::get('success'))
 
             <div class="alert alert-success">
@@ -27,9 +27,9 @@
 
         @endif
     </div>
-    <br>
 
-    <div class="tab" style="border: 1px solid #5298D2;">
+
+    <div class="tab mt-3" style="border: 1px solid #5298D2;">
         <button class="tablinks" onclick="openTab(event, 'All')">All</button>
         <button class="tablinks" onclick="openTab(event, 'Active')">Active</button>
         <button class="tablinks" onclick="openTab(event, 'Awaiting For Approval')">Awaiting For Approval</button>

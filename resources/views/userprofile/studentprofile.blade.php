@@ -46,7 +46,7 @@
         <div class="row" style="font-size: 17px; border: 1px solid black; padding: 10px">
 
             <div class="text-center">
-                <span style="font-weight: bold">Courses Completed: </span><span>{{ $student->courses_completed }}</span>
+                <span style="font-weight: bold">Courses Completed: </span><span>{{ $courses->count('id') }}</span>
             </div>
 
 

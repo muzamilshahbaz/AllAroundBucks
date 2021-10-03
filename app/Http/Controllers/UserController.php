@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\EducationHistory;
 use App\Models\EmployementHistory;
+use App\Models\PaidCourse;
 use App\Models\PaidProject;
 use App\Models\Project;
 use App\Models\Seller;
@@ -39,16 +40,20 @@ class UserController extends Controller
         $title = $user->user_role . $pageName;
         if ($user->user_role == 'Seller') {
             $seller = Seller::where('user_id', $user->user_id)->first();
-            $seller_projects = PaidProject::where('seller_id', $seller->seller_id)
-                ->where('status', 'awaiting for feedback')
-                ->orWhere('status', 'completed')
-                ->get();
-            $project = PaidProject::where('seller_id', $seller->seller_id);
-            $projects = $project->latest()->take(10)->get();
+            $seller_projects = PaidProject::where('seller_id', $seller->seller_id)->get();
+
+            $projects = PaidProject::where('seller_id', $seller->seller_id)->latest()->take(10)->get();
+
+
             return view('userprofile.sellerdashboard', $data, compact('title', 'pageName', 'seller', 'projects', 'seller_projects'));
         } elseif ($user->user_role == 'Trainer') {
             $trainer = Trainer::where('user_id', $user->user_id)->first();
-            return view('userprofile.trainerdashboard', $data, compact('title', 'pageName', 'trainer'));
+            $courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->get();
+            $recent_courses = PaidCourse::where('trainer_id', $trainer->trainer_id)
+                ->latest()->take(10)
+                ->get();
+
+            return view('userprofile.trainerdashboard', $data, compact('title', 'pageName', 'trainer', 'courses', 'recent_courses'));
         }
     }
 
@@ -113,11 +118,12 @@ class UserController extends Controller
         } elseif ($user->user_role == 'Trainer') {
             $trainer = Trainer::where('user_id', $user->user_id)->first();
             $courses = Course::where('trainer_id', $trainer->trainer_id)->get();
-
-            return view('userprofile.trainerprofile', $data, compact('title', 'pageName', 'trainer', 'courses', 'education_history', 'employement_history'));
+            $sold_courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->get();
+            return view('userprofile.trainerprofile', $data, compact('title', 'pageName', 'sold_courses', 'trainer', 'courses', 'education_history', 'employement_history'));
         } elseif ($user->user_role == 'Student') {
             $student = Student::where('user_id', $user->user_id)->first();
-            return view('userprofile.studentprofile', $data, compact('title', 'pageName', 'student', 'education_history', 'employement_history'));
+            $courses = PaidCourse::where('student_id', $student->student_id)->get();
+            return view('userprofile.studentprofile', $data, compact('title', 'pageName', 'student', 'courses', 'education_history', 'employement_history'));
         }
     }
 
@@ -132,28 +138,190 @@ class UserController extends Controller
             ];
         }
         $userProfile = User::where('username', $username)->first();
-        if ($userProfile->user_id == $user->user_id) {
-            return redirect('profile');
-        } else {
+        if ($userProfile) {
 
-            if ($userProfile->user_role == 'Seller') {
-                $seller = Seller::where('user_id', $userProfile->user_id)->first();
-                $seller->increment('views');
-                $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
-                $pageName = $userProfile->name . ' Profile';
-                return view('profile', $data, compact('title', 'userProfile', 'pageName', 'seller'));
-            } elseif ($userProfile->user_role == 'Trainer') {
-                $trainer = Trainer::where('user_id', $userProfile->user_id)->first();
-                $trainer->increment('views');
-                $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
-                $pageName = $userProfile->name . ' Profile';
-                return view('profile', $data, compact('title', 'userProfile', 'pageName', 'trainer'));
-            } elseif ($userProfile->user_role == 'Buyer') {
-                $buyer = Buyer::where('user_id', $userProfile->user_id)->first();
-                $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
-                $pageName = $userProfile->name . ' Profile';
-                return view('profile', $data, compact('title', 'userProfile', 'pageName', 'buyer'));
+            if ($userProfile->user_id == $user->user_id) {
+                return redirect('profile');
+            } else {
+                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+                if ($userProfile->user_role == 'Seller') {
+                    $seller = Seller::where('user_id', $userProfile->user_id)->first();
+                    $projects = PaidProject::where('seller_id', $seller->seller_id)->get();
+
+                    $seller->increment('views');
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.seller', $data, compact('title', 'projects', 'userProfile', 'pageName', 'seller', 'education_history', 'employement_history'));
+                } elseif ($userProfile->user_role == 'Trainer') {
+                    $trainer = Trainer::where('user_id', $userProfile->user_id)->first();
+                    $trainer->increment('views');
+                    $courses = Course::where('trainer_id', $trainer->trainer_id)->get();
+                    $sold_courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->get();
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.trainer', $data, compact('title', 'userProfile', 'pageName', 'sold_courses', 'trainer', 'courses', 'education_history', 'employement_history'));
+                } elseif ($userProfile->user_role == 'Buyer') {
+                    $buyer = Buyer::where('user_id', $userProfile->user_id)->first();
+                    // $buyer->increment('views');
+                    $projects = PaidProject::where('buyer_id', $buyer->buyer_id)
+                        ->where('status', 'completed')
+                        ->orWhere('status', 'awaiting for feedback')
+                        ->get();
+
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.buyer', $data, compact('title', 'userProfile', 'pageName', 'buyer', 'projects', 'education_history', 'employement_history'));
+                } elseif ($userProfile->user_role == 'Student') {
+                    $student = Student::where('user_id', $userProfile->user_id)->first();
+                    $courses = PaidCourse::where('student_id', $student->student_id)->get();
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.student', $data, compact('title', 'userProfile', 'pageName', 'student', 'courses', 'education_history', 'employement_history'));
+                }
             }
+        } else {
+            return back()->with('fail', 'No user exist against this username.');
+        }
+    }
+    function seller($username)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+        $userProfile = User::where('username', $username)->first();
+        if ($userProfile) {
+
+            if ($userProfile->user_id == $user->user_id) {
+                return redirect('profile');
+            } else {
+                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+
+                $seller = Seller::where('user_id', $userProfile->user_id)->first();
+                if ($seller) {
+                    $projects = PaidProject::where('seller_id', $seller->seller_id)->get();
+
+                    $seller->increment('views');
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.seller', $data, compact('title', 'projects', 'userProfile', 'pageName', 'seller', 'education_history', 'employement_history'));
+                } else {
+                    return back()->with('fail', 'No seller exists against this username.');
+                }
+            }
+        } else {
+            return back()->with('fail', 'No user exists against this username.');
+        }
+    }
+
+    function buyer($username)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+        $userProfile = User::where('username', $username)->first();
+        if ($userProfile) {
+
+            if ($userProfile->user_id == $user->user_id) {
+                return redirect('profile');
+            } else {
+                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+
+                $buyer = Buyer::where('user_id', $userProfile->user_id)->first();
+                // $buyer->increment('views');
+                if ($buyer) {
+                    $projects = PaidProject::where('buyer_id', $buyer->buyer_id)
+                        ->where('status', 'completed')
+                        ->orWhere('status', 'awaiting for feedback')
+                        ->get();
+
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.buyer', $data, compact('title', 'userProfile', 'pageName', 'buyer', 'projects', 'education_history', 'employement_history'));
+                } else {
+                    return back()->with('fail', 'No buyer exists against this username.');
+                }
+            }
+        } else {
+            return back()->with('fail', 'No user exists against this username.');
+        }
+    }
+
+    function trainer($username)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+        $userProfile = User::where('username', $username)->first();
+        if ($userProfile) {
+
+            if ($userProfile->user_id == $user->user_id) {
+                return redirect('profile');
+            } else {
+                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+
+                $trainer = Trainer::where('user_id', $userProfile->user_id)->first();
+                if ($trainer) {
+                    $trainer->increment('views');
+                    $courses = Course::where('trainer_id', $trainer->trainer_id)->get();
+                    $sold_courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->get();
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.trainer', $data, compact('title', 'userProfile', 'pageName', 'sold_courses', 'trainer', 'courses', 'education_history', 'employement_history'));
+                } else {
+                    return back()->with('fail', 'No trainer exists against this username.');
+                }
+            }
+        } else {
+            return back()->with('fail', 'No user exists against this username.');
+        }
+    }
+
+    function student($username)
+    {
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+        $userProfile = User::where('username', $username)->first();
+        if ($userProfile) {
+
+            if ($userProfile->user_id == $user->user_id) {
+                return redirect('profile');
+            } else {
+                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+
+                $student = Student::where('user_id', $userProfile->user_id)->first();
+                if ($student) {
+                    $courses = PaidCourse::where('student_id', $student->student_id)->get();
+                    $title =  $userProfile->username . ' - ' . 'AllAroundBucks';
+                    $pageName = $userProfile->name . ' Profile';
+                    return view('profile.student', $data, compact('title', 'userProfile', 'pageName', 'student', 'courses', 'education_history', 'employement_history'));
+                } else {
+                    return back()->with('fail', 'No student exists against this username.');
+                }
+            }
+        } else {
+            return back()->with('fail', 'No user exists against this username.');
         }
     }
 
@@ -279,102 +447,6 @@ class UserController extends Controller
         return view('inbox', $data, compact('title', 'pageName'));
     }
 
-    function settings()
-    {
-        if (session()->has('LoggedUser')) {
-            $users = User::where('user_id', '=', session('LoggedUser'))->first();
-            $data = [
-                'LoggedUserInfo' => $users,
-                'roles' =>  UserRole::all()
-            ];
-        }
-        $pageName = 'Settings';
-        $title = 'Settings';
-
-        return view('userprofile.settings', $data, compact('title', 'pageName'));
-    }
-
-    function changeRole(Request $request)
-    {
-        if (session()->has('LoggedUser')) {
-            $user = User::where('user_id', '=', session('LoggedUser'))->first();
-            $data = [
-                'LoggedUserInfo' => $user,
-                'roles' =>  UserRole::all()
-            ];
-        }
-
-        $user->user_role = $request->user_role;
-
-        $user->update();
-
-
-        if ($user->user_role == 'Seller') {
-            $exist = Seller::where('user_id', $user->user_id)->first();
-
-            if ($exist) {
-                return redirect('dashboard')->with('success', 'Now you are using AllAroundBucks as a Seller.');
-            } else {
-                $seller = new Seller;
-
-                $seller->user_id = $user->user_id;
-                $seller->seller_username = $user->username;
-
-                $query = $seller->save();
-            }
-        } elseif ($user->user_role == 'Buyer') {
-            $exist = Buyer::where('user_id', $user->user_id)->first();
-
-            if ($exist) {
-                return redirect('hiredirect')->with('success', 'Now you are using AllAroundBucks as a Buyer.');
-            } else {
-                $buyer = new Buyer;
-                $buyer->user_id = $user->user_id;
-                $buyer->buyer_username = $user->username;
-
-                $query = $buyer->save();
-            }
-        } elseif ($user->user_role == 'Trainer') {
-            $exist = Trainer::where('user_id', $user->user_id)->first();
-
-            if ($exist) {
-                return redirect('dashboard')->with('success', 'Now you are using AllAroundBucks as a Trainer.');
-            } else {
-                $trainer = new Trainer;
-                $trainer->user_id = $user->user_id;
-                $trainer->trainer_username = $user->username;
-
-                $query = $trainer->save();
-            }
-        } elseif ($user->user_role == 'Student') {
-            $exist = Student::where('user_id', $user->user_id)->first();
-
-            if ($exist) {
-                return redirect('courses')->with('success', 'Now you are using AllAroundBucks as a Student.');
-            } else {
-                $student = new Student;
-                $student->user_id = $user->user_id;
-                $student->student_username = $user->username;
-
-                $query = $student->save();
-            }
-        }
-
-        if ($query) {
-            # code...
-            if ($user->user_role == 'Seller' ||  $user->user_role == 'Trainer') {
-                return redirect('dashboard')->with('success', 'Congratulations!! You have completed your registeration process, now you can continue with AllAroundBucks.');
-            } elseif ($user->user_role == 'Buyer') {
-                return redirect('hiredirect')->with('success', 'Congratulations!! You have completed your registeration process, now you can continue with AllAroundBucks.');
-            } elseif ($user->user_role == 'Student') {
-                return redirect('courses')->with('success', 'Congratulations!! You have completed your registeration process, now you can continue with AllAroundBucks.');
-            }
-        } else {
-            # code...
-            return back()->with('fail', 'Something went wrong...Try Again');
-        }
-    }
-
     public function earnings()
     {
         if (session()->has('LoggedUser')) {
@@ -389,17 +461,14 @@ class UserController extends Controller
         $title = $user->user_role . $pageName;
         if ($user->user_role == 'Seller') {
             $seller = Seller::where('user_id', $user->user_id)->first();
-            $seller_projects = PaidProject::where('seller_id', $seller->seller_id)
-                ->where('status', 'awaiting for feedback')
-                ->orWhere('status', 'completed')
-                ->get();
-
+            $seller_projects = PaidProject::where('seller_id', $seller->seller_id)->get();
             $project = PaidProject::where('seller_id', $seller->seller_id);
             $projects = $project->latest()->take(10)->get();
             return view('userprofile.sellerearnings', $data, compact('title', 'pageName', 'seller', 'projects', 'seller_projects'));
         } elseif ($user->user_role == 'Trainer') {
             $trainer = Trainer::where('user_id', $user->user_id)->first();
-            return view('userprofile.trainerearnings', $data, compact('title', 'pageName', 'trainer'));
+            $courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->orderBy('created_at', 'DESC')->get();
+            return view('userprofile.trainerearnings', $data, compact('title', 'pageName', 'trainer', 'courses'));
         }
     }
 }
