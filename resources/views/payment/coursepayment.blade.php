@@ -72,7 +72,7 @@
                 <div class='form-group cvc required'>
                     <label class='control-label'>CVC</label> <input autocomplete='off'
                         class='form-control card-cvc' placeholder='3 or 4 digits' maxlength="4" size='4'
-                        type='text' onkeypress='validate(event)' name="cvc">
+                        type='password' onkeypress='validate(event)' name="cvc">
                 </div>
             </div>
                <div class="col-4">
@@ -86,7 +86,7 @@
                 <div class='form-group expiration required'>
                     <label class='control-label'>Expiration Year</label> <input
                         class='form-control card-expiry-year' placeholder='YYYY' size='4'
-                        type='text' maxlength="4" name="year">
+                        type='text' maxlength="4" name="year" onkeypress="validate(event)">
                 </div>
               </div>
             </div>

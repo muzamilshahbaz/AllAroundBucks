@@ -25,6 +25,8 @@ use App\Http\Controllers\CoursePaymentController;
 use App\Http\Controllers\CourseVideoController;
 use App\Http\Controllers\EducationHistoryController;
 use App\Http\Controllers\EmployementHistoryController;
+use App\Http\Controllers\InboxController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PaidCourseController;
 use App\Http\Controllers\PaidProjectController;
 use App\Http\Controllers\ProjectPaymentController;
@@ -137,7 +139,7 @@ Route::get('/project/{project_id}', [ProjectsController::class, 'viewProject'])-
 Route::get('/edit-project/{project_id}', [ProjectsController::class, 'edit'])->middleware('isLogged');
 Route::get('/update/{project_id}', [ProjectsController::class, 'update'])->middleware('isLogged');
 
-Route::get('/inbox', [UserController::class, 'inbox'])->middleware('isLogged');
+Route::get('/inbox', [MessageController::class, 'inbox'])->middleware('isLogged');
 
 Route::get('/settings', [SettingsController::class, 'settings'])->middleware('isLogged');
 
@@ -190,6 +192,7 @@ Route::put('projectSend/{id}', [PaidProjectController::class, 'projectSend'])->m
 Route::get('approve-project/{id}', [ProjectPaymentController::class, 'approveProject'])->middleware('isLogged');
 
 Route::put('buyerFeedback/{id}', [PaidProjectController::class, 'buyerFeedback'])->middleware('isLogged');
+Route::put('/course-feedback', [PaidCourseController::class, 'feedback'])->middleware('isLogged');
 
 Route::put('sellerFeedback/{id}', [PaidProjectController::class, 'sellerFeedback'])->middleware('isLogged');
 

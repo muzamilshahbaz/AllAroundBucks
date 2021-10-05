@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\PaidCourse;
+use App\Models\Trainer;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
@@ -26,5 +28,43 @@ class PaidCourseController extends Controller
                             ->get();
 
         return view('userprofile.student-courses', $data, compact('title', 'pageName', 'courses'));
+    }
+
+    public function feedback(Request $request)
+    {
+        // return $request;
+        if (session()->has('LoggedUser')) {
+            $user = User::where('user_id', '=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $user,
+                'roles' =>  UserRole::all()
+            ];
+        }
+
+        $course = PaidCourse::find($request->paid_course_id);
+        $course->student_feedback = $request->student_feedback;
+        $course->course_rating = $request->course_rating;
+
+        $query1 = $course->update();
+
+        $trainer = Trainer::where('trainer_id', $course->trainer_id)->first();
+
+        $specific_course = Course::where('course_id', $course->course_id)->first();
+        $specific_course_paid = PaidCourse::where('course_id', $course->course_id)->get();
+
+        $specific_course->rating = $specific_course_paid->where('course_rating', '!=', 0.0)->sum('course_rating') / $specific_course_paid->where('course_rating', '!=', 0.0)->count('id');
+
+        $courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->get();
+
+        $trainer->rating = $courses->where('course_rating', '!=', 0.0)->sum('course_rating') / ($courses->where('course_rating', '!=', 0.0)->count('id'));
+
+        $query2 = $trainer->update();
+        $query3 = $specific_course->update();
+
+        if ($query1 && $query2 && $query3) {
+            return back()->with('success', 'You have provided the feedback.');
+        } else {
+            return back()->with('fail', 'something went wrong.');
+        }
     }
 }

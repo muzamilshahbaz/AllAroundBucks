@@ -31,4 +31,11 @@ class User extends Model
     {
         return $this->hasOne(Student::class, 'username');
     }
+
+    protected $guarded = [];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'from');
+    }
 }

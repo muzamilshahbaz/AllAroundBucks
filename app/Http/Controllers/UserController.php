@@ -432,20 +432,7 @@ class UserController extends Controller
         return redirect('profile')->with('success', 'Your changes have been updated');
     }
 
-    function inbox()
-    {
-        if (session()->has('LoggedUser')) {
-            $users = User::where('user_id', '=', session('LoggedUser'))->first();
-            $data = [
-                'LoggedUserInfo' => $users,
-                'roles' =>  UserRole::all()
-            ];
-        }
-        $pageName = 'Inbox';
-        $title = 'Inbox';
 
-        return view('inbox', $data, compact('title', 'pageName'));
-    }
 
     public function earnings()
     {

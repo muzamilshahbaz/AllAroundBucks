@@ -52,13 +52,13 @@
 
             <div class="form-group">
 
-                    <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{ old('name') }}">
+                    <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{ old('name') }}" required>
                     <span class="text-danger">@error('name') {{ $message }} @enderror</span>
 
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
-                <span class="text-danger">@error('email') {{ $message }} @enderror</span>
+                <input type="email" class="form-control" id="txtEmail" name="email" autocomplete="off" onkeyup="ValidateEmail()" placeholder="Email" value="{{ old('email') }}" required>
+                <span class="text-danger" id="errorMsg">@error('email') {{ $message }} @enderror</span>
             </div>
             {{-- Add Profile Image --}}
             {{-- <div class="form-group">
@@ -68,11 +68,11 @@
             </div> --}}
 
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" minlength="8" required>
                 <span class="text-danger">@error('password') {{ $message }} @enderror</span>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                <input type="password" class="form-control" name="confirm_password" minlength="8" placeholder="Confirm Password" required>
                 <span class="text-danger">@error('confirm_password') {{ $message }} @enderror</span>
             </div>
             {{-- <div class="form-group">

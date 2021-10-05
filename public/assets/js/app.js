@@ -1,3 +1,14 @@
+function ValidateEmail() {
+    var email = document.getElementById("txtEmail").value;
+    var errorMsg = document.getElementById("errorMsg");
+    errorMsg.innerHTML = "";
+    var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (!expr.test(email)) {
+        errorMsg.innerHTML = "Invalid email address.";
+    }
+}
+
+
 $(document).on("click", ".action-buttons .dropdown-menu", function(e) {
     e.stopPropagation();
 });
@@ -10,9 +21,14 @@ function rolePopup() {
     document.getElementById("popup-2").classList.toggle("active");
 }
 
-function withdrawPopup() {
-    document.getElementById("popup-3").classList.toggle("active");
+function coursePopup() {
+    var pop = document.getElementById("popup-3").classList.toggle("active");
+    // $("#popup-3").removeAttr('hidden');
 }
+
+// function withdrawPopup() {
+//     document.getElementById("popup-3").classList.toggle("active");
+// }
 
 function previewFile(input, id) {
     id = id || '#previewImg';

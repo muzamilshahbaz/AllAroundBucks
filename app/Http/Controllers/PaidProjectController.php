@@ -198,8 +198,6 @@ class PaidProjectController extends Controller
 
         $projects = PaidProject::where('buyer_id', $buyer->buyer_id)->get();
 
-
-
         $buyer->rating = $projects->sum('buyer_project_rating') / ($buyer->total_projects);
         $query1 = $project->update();
         $query2 = $buyer->update();

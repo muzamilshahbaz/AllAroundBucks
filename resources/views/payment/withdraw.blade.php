@@ -29,6 +29,7 @@
             <div class="text-center">
                 <h3>Withdraw Earnings</h3>
             </div>
+            <input type="hidden" name="user_id" value="{{ $withdrawal_user->user_id }}">
 <input type="hidden" name="withdrawal_amount" value="{{ $withdrawal_user->amount_for_withdrawals }}">
             <div class="row">
                 <div class="col-12">

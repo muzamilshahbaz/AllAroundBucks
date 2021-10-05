@@ -2,7 +2,24 @@
 
 @section('usercontent')
 
+<div class="results">
+    @if (Session::get('success'))
 
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+
+    </div>
+
+    @endif
+
+    @if (Session::get('fail'))
+    <div class="alert alert-danger">
+            {{ Session::get('fail') }}
+    </div>
+
+    @endif
+</div>
+<link rel="stylesheet" href="/assets/css/signup.css">
     <div class="card" style="padding: 5px; border-radius:0.5em; border:none;">
         <div class="card-body">
             <div class="card-title">
@@ -28,7 +45,7 @@
                             <h4><b>Total Videos:</b> {{ $course_videos->count('id') }}</h4>
                         </div>
                     </div>
-                    <br><br>
+<br>
                     <div class="row">
                         <div class="col-12">
                             @if ($LoggedUserInfo->user_role == 'Student')
@@ -36,6 +53,25 @@
                                     @if ($first_video)
                                     <a href="/course-video/watch/{{ $first_video->id }}" class="btn btn-primary"
                                         style="background-color: #5298D2; border-radius:0.5em">Watch Videos</a>
+                                        @if ($paid_course->student_feedback == NULL)
+                                        <button onclick="coursePopup()" class="btn btn-primary"
+                                            style="background-color: #5298D2; border-radius:0.5em">Give Feedback</a>
+                                        @else
+                                        <br><br>
+                                       <div class="card" style="padding: 5px; border-radius:0.5em;">
+                                           <div class="card-body">
+                                               <div class="card-title text-center">
+                                                <h5 style="color: #5298D2">Your Feedback to this course</h5>
+                                               </div>
+                                            <div class="text-center">
+
+                                                <span>@include('ratings.paidcourserating')</span>
+                                                <p><i>"{{ $paid_course->student_feedback }}"</i></p>
+                                            </div>
+                                           </div>
+                                       </div>
+                                        @endif
+
                                     @endif
                                 @else
                                     <a href="/course-payment/{{ $course->course_id }}" class="btn btn-primary"
@@ -121,3 +157,49 @@
     </div>
 
 @endsection
+@if ($paid_course)
+<div class="popup" id="popup-3">
+    <div class="overlay"></div>
+    <div class="content" style="height:55%">
+        <div class="close-btn" onclick="coursePopup()">×</div>
+            <form action="/course-feedback" class="signup-form" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <input type="hidden" name="paid_course_id" value="{{ $paid_course->id }}" class="form-control">
+                <h3>Rate this course</h3>
+
+                <div class="form-group">
+                    <textarea name="student_feedback" id="" cols="30" rows="6" required>{{ old('student_feedback') }}</textarea>
+                </div>
+
+                <div class="form-group">
+
+                    <select name="course_rating" class="form-control" id="" style="border:1px solid #5298D2">
+                        <option value="0.0">0.0 star</option>
+                        <option value="0.5">0.5 star</option>
+                        <option value="1.0">1.0 star</option>
+                        <option value="1.5">1.5 star</option>
+                        <option value="2.0">2.0 star</option>
+                        <option value="2.5">2.5 star</option>
+                        <option value="3.0">3.0 star</option>
+                        <option value="3.5">3.5 star</option>
+                        <option value="4.0">4.0 star</option>
+                        <option value="4.5">4.5 star</option>
+                        <option value="5.0">5.0 star</option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary"
+                        style="background-color: #5298D2">Submit</button>
+                </div>
+
+            </form>
+
+    </div>
+</div>
+
+@endif

@@ -39,29 +39,43 @@ class WithdrawController extends Controller
 
     public function withdraw_earnings(Request $request)
     {
+
         // return $request->all();
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-        // Stripe\Transfer::create([
-        //     'amount' => $request->withdrawal_amount * 100,
-        //     'currency' => 'usd',
-        //     'destination' => $request->stripe_account,
-        //     // 'transfer_group' => 'ORDER_95',
-        // ]);
-        $account = \Stripe\Account::create([
-            'country' => 'US',
-            'type' => 'custom',
-            'capabilities' => [
-              'card_payments' => [
-                'requested' => true,
-              ],
-              'transfers' => [
-                'requested' => true,
-              ],
-            ],
-          ]);
+        Stripe\Transfer::create([
+            'amount' => $request->withdrawal_amount * 100,
+            'currency' => 'usd',
+            // 'source_transacion' => 100,
+            'destination' => $request->stripe_account,
+            // 'transfer_group' => 'ORDER_95',
+        ]);
+        // $account = \Stripe\Account::create([
+        //     'country' => 'US',
+        //     'type' => 'custom',
+        //     'capabilities' => [
+        //       'card_payments' => [
+        //         'requested' => true,
+        //       ],
+        //       'transfers' => [
+        //         'requested' => true,
+        //       ],
+        //     ],
+        //   ]);
 
-          return $account;
+        //   return $account;
+        $user = User::where('user_id', $request->user_id)->first();
+        if ($user->user_role == 'Seller') {
+            $seller = Seller::where('user_id', $user->user_id)->first();
+            $seller->amount_for_withdrawals = 0;
+            $seller->update();
 
-        return redirect('sellerearnings')->with('success', 'Withdrawal Successfully Completed!!');
+        } else {
+            $trainer = Trainer::where('user_id', $user->user_id)->first();
+            $trainer->amount_for_withdrawals = 0;
+            $trainer->update();
+        }
+
+
+        return redirect('earnings')->with('success', 'Withdrawal Successfully Completed!!');
     }
 }

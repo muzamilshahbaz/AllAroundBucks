@@ -80,6 +80,14 @@ class CoursePaymentController extends Controller
         ]);
 
 
+        // Stripe\Transfer::create([
+        //     'amount' => $course->course_price * 100,
+        //     'currency' => 'usd',
+        //     'source_transaction' => $charge->id,
+        //     'destination' => 'acct_1JgEOpPtgu3XlORTs',
+        //     // 'transfer_group' => 'ORDER_95',
+        // ]);
+
         $course_payment = new CoursePayment;
         $course_payment->card_holder = $request->card_holder;
         $course_payment->course_id = $course->course_id;

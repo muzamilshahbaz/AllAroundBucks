@@ -77,7 +77,7 @@
             <li class="sidebar-item">
                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/inbox" aria-expanded="false">
 
-                    <span class="hide-menu">Messages</span>
+                    <span class="hide-menu">Inbox</span>
                 </a>
             </li>
 
@@ -315,6 +315,8 @@
         </div>
     </div>
 
+
+
     <script src="/assets/users/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="/assets/users/plugins/bower_components/popper.js/dist/umd/popper.min.js"></script>
@@ -334,6 +336,7 @@
     </script>
     <script src="/assets/users/js/pages/dashboards/dashboard1.js"></script>
     <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/inbox.js"></script>
 
     <script>
         function disableEnd() {
