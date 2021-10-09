@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 
 use App\Events\Message;
 use App\Http\Controllers\ChangeRoleController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\CoursePaymentController;
 use App\Http\Controllers\CourseVideoController;
@@ -140,6 +141,14 @@ Route::get('/edit-project/{project_id}', [ProjectsController::class, 'edit'])->m
 Route::get('/update/{project_id}', [ProjectsController::class, 'update'])->middleware('isLogged');
 
 Route::get('/inbox', [MessageController::class, 'inbox'])->middleware('isLogged');
+Route::post('/send-message/{user_id}', [MessageController::class, 'send_message'])->middleware('isLogged');
+Route::get('/chat/{id}', [MessageController::class, 'chat_box'])->middleware('isLogged');
+Route::get('userlist', [MessageController::class, 'userlist']);
+Route::get('usermessage/{user_id}', [MessageController::class, 'user_message']);
+
+// Route::get('inbox', [ChatsController::class, 'index']);
+// Route::get('messages', [ChatsController::class, 'fetchMessages']);
+// Route::post('messages', [ChatsController::class, 'sendMessage']);
 
 Route::get('/settings', [SettingsController::class, 'settings'])->middleware('isLogged');
 

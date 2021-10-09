@@ -21,6 +21,10 @@ function rolePopup() {
     document.getElementById("popup-2").classList.toggle("active");
 }
 
+function inboxPopup() {
+    document.getElementById("msgpop").classList.toggle("active");
+}
+
 function coursePopup() {
     var pop = document.getElementById("popup-3").classList.toggle("active");
     // $("#popup-3").removeAttr('hidden');

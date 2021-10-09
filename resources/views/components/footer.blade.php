@@ -3,6 +3,7 @@
 <x-userfooter></x-userfooter>
 
 @else
+
 <footer class="footer text-center">
     <div class="template-demo">
 
