@@ -57,8 +57,8 @@
 
             </div> --}}
             <div class="form-group">
-                <input type="email" class="form-control" name="login" placeholder="Email" value="{{ old('login') }}">
-                <span class="text-danger">@error('login') {{ $message }} @enderror</span>
+                <input type="email" class="form-control" id="txtEmail" name="login" placeholder="Email" value="{{ old('login') }}" onkeyup="ValidateEmail()" required autocomplete="off">
+                <span class="text-danger" id="errorMsg">@error('login') {{ $message }} @enderror</span>
             </div>
             {{-- Add Profile Image --}}
             {{-- <div class="form-group">
@@ -68,7 +68,7 @@
             </div> --}}
 
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
                 <span class="text-danger">@error('password') {{ $message }} @enderror</span>
             </div>
             {{-- <div class="form-group">

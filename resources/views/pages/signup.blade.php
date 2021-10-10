@@ -57,7 +57,7 @@
 
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" id="txtEmail" name="email" autocomplete="off" onkeyup="ValidateEmail()" placeholder="Email" value="{{ old('email') }}" required>
+                <input type="email" class="form-control" id="txtEmail" name="email" onkeyup="ValidateEmail()" placeholder="Email" value="{{ old('email') }}" required autocomplete="off">
                 <span class="text-danger" id="errorMsg">@error('email') {{ $message }} @enderror</span>
             </div>
             {{-- Add Profile Image --}}

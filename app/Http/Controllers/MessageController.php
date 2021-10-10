@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MessageController extends Controller
 {
@@ -78,7 +79,9 @@ class MessageController extends Controller
         $query = $message->save();
 
         if ($query) {
-            return back()->with('success', 'Message Sent Successfully.');
+            // return back()->with('success', 'Message Sent Successfully.');
+            notify()->success('Your Message has been sent');
+            return redirect()->back();
         } else {
             return back()->with('fail', 'something went wrong.');
         }

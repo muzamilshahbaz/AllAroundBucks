@@ -6,7 +6,6 @@
     <x-navbar>
         </x->
 
-
         <div class="flex-box-1">
             <div class="container-1">
                 <div class="row">

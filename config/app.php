@@ -170,6 +170,7 @@ return [
         Softon\LaravelFaceDetect\FaceDetectServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
 
 
         /*

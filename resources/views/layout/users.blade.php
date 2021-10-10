@@ -2,13 +2,16 @@
 <html dir="ltr" lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/assets/css/notify.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <!-- Tell the browser to be responsive to screen width -->
+    <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <link href="/assets/users/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet"
@@ -60,7 +63,7 @@
         }
       </style>
     <!-- ============================================================== -->
-
+    <link rel="stylesheet" href="/assets/css/backToTop.css">
     <x-embed-styles />
 
 
@@ -70,7 +73,8 @@
 
 <body>
 
-
+<!-- Back to top button -->
+<a id="backToTop"></a>
 
     @section('username')
 
@@ -115,7 +119,7 @@
             <li class="sidebar-item">
                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/inbox" aria-expanded="false">
 
-                    <span class="hide-menu">Chats</span>
+                    <span class="hide-menu">Chats </span>
                 </a>
             </li>
 
@@ -525,6 +529,7 @@
 
     });
 </script> --}}
+<script src="/assets/js/backToTop.js"></script>
 </body>
 
 </html>

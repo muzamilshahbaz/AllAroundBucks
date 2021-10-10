@@ -19,6 +19,7 @@
 
         @endif
     </div>
+
     <div class="card" style="width:100%; padding: 5px; border-radius:0.5em; align-content:center; display:flex">
         <div class="py-2 px-4 border-bottom d-none d-lg-block">
             <div class="d-flex align-items-center py-1">
@@ -26,13 +27,13 @@
                     @if ($LoggedUserInfo->user_id == $inbox->sender_id)
                         <a href="/user/{{ $inbox->receiver_username }}">
                             <img src="/assets/users/userprofile/{{ $inbox->receiver_img }}" class="rounded-circle mr-1"
-                             width="40" height="40">
+                                width="40" height="40">
                         </a>
                     @elseif ($LoggedUserInfo->user_id == $inbox->receiver_id)
 
                         <a href="/user/{{ $inbox->sender_username }}">
                             <img src="/assets/users/userprofile/{{ $inbox->sender_img }}" class="rounded-circle mr-1"
-                            width="40" height="40">
+                                width="40" height="40">
                         </a>
 
                     @endif
@@ -80,7 +81,8 @@
 
                                 @endif
 
-                                <div class="text-muted small text-nowrap mt-1">{{ date('H:m', strtotime($message->created_at)) }}</div>
+                                <div class="text-muted small text-nowrap mt-1">
+                                    {{ date('H:m', strtotime($message->created_at)) }}</div>
                             </div>
                             <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-2 mb-1 message-text-right">
                                 {{ $message->message }}
@@ -92,20 +94,21 @@
                             <div>
                                 <div class="position-relative">
                                     @if ($LoggedUserInfo->user_id == $inbox->sender_id)
-                                    <a href="/user/{{ $inbox->receiver_username }}">
-                                        <img src="/assets/users/userprofile/{{ $inbox->receiver_img }}" class="rounded-circle mr-1"
-                                        alt="Sharon Lessman" width="40" height="40">
-                                    </a>
+                                        <a href="/user/{{ $inbox->receiver_username }}">
+                                            <img src="/assets/users/userprofile/{{ $inbox->receiver_img }}"
+                                                class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                        </a>
                                     @elseif ($LoggedUserInfo->user_id == $inbox->receiver_id)
 
-                                    <a href="/user/{{ $inbox->sender_username }}">
-                                        <img src="/assets/users/userprofile/{{ $inbox->sender_img }}" class="rounded-circle mr-1"
-                                        width="40" height="40">
-                                    </a>
+                                        <a href="/user/{{ $inbox->sender_username }}">
+                                            <img src="/assets/users/userprofile/{{ $inbox->sender_img }}"
+                                                class="rounded-circle mr-1" width="40" height="40">
+                                        </a>
 
                                     @endif
                                 </div>
-                                <div class="text-muted small text-nowrap mt-1">{{ date('H:m', strtotime($message->created_at)) }}</div>
+                                <div class="text-muted small text-nowrap mt-1">
+                                    {{ date('H:m', strtotime($message->created_at)) }}</div>
                             </div>
                             <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-0 mb-1 message-text-left">
                                 {{ $message->message }}
@@ -133,7 +136,7 @@
                 <form class="input-group" action="/send-message/{{ $inbox->receiver_id }}" method="POST">
                     @csrf
                     <input type="text" name="message" class="form-control mr-3" autocomplete="off"
-                        placeholder="Type your message" style="border-radius:2em">
+                        placeholder="Type your message" style="border-radius:2em" required>
                     <button class="send-button"><i class="material-icons"
                             style="color:white;font-size:25px">&#xe163;</i></button>
                 </form>

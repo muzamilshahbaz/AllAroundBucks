@@ -30,7 +30,7 @@
                         </li> --}}
                         <!-- User profile and search -->
                         <li>
-                            <button class="profile-pic" onclick="togglePopup()">
+                            <button class="profile-pic" onclick="togglePopup()" style="outline: none">
                                 @yield('navProfileImg')
                                 <span class="text-white font-medium">
 
