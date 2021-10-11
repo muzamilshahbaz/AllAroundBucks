@@ -19,7 +19,7 @@
 
         @endif
     </div>
-    <div class="container emp-profile" style="color: black">
+    <div class="container emp-profile" style="color: black" id="profilepage">
 
         <div class="row">
             <div class="col-md-4">
@@ -85,8 +85,7 @@
             <div class="col-12">
                 <span style="font-weight: bold; font-size: 17px;">Recent Projects : </span> <br><br>
                 @forelse ($projects as $project)
-                    <div class="card"
-                        style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+                    <div class="card">
 
                         <div class="card-body">
                             <div class="card-title">
@@ -115,8 +114,7 @@
                         </div>
                     </div>
                 @empty
-                    <div class="card"
-                        style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+                    <div class="card">
 
                         <div class="card-body">
 
@@ -135,8 +133,7 @@
 
             <div class="col-12">
                 <span style="font-weight: bold; font-size: 17px;">Skills : </span> <br><br>
-                <div class="card"
-                    style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+                <div class="card">
                     <div class="card-body">
                         {{ $seller->skills }}
                     </div>

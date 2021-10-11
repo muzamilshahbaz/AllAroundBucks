@@ -88,6 +88,7 @@ Route::get('logout', [LogoutController::class, 'logout']);
 Route::get('index', [LogoutController::class, 'index'])->middleware('AlreadyLoggedIn');
 
 Route::get('/user/{username}', [UserController::class, 'user'])->middleware('isLogged');
+// Route::get('/{username}', [UserController::class, 'user'])->middleware('isLogged');
 Route::get('/seller/{username}', [UserController::class, 'seller'])->middleware('isLogged');
 Route::get('/buyer/{username}', [UserController::class, 'buyer'])->middleware('isLogged');
 Route::get('/trainer/{username}', [UserController::class, 'trainer'])->middleware('isLogged');

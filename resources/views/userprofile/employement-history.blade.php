@@ -10,8 +10,7 @@
         </div>
         <br>
         @forelse ($employement_history as $work)
-            <div class="card"
-                style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+            <div class="card">
 
                 <div class="card-body">
                     <div class="card-title">
@@ -48,8 +47,7 @@
             </div>
         @empty
 
-            <div class="card"
-                style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+            <div class="card">
 
                 <div class="card-body">
 

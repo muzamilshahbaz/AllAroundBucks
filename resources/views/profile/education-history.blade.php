@@ -7,7 +7,7 @@
         </div>
         <br>
         @forelse ($education_history as $education)
-            <div class="card"
+            <div class="card" id="profilepagecard"
                 style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
 
                 <div class="card-body">
@@ -35,7 +35,7 @@
             </div>
         @empty
 
-            <div class="card"
+            <div class="card" id="profilepagecard"
                 style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
 
                 <div class="card-body">

@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" href="/assets/css/userprofile.css">
     <style>
+
         .chat {
           list-style: none;
           margin: 0;
