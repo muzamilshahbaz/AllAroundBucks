@@ -121,8 +121,26 @@ input[type=password]#password:placeholder {
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.navbar {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.signup-form {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    animation-duration: 1;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -193,7 +211,7 @@ input[type=password]#password:placeholder {
     animation-fill-mode: forwards;
     -webkit-animation-duration: 1s;
     -moz-animation-duration: 1s;
-    animation-duration: 1s;
+    animation-duration: 2s;
 }
 
 .fadeIn.first {

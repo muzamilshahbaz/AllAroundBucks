@@ -95,6 +95,42 @@
 <i class="fa fa-star-o"></i>
 <i class="fa fa-star-o"></i>
 <i class="fa fa-star-o"></i>
+@elseif ($trainer->rating == '1.6')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half-o" style="color: orange"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+@elseif ($trainer->rating == '1.6')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half-o" style="color: orange"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+@elseif ($trainer->rating == '1.6')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half-o" style="color: orange"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+@elseif ($trainer->rating == '1.7')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half-o" style="color: orange"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+@elseif ($trainer->rating == '1.8')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half-o" style="color: orange"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+@elseif ($trainer->rating == '1.9')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half-o" style="color: orange"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
+<i class="fa fa-star-o"></i>
 @elseif ($trainer->rating == '2')
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>

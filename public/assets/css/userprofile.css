@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     width: 100%;
-    color: #5298D2;
+    color: #0f1137;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
     background-color: white;
@@ -132,7 +132,7 @@ body {
 }
 
 .navbar {
-    background: #5298D2 !important;
+    background: #B0CDE0 !important;
     padding-left: 80px;
     padding-right: 70px;
     /* border-bottom: 1px solid #dfe3e8; */
@@ -155,7 +155,7 @@ body {
 } */
 
 .navbar .nav-item {
-    color: white !important;
+    color: #0f1137 !important;
     font-size: 15px;
 }
 
@@ -176,7 +176,7 @@ body {
 }
 
 .popup .links {
-    background-color: #5298D2;
+    background-color: #B0CDE0;
     border: 0ch;
     font-weight: bold;
 }
@@ -184,23 +184,23 @@ body {
 .popup .links:hover,
 .popup .links:focus,
 .popup .links:active {
-    background-color: #5298D2 !important;
+    background-color: #B0CDE0 !important;
     border: 0ch !important;
     font-weight: bold !important;
 }
 
 .popup .link-logout {
     background-color: white;
-    color: #5298D2;
-    border: 2px solid #5298D2;
+    color: #0f1137;
+    border: 2px solid #B0CDE0;
     font-weight: bold;
 }
 
 .popup .link-logout:hover,
 .popup .link-logout:active,
 .popup .link-logout:focus {
-    background-color: #5298D2 !important;
-    color: white !important;
+    background-color: #B0CDE0 !important;
+    color: #0f1137 !important;
     font-weight: bold !important;
     border: 0ch !important;
 }
@@ -229,8 +229,8 @@ body {
     width: 30px;
     height: 30px;
     background: white;
-    color: #5298D2;
-    border: 1px solid #5298D2;
+    color: #0f1137;
+    border: 1px solid #B0CDE0;
     font-size: 25px;
     font-weight: 600;
     line-height: 30px;
@@ -239,8 +239,8 @@ body {
 }
 
 .popup .close-btn:hover {
-    background: #5298D2;
-    color: white;
+    background: #B0CDE0;
+    color: #0f1137;
 }
 
 .popup.active .overlay {
@@ -253,7 +253,7 @@ body {
 }
 
 button {
-    background-color: #5298D2;
+    background-color: #B0CDE0;
     border: 0ch;
 }
 
@@ -284,16 +284,16 @@ button {
 /* Change background color of buttons on hover */
 
 .tab button:hover {
-    background-color: #5298D2;
-    color: white;
+    background-color: #B0CDE0;
+    color: #0f1137;
 }
 
 
 /* Create an active/current tablink class */
 
 .tab button.active {
-    background-color: #5298D2;
-    color: white;
+    background-color: #B0CDE0;
+    color: #0f1137;
 }
 
 
@@ -302,7 +302,7 @@ button {
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #0f1137;
     border-top: none;
 }
 
@@ -310,7 +310,7 @@ button {
 /* End of pop up */
 
 header {
-    background: #5298D2 !important;
+    background: #B0CDE0 !important;
     padding-left: 80px;
     padding-right: 70px;
     /* border-bottom: 1px solid #dfe3e8; */
@@ -323,7 +323,8 @@ header .navbar .navbar-brand {
     padding-left: 0;
     font-size: 25px;
     padding-right: 50px;
+    color: #0f1137;
     /* font-weight: bold; */
-    -webkit-text-stroke: 0.5px white;
-    -webkit-text-fill-color: transparent;
+    /* -webkit-text-stroke: 0.5px black; */
+    -webkit-text-fill-color: #0f1137;
 }

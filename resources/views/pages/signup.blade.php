@@ -46,7 +46,7 @@
                 </div>
                </a>
           </div>
-<center> <h5 style="color: rgba(82, 152, 210, 1);">or</h5>
+<center> <h5 style="color: #B0CDE0">or</h5>
                 </center>
 
 
@@ -83,10 +83,10 @@
             </div> --}}
             <div class="text-center">
                 <div class="form-group">
-                    <button type="submit" id="submit-btn" class="btn btn-primary btn-lg text-white">Register Now</button>
+                    <button type="submit" id="submit-btn" class="btn btn-primary btn-lg">Register Now</button>
                 </div>
             </div>
-            <div class="text-center">Already have an account? <a href="/signin" style="color: rgba(82, 152, 210, 1);tomato">Sign in</a></div>
+            <div class="text-center">Already have an account? <a href="/signin">Sign in</a></div>
 
         </form>
     </div>

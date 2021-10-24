@@ -4,10 +4,10 @@
 
 @else
 
-<footer class="footer text-center">
+<footer class="footer text-center fadeIn">
     <div class="template-demo">
 
-       <hr class="light">
+       <hr class="light" id="hr-line">
        <br>
         <button type="button" onclick="window.open('https://www.facebook.com')" class="btn btn-social-icon btn-facebook btn-rounded">
             <i class="fa fa-facebook" style="color: white;"></i>
@@ -26,7 +26,7 @@
                </button>
            </div>
 
-   © Copyright 2021 <a id="copyright-text" href="https://www.autumnbucks.com/">AutumnBucks</a>. All rights reserved.
+   © Copyright 2021 <a id="copyright-text" href="/">AllAroundBucks</a>. All rights reserved.
 </footer>
 
 @endif

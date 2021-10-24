@@ -122,7 +122,7 @@
             </div>
         </div>
 
-        <div class="flex-grow-0 py-3 px-4 border-top mb-3 mr-3" style="background-color: #5298D2;border-radius:0.6em">
+        <div class="flex-grow-0 py-3 px-4 border-top mb-3 mr-3" style="background-color: #B0CDE0;border-radius:0.6em">
 
             @if ($LoggedUserInfo->user_id == $inbox->receiver_id)
                 <form class="input-group" action="/send-message/{{ $inbox->sender_id }}" method="POST">

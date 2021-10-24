@@ -16,7 +16,7 @@ class LogoutController extends Controller
 
     function index()
     {
-        $title = 'AllAroundBucks - MultiPlatform for Learning & Earning';
+        $title = 'AllAroundBucks - A Platform for Learning & Earning';
         return view('pages.home',compact('title'));
     }
 }

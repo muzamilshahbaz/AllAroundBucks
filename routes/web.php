@@ -163,16 +163,16 @@ Route::get('/savePersonalInfo', [SettingsController::class, 'savePersonalInfo'])
 
 Route::get('/changePassword', [SettingsController::class, 'changePassword'])->middleware('isLogged');
 
-Route::post('/send-message', function (Request $request) {
-    event(
-        new Message(
-            $request->input('username'),
-            $request->input('message')
-        )
-    );
+// Route::post('/send-message', function (Request $request) {
+//     event(
+//         new Message(
+//             $request->input('username'),
+//             $request->input('message')
+//         )
+//     );
 
-    return ['success' => true];
-});
+//     return ['success' => true];
+// });
 
 
 Route::get('write-proposal/{project_id}', [ProposalController::class, 'writeProposal'])->middleware('isLogged');

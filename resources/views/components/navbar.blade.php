@@ -5,7 +5,7 @@
 
 @else
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top fadeInDown">
 	<a href="/" class="navbar-brand"><b><span>AllAroundBucks</span></b></a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapset" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
 				<a href="/signin" style="margin-right: 20px" class="nav-item nav-link">Login</a>
 			</div>
 			<div class="nav-item">
-				<a href="/signup" class="btn btn-primary">Sign up</a>
+				<a href="/signup" class="sign-up-btn btn btn-default">Sign up</a>
 			</div>
         </div>
 	</div>

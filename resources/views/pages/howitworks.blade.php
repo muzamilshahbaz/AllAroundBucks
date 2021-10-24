@@ -13,8 +13,8 @@
 
             </div>
             <div class="col-8">
-                <h2 style="font-weight:bold; color:#5298D2">How it works?</h2>
-                <span style="color: #5298D2; font-size:14px">Following are some guidelines that can help you to Get Started.</span>
+                <h2 style="font-weight:bold; color:#B0CDE0">How it works?</h2>
+                <span style="color: #B0CDE0; font-size:14px">Following are some guidelines that can help you to Get Started.</span>
                 <div class="col-12" style="text-align:left">
                     <ul style="font-size:15px;">
                         <li>First, Sign Up to get started. Choose your role according to your profession. You can change your role as well.</li>

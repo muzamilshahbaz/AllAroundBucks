@@ -87,6 +87,14 @@ class SettingsController extends Controller
 
     public function deactivate($user_id)
     {
+        $user = User::findOrFail($user_id);
+
+        if ($user->delete()) {
+            session()->pull('LoggedUser');
+            return redirect('index')->with('success', 'Your Account Has Been Permanently Deleted.');
+        } else {
+            return back()->with('fail', 'Something went wrong.');
+        }
 
     }
 }

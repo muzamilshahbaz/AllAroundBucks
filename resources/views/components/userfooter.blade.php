@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/assets/css/footer.css">
 
-<footer class="footer text-center" style="background-color: rgba(82, 152, 210, 1)">
+<footer class="footer text-center">
     <div class="template-demo">
-       <hr class="light" style="border-color: white">
+        <hr class="light" id="hr-line">
        <br>
         <button type="button" onclick="window.open('https://www.facebook.com')" class="btn btn-social-icon btn-facebook btn-rounded">
             <i class="fa fa-facebook" style="color: white"></i>
@@ -21,5 +21,5 @@
                </button>
            </div>
 
-    <span style="color: white; font-weight: bolder">© Copyright 2021 <a id="copyright-text" href="https://www.autumnbucks.com/">AutumnBucks</a>. All rights reserved.</span>
-</footer>
+           © Copyright 2021 <a id="copyright-text" href="/">AllAroundBucks</a>. All rights reserved.
+        </footer>

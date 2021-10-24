@@ -1,20 +1,25 @@
 footer {
     text-align: center;
     padding: 30px;
-    background: #5298D2;
-    color: white;
+    background: #B0CDE0 !important;
+    color: #0f1137;
     overflow: hidden;
 }
 
+#hr-line {
+    color: #0f1137 !important;
+    border: rgba(0, 0, 0, 0.247) 0.1px solid !important;
+}
+
 footer #copyright-text {
-    color: white;
-    font-weight: older;
+    color: #0f1137 !important;
+    font-weight: bolder;
 }
 
 footer #copyright-text:hover {
     text-transform: uppercase;
     text-decoration: none;
-    color: white;
+    color: #0f1137;
 }
 
 .stretch-card>.card {

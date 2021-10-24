@@ -105,18 +105,18 @@
                 <br>
 <hr>
 <br> --}}
-                <section><h1>Account Deactivation</h1>
+                <section><h1>Account Delletion</h1>
                     <br>
                     <p>
                         <b>What happens when you deactivate your account?</b>
                         <li>Your profile and courses won't show on AllAroundBucks anymore.</li>
-                        <li>Active Projects will be cancelled and your ratings go down.</li>
+                        <li>All Projects will be deleted.</li>
                         <li>Your Courses will be deleted permanently</li>
                         <li>Your earnings will be removed until you withdraw them before deactivation.</li>
                     </p>
                     <br>
                     <div class="form-group offset-10">
-                        <a href="/deactivate_account/{{ $LoggedUserInfo->user_id }}" class="btn btn-danger" style="border-radius: 2em">Deactivate Account</a>
+                        <a href="/deactivate_account/{{ $LoggedUserInfo->user_id }}" class="btn btn-danger" style="border-radius: 2em">Delete Account</a>
                     </div>
                 </section>
 

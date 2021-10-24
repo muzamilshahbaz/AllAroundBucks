@@ -25,7 +25,10 @@
 
     <link rel="stylesheet" href="/assets/css/userprofile.css">
     <style>
-
+ button{
+     border: none !important;
+     outline: none !important;
+ }
         .chat {
           list-style: none;
           margin: 0;
@@ -288,7 +291,7 @@
                             </ol>
                             <button onclick="rolePopup()"
                                 class="btn btn-primary d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light"
-                                style="background-color: #5298D2; border-radius:0.5em">
+                                style="background-color: #B0CDE0; color:black; border-radius:0.5em">
 
                                 Role: {{ $LoggedUserInfo->user_role }}
 

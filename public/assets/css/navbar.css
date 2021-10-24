@@ -2,11 +2,11 @@
     box-shadow: none;
     font-weight: normal;
     font-size: 13px;
-    border: solid 1px #5298D2;
+    border: solid 1px #B0CDE0;
 }
 
 .navbar {
-    background: #5298D2 !important;
+    background: #B0CDE0 !important;
     padding-left: 80px;
     padding-right: 70px;
     /* border-bottom: 1px solid #dfe3e8; */
@@ -16,10 +16,20 @@
 .navbar .search-type {
     border-radius: 25px;
     font-size: 14px;
-    color: #5298D2;
     margin-right: 5px;
     padding: 5px;
-    border: 1px solid #5298D2;
+    color: gray;
+    border: 1px solid #B0CDE0;
+    background-color: #EBF5FC;
+}
+
+.navbar .search-type:hover {
+    color: #0f1137;
+    border: 1px solid #95b7ce;
+    background-color: #EBF5FC;
+    font-weight: bold;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.356);
+    cursor: pointer;
 }
 
 .nav-link img {
@@ -35,9 +45,9 @@
     padding-left: 0;
     font-size: 25px;
     padding-right: 50px;
-    /* font-weight: bold; */
-    -webkit-text-stroke: 0.5px white;
-    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    /* -webkit-text-stroke: 0.5px black; */
+    -webkit-text-fill-color: #0f1137;
 }
 
 .navbar .form-inline {
@@ -45,7 +55,7 @@
 }
 
 .navbar .nav-item {
-    color: white !important;
+    color: #0f1137 !important;
     font-size: 15px;
 }
 
@@ -60,9 +70,10 @@
 }
 
 .search-box input {
-    border-color: #5298D2;
+    /* border-color: #5298D2; */
     border-radius: 25px;
-    box-shadow: none
+    box-shadow: none;
+    background-color: #EBF5FC;
 }
 
 .input-group>.custom-select:not(:last-child),
@@ -70,8 +81,11 @@
     border-radius: 25px;
 }
 
-.search-box input:hover {
-    border-color: blue !important;
+.search-box input:hover,
+.search-box input:focus,
+.search-box input:active {
+    border: none !important;
+    background-color: #EBF5FC;
 }
 
 .search-box .input-group-text {
@@ -86,7 +100,7 @@
 }
 
 .search-box i {
-    color: #5298D2;
+    color: grey;
     font-size: 19px;
     padding-bottom: 7px;
 }
@@ -94,11 +108,6 @@
 .input-group-text:active,
 .input-group-text:focus {
     outline: none;
-}
-
-.navbar .sign-up-btn {
-    min-width: 110px;
-    max-height: 36px;
 }
 
 .navbar .dropdown-menu {
@@ -111,7 +120,7 @@
 
 .navbar a,
 .navbar a:active {
-    color: tomato;
+    color: #0f1137 !important;
     padding: 8px 20px;
     background: transparent;
     line-height: normal;
@@ -141,19 +150,21 @@
     font-size: 13px;
 }
 
-.navbar .btn-primary,
-.navbar .btn-primary:active {
-    color: #5298D2;
-    background: white !important;
-    border: none;
+.navbar .sign-up-btn {
+    background-color: #EBF5FC !important;
+    border: none !important;
+    border-radius: 0.5rem !important;
 }
 
-.navbar .btn-primary:hover,
-.navbar .btn-primary:focus {
-    color: #5298D2 !important;
-    background: white !important;
-    box-shadow: 0px 0px 0px 10px;
+.navbar .sign-up-btn:hover,
+.navbar .sign-up-btn:focus {
+    background-color: #EBF5FC !important;
+    box-shadow: 1px 2px 0px 1px rgba(0, 0, 0, 0.486) !important;
     font-weight: bold;
+}
+
+.navbar .sign-up-btn:active {
+    box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.342) !important;
 }
 
 .navbar .social-btn .btn,

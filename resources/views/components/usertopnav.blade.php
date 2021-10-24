@@ -7,7 +7,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="background-color: #5298D2 !important">
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="background-color: #B0CDE0 !important">
                     <ul class="navbar-nav d-none d-md-block d-lg-none">
                         <li class="nav-item">
                             <a class="nav-toggler nav-link waves-effect waves-light text-white" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
@@ -30,9 +30,9 @@
                         </li> --}}
                         <!-- User profile and search -->
                         <li>
-                            <button class="profile-pic" onclick="togglePopup()" style="outline: none">
+                            <button class="profile-pic" style="color: #0f1137; outline: none !important" onclick="togglePopup()">
                                 @yield('navProfileImg')
-                                <span class="text-white font-medium">
+                                <span>
 
                                     @yield('username')
 

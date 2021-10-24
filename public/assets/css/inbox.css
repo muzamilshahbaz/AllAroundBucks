@@ -40,7 +40,7 @@
 }
 
 .username {
-    color: #5298D2;
+    color: #B0CDE0;
 }
 
 .chat-message-right {
@@ -50,7 +50,7 @@
 
 .send-button:active,
 .send-button:focus {
-    border: 1px solid #5298D2 !important;
+    border: 1px solid #B0CDE0 !important;
     text-decoration: none !important;
     outline: none;
 }

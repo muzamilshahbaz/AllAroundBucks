@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     width: 100%;
-    color: black;
+    color: #0f1137;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
     background-color: white;
@@ -18,7 +18,7 @@ body {
     font-style: normal;
     font-weight: bolder;
     font-size: 50px;
-    color: rgba(82, 152, 210, 1);
+    /* color: rgba(82, 152, 210, 1); */
 }
 
 #Find_the_best_skills_for_you_B {
@@ -28,7 +28,7 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    color: rgba(82, 152, 210, 1);
+    /* color: rgba(82, 152, 210, 1); */
 }
 
 .flex-box-1 {
@@ -37,7 +37,10 @@ body {
 
 .flex-box-1 .container-1,
 .flex-box-2 .container-2,
-.flex-box-9 .container-9 {
+.flex-box-9 .container-9,
+.flex-box-10,
+.flex-box-11,
+.flex-box-12 {
     padding-left: 80px;
     padding-right: 10px;
 }
@@ -46,11 +49,14 @@ body {
 .container-4,
 .container-5,
 .container-7,
-.container-8 {
+.container-8,
+.container-10,
+.container-11,
+.container-12 {
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 80px;
-    padding-right: 50px;
+    padding-right: 80px;
 }
 
 .flex-box-6 .container-6 {
@@ -90,12 +96,16 @@ body {
 }
 
 #Rectangle_611 {
-    fill: rgba(239, 248, 255, 1);
+    fill: #B0CDE0;
+}
+
+#Rectangle_611-2 {
+    fill: #FFF89A;
 }
 
 .Rectangle_612 {
     filter: drop-shadow(0px 3px 12px rgba(113, 113, 113, 0.11));
-    fill: rgba(255, 255, 255, 1);
+    fill: #B0CDE0;
     width: 380px;
     height: 120px;
 }
@@ -140,31 +150,31 @@ body {
 }
 
 .Ellipse_2 {
-    width: 100px;
-    height: 100px;
-    fill: rgba(152, 255, 145, 1);
+    width: 60px;
+    height: 60px;
+    fill: #FFF89A;
 }
 
 .Ellipse_1 {
-    width: 100px;
-    height: 100px;
-    fill: rgba(254, 214, 199, 1);
+    width: 60px;
+    height: 60px;
+    fill: #BFF5BC;
 }
 
 .Ellipse_3 {
-    width: 100px;
-    height: 100px;
-    fill: rgba(255, 248, 154, 1);
+    width: 60px;
+    height: 60px;
+    fill: #B0CDE0;
 }
 
 .Ellipse_4 {
-    width: 100px;
-    height: 100px;
-    fill: rgba(255, 154, 86, 0.438);
+    width: 60px;
+    height: 60px;
+    fill: #b89affd7;
 }
 
 #tips {
-    color: black;
+    color: #0f1137;
 }
 
 .social a {
@@ -394,4 +404,81 @@ figure {
 .column {
     float: left;
     width: 50%;
+}
+
+.typewriter {
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    /* margin: 0 auto; */
+    /* Gives that scrolling effect as the typing happens */
+    /* letter-spacing: .1em; */
+    /* Adjust as needed */
+    animation: typing 3.5s, blink-caret .75s step-end infinite;
+    animation-iteration-count: infinite;
+}
+
+
+/* The typing effect */
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: orange;
+    }
+}
+
+.slideInRight {
+    animation-name: slideInRight;
+}
+
+.animated {
+    animation-duration: 1.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 100%);
+    }
+}
+
+@keyframes wipe-enter {
+    0% {
+        transform: scale(0, .025);
+    }
+    50% {
+        transform: scale(1, .025);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #users {
+        animation-name: slideInRight;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-delay: 2s;
+    }
 }
