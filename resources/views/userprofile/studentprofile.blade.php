@@ -3,7 +3,7 @@
 @section('usercontent')
 
 
-    <div class="container emp-profile" style="color: black">
+    <div class="container emp-profile">
 
         <div class="row">
             <div class="col-md-4">
@@ -37,7 +37,7 @@
 
             <div class="col-md-2">
                 <a href="/editprofile/{{ $LoggedUserInfo->user_id }}" class="btn btn-primary"
-                    style="background-color: #5298D2; border-radius: 2em" name="btnAddMore" value="Edit Profile">Edit
+                    id="submit-btn" value="Edit Profile">Edit
                     Profile</a>
             </div>
 

@@ -37,7 +37,7 @@
         <span class="text-danger">@error('verify_code') {{ $message }} @enderror</span>
     </div>
     <div class="form-group text-center">
-        <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2">Verify Now</button>
+        <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Verify Now</button>
     </div>
     </form>
 </div>

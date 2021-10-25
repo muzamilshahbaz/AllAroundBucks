@@ -2,11 +2,11 @@
 
 @section('usercontent')
     <link rel="stylesheet" href="/assets/css/signup.css">
-    <div class="signup-form" style="width: 90%; color:#5298D2 !important">
+    <div class="signup-form" style="width: 90%; ">
 
 
         <!-- Login Form -->
-        <form style="color:#5298D2 !important" action="/updateprofile/   @if ($LoggedUserInfo->user_role == 'Seller')
+        <form  action="/updateprofile/   @if ($LoggedUserInfo->user_role == 'Seller')
             @php
                 $id = $seller->seller_id;
             @endphp
@@ -50,7 +50,7 @@
             </div>
 
             <div class="text-center">
-                <h1 style="color:#5298D2">Update Profile</h1>
+                <h1>Update Profile</h1>
                 <br>
             </div>
             <input type="hidden" name="user_id" value="{{ $user->user_id }}">
@@ -171,7 +171,7 @@
             </div>
             @endif
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg" style="background-color:#5298D2">Submit</button>
+                <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Submit</button>
             </div>
 
 

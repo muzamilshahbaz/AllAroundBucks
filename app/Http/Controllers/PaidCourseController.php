@@ -50,13 +50,13 @@ class PaidCourseController extends Controller
         $trainer = Trainer::where('trainer_id', $course->trainer_id)->first();
 
         $specific_course = Course::where('course_id', $course->course_id)->first();
-        $specific_course_paid = PaidCourse::where('course_id', $course->course_id)->get();
+        $specific_course_paid = PaidCourse::where('course_id', $course->course_id)->where('course_rating', '!=', 0.0)->get();
 
-        $specific_course->rating = $specific_course_paid->where('course_rating', '!=', 0.0)->sum('course_rating') / $specific_course_paid->where('course_rating', '!=', 0.0)->count('id');
+        $specific_course->rating = $specific_course_paid->sum('course_rating') / $specific_course_paid->count('id');
 
-        $courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->get();
+        $courses = PaidCourse::where('trainer_id', $trainer->trainer_id)->where('course_rating', '!=', 0.0)->get();
 
-        $trainer->rating = $courses->where('course_rating', '!=', 0.0)->sum('course_rating') / ($courses->where('course_rating', '!=', 0.0)->count('id'));
+        $trainer->rating = $courses->sum('course_rating') / ($courses->count('id'));
 
         $query2 = $trainer->update();
         $query3 = $specific_course->update();

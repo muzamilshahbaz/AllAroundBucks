@@ -55,9 +55,9 @@
 
 <br><br>
 
-                <a href="/profile" class="col-12 btn btn-primary links">Profile</a>
+                <a href="/profile" class="col-12 btn btn-primary links" id="submit-btn">Profile</a>
                 <br><br>
-                <a href="/settings" class="col-12 btn btn-primary links">Settings</a>
+                <a href="/settings" class="col-12 btn btn-primary links" id="submit-btn">Settings</a>
                 <br><br>
                 <a href="/logout" class="col-12 btn btn-primary link-logout">Logout</a>
 

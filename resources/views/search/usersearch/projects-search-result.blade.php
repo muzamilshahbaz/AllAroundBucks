@@ -10,7 +10,7 @@
             <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
         </div>
         <div class="col-2">
-            <button type="submit" style="background-color: #5298D2" class="btn btn-primary text-white">Search</button>
+            <button type="submit"  id="submit-btn" class="btn btn-primary">Search</button>
         </div>
     </div>
     </form>
@@ -28,12 +28,12 @@
 
 
             <div class="card" id="project-search-result"
-                style="padding: 5px; border-radius:0.5em; border:none; width:100%">
+                style="padding: 5px; border-radius:0.5em; border:none; width:100%; color: #0f1137;">
 
                 <div class="card-body" style="text-align:left">
                     {{-- <div class="row"> --}}
 
-                    <div class="card-title" style="color: #5298D2;">
+                    <div class="card-title" style="color: #0f1137;">
 
                         <h3>{{ $project->project_title }}</h3>
                     </div>
@@ -56,18 +56,18 @@
 
                     <div class="row" style="font-size:14px">
                         <div class="col-4">
-                            <span style="color: #5298D2">Price: <span
-                                    style="color: #000000">${{ $project->project_price }}</span></span>
+                            <span>Price: <span
+                                    style="color: #0f1137">${{ $project->project_price }}</span></span>
                         </div>
 
                         <div class="col-4">
-                            <span style="color: #5298D2">Category: <span
-                                    style="color: #000000">{{ $project->project_category }}</span></span>
+                            <span>Category: <span
+                                    style="color: #0f1137">{{ $project->project_category }}</span></span>
                         </div>
 
                         <div class="col-4">
-                            <span style="color: #5298D2">Duration: <span
-                                    style="color: #000000">{{ $project->project_duration }}
+                            <span>Duration: <span
+                                    style="color: #0f1137">{{ $project->project_duration }}
                                     {{ $project->project_duration_format }}</span></span>
 
                         </div>
@@ -76,18 +76,19 @@
                     <br>
                     <div class="row" style="font-size:14px">
                         <div class="col-12">
-                            <span style="color: #5298D2">Description: <span
-                                    style="color: #000000; font-size:14px">{{ $project->project_description }}</span></span>
+                            <span>Description: <span
+                                    style="color: #0f1137; font-size:14px">{{ $project->project_description }}</span></span>
 
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-9">
 
-                            <a href="/project/{{ $project->project_id }}" class="btn btn-block primary text-white"
-                                style="background-color: #5298D2; text-align: right;">
-                                <center>View</center>
+                            <a href="/project/{{ $project->project_id }}" class="btn btn-primary"
+                                id="submit-btn">
+                               View
                             </a>
+
 
                         </div>
                     </div>

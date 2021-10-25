@@ -8,17 +8,42 @@ body {
     background-color: white;
 }
 
+#submit-btn {
+    background-color: #B0CDE0;
+    border: none;
+    color: #0f1137;
+}
+
+#submit-btn {
+    background-color: #B0CDE0;
+    border: none;
+    color: #0f1137;
+    border-radius: 0.4em;
+}
+
+#submit-btn:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+    box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+    background-color: #B0CDE0;
+}
+
+#submit-btn:active {
+    background-color: #95c2e0;
+    transition: background-color 0.2s;
+}
+
 .emp-profile {
     padding: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 1rem;
-    background-color: #faffd7;
+    background-color: #f9f9f9;
     /* background: rgba(250, 255, 175, 1); */
 }
 
 .emp-profile .card {
-    background-color: #f7ffbf !important;
+    background-color: #fcf8f8 !important;
     padding: 5px !important;
     border-radius: 0.5em !important;
     border: none !important;
@@ -194,6 +219,7 @@ body {
     color: #0f1137;
     border: 2px solid #B0CDE0;
     font-weight: bold;
+    border-radius: 0.4em;
 }
 
 .popup .link-logout:hover,
@@ -203,6 +229,7 @@ body {
     color: #0f1137 !important;
     font-weight: bold !important;
     border: 0ch !important;
+    border-radius: 0.4em;
 }
 
 .popup .content {
@@ -304,6 +331,11 @@ button {
     padding: 6px 12px;
     border: 1px solid #0f1137;
     border-top: none;
+    color: #0f1137 !important;
+}
+
+a {
+    color: #0f1137 !important;
 }
 
 

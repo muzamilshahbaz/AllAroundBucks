@@ -27,7 +27,7 @@
 <section><h1>Personal Info</h1>
 <br>
          <div class="signup-form" style="width: 90%">
-            <form action="/savePersonalInfo" method="PUT" enctype="multipart/form-data" style="color:#5298D2">
+            <form action="/savePersonalInfo" method="PUT" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
@@ -55,7 +55,7 @@
               </div>
 
               <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Save Changes</button>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Save Changes</button>
             </div>
 
             </form>
@@ -68,7 +68,7 @@
 <section><h1>Security</h1>
     <br>
                 <div class="signup-form" style="width:90%">
-                    <form action="/changePassword" method="PUT" enctype="multipart/form-data" style="color:#5298D2">
+                    <form action="/changePassword" method="PUT" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
@@ -90,7 +90,7 @@
                            </div>
 <br>
                            <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Change Password</button>
+                            <button type="submit" class="btn btn-primary" id="submit-btn">Change Password</button>
                         </div>
                     </form>
                 </div>

@@ -20,7 +20,7 @@
         @endif
     </div>
     @include('profile.profile-buttons')
-    <div class="container emp-profile" style="color: black">
+    <div class="container emp-profile">
 
         <div class="row">
             <div class="col-md-4">
@@ -64,7 +64,7 @@
             </div>
         </div>
         <br>
-        <div class="row" style="font-size: 17px; border: 1px solid black; padding: 10px">
+        <div class="row" style="font-size: 17px; border: 1px solid rgb(77, 73, 73); padding: 10px">
 
             <div class="col-4">
                 <span style="font-weight: bold">Hourly Rate: </span><span>${{ $seller->hourly_rate }}/hour</span>
@@ -87,7 +87,7 @@
                 <span style="font-weight: bold; font-size: 17px;">Recent Projects : </span> <br><br>
                 @forelse ($projects as $project)
                     <div class="card"
-                        style="background-color: rgb(229, 235, 150); padding: 5px; border-radius:0.5em; border:none">
+                        style="padding: 5px; border-radius:0.5em; border:none">
 
                         <div class="card-body">
                             <div class="card-title">

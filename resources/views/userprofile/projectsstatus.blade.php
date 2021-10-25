@@ -32,7 +32,7 @@
 
     </div>
 
-    <div id="All" class="tabcontent" style="border: 1px solid #5298D2">
+    <div id="All" class="tabcontent" style="border: 1px solid #5298D2; color: #0f1137">
 
 
         @forelse ($projects as $project)
@@ -40,7 +40,7 @@
             <div class="card-body">
 
                 <div class="card-title">
-                    <h3>{{ $project->project_title }}</h3>
+                    <h3 style="color: #0f1137">{{ $project->project_title }}</h3>
                 </div>
                 <div class="card-subtitle">
                     <h5><b>Project Category:</b> {{ $project->project_category }}</h5>
@@ -64,8 +64,8 @@
 
                     <div class="col-4">
 
-                        <a href="/project/{{ $project->project_id }}" class="btn btn-primary text-white mr-3"
-                            style="background-color: #5298D2; border-radius:0.4em">
+                        <a href="/project/{{ $project->project_id }}" class="btn btn-primary mr-3"
+                            id="submit-btn">
                             View
                         </a>
 
@@ -130,7 +130,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -168,8 +168,8 @@
                     </div>
                     @endif
                     <div class="col-4 offset-10">
-                        <a href="/send-project/{{ $project->id }}" class="btn btn-primary text-white"
-                            style="background-color:#5298D2;border-radius:0.5em">Send Project</a>
+                        <a href="/send-project/{{ $project->id }}" class="btn btn-primary"
+                            id="submit-btn">Send Project</a>
                     </div>
                 </div>
 
@@ -190,7 +190,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -219,9 +219,9 @@
                     <br><br>
                     <div class="row">
                         <div class="col-12">
-                            <span style="color: #5298D2">Project File: </span><span><a
+                            <span style="color: #0f1137">Project File: </span><span><a
                                 href="/assets/users/userprofile/projects/{{ $project->project_file }}"
-                                class="btn btn-primary btn-sm" style="background-color: #5298D2; border-radius:0.4em">{{ $project->project_file }}</a></span>
+                                class="btn btn-primary btn-sm"  id="submit-btn">{{ $project->project_file }}</a></span>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -290,7 +290,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -355,7 +355,7 @@
 
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-primary"
-                                            style="background-color: #5298D2">Submit</button>
+                                        id="submit-btn">Submit</button>
                                     </div>
 
                                 </form>

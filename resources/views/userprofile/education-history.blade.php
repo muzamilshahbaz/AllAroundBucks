@@ -5,7 +5,7 @@
             <span style="font-weight: bold; font-size: 17px;">Education History : </span>
             <div class="offset-7">
                 <a href="{{ route('education-history.create') }}" class="btn btn-primary btn-sm"
-                    style="background-color: #5298D2; border-radius: 2em">Add Record</a>
+                    style="border-radius: 2em" id="submit-btn">Add Record</a>
             </div>
         </div>
         <br>
@@ -32,7 +32,7 @@
                     <br>
                     <div class="row offset-8">
                         <a href="{{ route('education-history.edit', $education->id) }}" class="btn btn-primary btn-sm"
-                            style="background-color: #5298D2; border-radius: 2em">Edit</a>
+                            style="border-radius: 2em" id="submit-btn">Edit</a>
                         <form action="{{ route('education-history.destroy', $education->id) }}" method="post">
                             @csrf
                             @method('DELETE')

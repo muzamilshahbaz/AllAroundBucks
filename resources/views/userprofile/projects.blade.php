@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/assets/css/signup.css">
     <div class="col-6">
 
-        <a href="/newProject" class="btn btn-primary" style="background-color: #5298D2; border-radius:0.5em">Add New
+        <a href="/newProject" class="btn btn-primary"  id="submit-btn">Add New
             Project</a>
 
     </div>
@@ -51,7 +51,7 @@
                     <div class="card-body">
 
                         <div class="card-title">
-                            <h3>{{ $project->project_title }}</h3>
+                            <h3 style="color: #0f1137">{{ $project->project_title }}</h3>
                         </div>
                         <div class="card-subtitle">
                             <h5><b>Project Category:</b> {{ $project->project_category }}</h5>
@@ -75,8 +75,8 @@
 
                             <div class="col-4">
 
-                                <a href="/project/{{ $project->project_id }}" class="btn btn-primary text-white mr-3"
-                                    style="background-color: #5298D2; border-radius:0.4em">
+                                <a href="/project/{{ $project->project_id }}" class="btn btn-primary mr-3"
+                                    id="submit-btn">
                                     View
                                 </a>
 
@@ -111,7 +111,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -169,7 +169,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -198,10 +198,10 @@
                     <br><br>
                     <div class="row">
                         <div class="col-12">
-                            <span style="color: #5298D2">Download Project File: </span><span><a
+                            <span style="color: #0f1137">Download Project File: </span><span><a
                                     href="/assets/users/userprofile/projects/{{ $project->project_file }}"
                                     class="btn btn-primary btn-sm"
-                                    style="background-color: #5298D2; border-radius:0.4em">{{ $project->project_file }}</a></span>
+                                    id="submit-btn">{{ $project->project_file }}</a></span>
                         </div>
                     </div>
 
@@ -216,7 +216,7 @@
                                         placeholder="Write what changes you need."></textarea>
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-primary" style="background-color: #5298D2" id="ask-changes">Ask
+                                    <button class="btn btn-primary"  id="submit-btn" id="ask-changes">Ask
                                         for changes</button>
 
                                 </div>
@@ -226,7 +226,7 @@
 
 
                         <div class="mr-3">
-                            <a href="/approve-project/{{ $project->id }}" class="btn btn-success text-white" style="border-radius:0.4em">Approve</a>
+                            <a href="/approve-project/{{ $project->id }}" class="btn btn-success text-white"  id="submit-btn">Approve</a>
                         </div>
 
                         <div class="mr-3">
@@ -252,7 +252,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
                         </div>
 
@@ -321,7 +321,7 @@
 
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary"
-                                    style="background-color: #5298D2">Submit</button>
+                                id="submit-btn">Submit</button>
                             </div>
 
                         </form>
@@ -350,7 +350,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 card-title">
-                            <h3><a href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
+                            <h3><a style="color: #0f1137" href="/project/{{ $project->project_id }}">{{ $project->project_title }}</a>
                             </h3>
 
                         </div>

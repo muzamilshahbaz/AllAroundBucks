@@ -19,7 +19,7 @@
 
     @endif
     </div>
-    <div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+    <div class="card" style="padding: 5px; border-radius:0.5em; border:none; color: #0f1137 !important;">
 
     <div class="card-body">
         <b>
@@ -55,9 +55,9 @@
            <div class="row">
             @if ($LoggedUserInfo->user_role == 'Buyer')
             <div class="row offset-9">
-                <a href="/edit-project/{{ $project->project_id }}" class="btn btn-primary text-white mr-3" style="background-color: #5298D2; border-radius:0.5em">Edit</a>
+                <a href="/edit-project/{{ $project->project_id }}" class="btn btn-primary mr-3" id="submit-btn">Edit</a>
 
-                <a href="/project-proposals/{{ $project->project_id }}" class="btn btn-primary text-white" style="background-color: #5298D2; border-radius:0.5em">View Proposals</a>
+                <a href="/project-proposals/{{ $project->project_id }}" class="btn btn-primary" id="submit-btn">View Proposals</a>
 
             </div>
 
@@ -69,7 +69,7 @@
                @else
 
                <div class="col-3 offset-8">
-                <a href="/write-proposal/{{ $project->project_id }}" class="btn btn-block btn-primary text-white" style="background-color: #5298D2; text-align: right;border-radius:0.5em"><center>Send Proposal</center></a>
+                <a href="/write-proposal/{{ $project->project_id }}" class="btn btn-block btn-primary" id="submit-btn"><center>Send Proposal</center></a>
                 </div>
                 @endif
 

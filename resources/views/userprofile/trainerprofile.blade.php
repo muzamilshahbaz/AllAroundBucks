@@ -19,7 +19,7 @@
 
         @endif
     </div>
-    <div class="container emp-profile" style="color: black">
+    <div class="container emp-profile">
 
         <div class="row">
             <div class="col-md-4">
@@ -56,8 +56,7 @@
             </div>
 
             <div class="col-md-2">
-                <a href="/editprofile/{{ $LoggedUserInfo->user_id }}" class="btn btn-primary"
-                    style="background-color: #5298D2; border-radius: 2em" name="btnAddMore" value="Edit Profile">Edit
+                <a href="/editprofile/{{ $LoggedUserInfo->user_id }}" class="btn btn-primary" id="submit-btn" value="Edit Profile">Edit
                     Profile</a>
             </div>
 
@@ -117,7 +116,7 @@
                                             </div>
                                             <div class="col-5">
                                                 <span
-                                                    style="font-size:0.9em !important; text-align: right; color:#5298D2">Price:
+                                                    style="font-size:0.9em !important; text-align: right;">Price:
                                                     ${{ $course->course_price }}</span>
                                             </div>
                                         </div>

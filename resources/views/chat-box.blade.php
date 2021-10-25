@@ -26,14 +26,24 @@
                 <div class="position-relative">
                     @if ($LoggedUserInfo->user_id == $inbox->sender_id)
                         <a href="/user/{{ $inbox->receiver_username }}">
+                            @if ($inbox->receiver_img == NULL)
+                            <img src="/assets/users/userprofile/defaultprofilepic.png" class="rounded-circle mr-1"
+                            width="40" height="40">
+                            @else
                             <img src="/assets/users/userprofile/{{ $inbox->receiver_img }}" class="rounded-circle mr-1"
-                                width="40" height="40">
+                            width="40" height="40">
+                            @endif
                         </a>
                     @elseif ($LoggedUserInfo->user_id == $inbox->receiver_id)
 
                         <a href="/user/{{ $inbox->sender_username }}">
+                            @if ($inbox->sender_img == NULL)
+                            <img src="/assets/users/userprofile/defaultprofilepic.png" class="rounded-circle mr-1"
+                            width="40" height="40">
+                            @else
                             <img src="/assets/users/userprofile/{{ $inbox->sender_img }}" class="rounded-circle mr-1"
-                                width="40" height="40">
+                            width="40" height="40">
+                            @endif
                         </a>
 
                     @endif
@@ -95,14 +105,24 @@
                                 <div class="position-relative">
                                     @if ($LoggedUserInfo->user_id == $inbox->sender_id)
                                         <a href="/user/{{ $inbox->receiver_username }}">
+                                            @if ($inbox->receiver_img == NULL)
+                                            <img src="/assets/users/userprofile/defaultprofilepic.png"
+                                            class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                            @else
                                             <img src="/assets/users/userprofile/{{ $inbox->receiver_img }}"
-                                                class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                            class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                            @endif
                                         </a>
                                     @elseif ($LoggedUserInfo->user_id == $inbox->receiver_id)
 
                                         <a href="/user/{{ $inbox->sender_username }}">
+                                            @if ($inbox->sender_img == NULL)
+                                            <img src="/assets/users/userprofile/defaultprofilepic.png"
+                                            class="rounded-circle mr-1" width="40" height="40">
+                                            @else
                                             <img src="/assets/users/userprofile/{{ $inbox->sender_img }}"
-                                                class="rounded-circle mr-1" width="40" height="40">
+                                            class="rounded-circle mr-1" width="40" height="40">
+                                            @endif
                                         </a>
 
                                     @endif

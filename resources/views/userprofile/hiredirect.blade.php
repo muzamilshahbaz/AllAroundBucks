@@ -27,7 +27,7 @@
             <span class="text-danger">@error('barcode') {{ $message }} @enderror</span>
         </div>
         <div class="col-2">
-            <button type="submit" style="background-color: #5298D2" class="btn btn-primary text-white">Search</button>
+            <button type="submit" id="submit-btn" class="btn btn-primary">Search</button>
         </div>
     </div>
 </form>
@@ -72,8 +72,8 @@
 
                         <div class="col-2">
 
-                            <a href="/user/{{ $seller->seller_username }}" class="btn btn-primary text-white"
-                                style="background-color: #5298D2; border-radius:0.5em">
+                            <a href="/user/{{ $seller->seller_username }}" class="btn btn-primary"
+                                id="submit-btn">
                                 Hire Now
                             </a>
                         </div>
@@ -98,14 +98,14 @@
 
 
                         <div class="col-4">
-                            <span style="color: #5298D2">Hourly Rate: <span
-                                    style="color: #000000">${{ $seller->hourly_rate }}
+                            <span style="color: #0f1137">Hourly Rate: <span
+                                    style="color: #0f1137">${{ $seller->hourly_rate }}
                                     /hour</span></span>
 
                         </div>
                         <div class="col-4">
-                            <span style="color: #5298D2">Total Projects: <span
-                                    style="color: #000000">{{ $seller->total_projects }}
+                            <span style="color: #0f1137">Total Projects: <span
+                                    style="color: #0f1137">{{ $seller->total_projects }}
                                 </span></span>
 
                         </div>
@@ -114,8 +114,8 @@
                     <br>
                     <div class="row" style="font-size:14px">
                         <div class="col-12">
-                            <span style="color: #5298D2">About: <span
-                                    style="color: #000000; font-size:14px">{{ $seller->bio }}</span></span>
+                            <span style="color: #0f1137">About: <span
+                                    style="color: #0f1137; font-size:14px">{{ $seller->bio }}</span></span>
 
                         </div>
                     </div>

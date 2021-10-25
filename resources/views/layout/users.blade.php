@@ -291,7 +291,7 @@
                             </ol>
                             <button onclick="rolePopup()"
                                 class="btn btn-primary d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light"
-                                style="background-color: #B0CDE0; color:black; border-radius:0.5em">
+                                id="submit-btn">
 
                                 Role: {{ $LoggedUserInfo->user_role }}
 
@@ -354,7 +354,7 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg"
-                        style="background-color: rgba(82, 152, 210, 1); border-radius: 1em">Submit</button>
+                    id="submit-btn">Submit</button>
                 </div>
 
 

@@ -537,12 +537,13 @@
         <div class="container-10">
             <div class="flex-box-10">
                 <div class="text-center">
-                    <h2 style="color: #B0CDE0">Our Top <span>Freelancers</span>.</h2>
+                    <h2 style="color: #B0CDE0">Our Top <span style="color: #0f1137">Freelancers</span>.</h2>
                 </div>
                 @php
                     $sellers = DB::table('sellers')
                         ->leftJoin('users', 'users.user_id', 'sellers.user_id')
                         ->leftJoin('paid_projects', 'sellers.seller_id', 'paid_projects.seller_id')
+                        // ->where('paid_projects.status', 'completed')->orWhere('paid_projects.status', 'awaiting for feedback')
                         ->select('sellers.*', 'users.profile_img', 'users.name', 'users.profession', DB::raw('count(paid_projects.id) as complete_projects'))
                         ->groupBy('sellers.seller_id')
                         ->orderBy('complete_projects', 'DESC')
@@ -592,12 +593,13 @@
         <div class="container-11">
             <div class="flex-box-11">
                 <div class="text-center">
-                    <h2 style="color: #B0CDE0">Our Top <span>Buyers</span>.</h2>
+                    <h2 style="color: #B0CDE0">Our Top <span style="color: #0f1137">Buyers</span>.</h2>
             </div>
         @php
             $buyers = DB::table('buyers')->leftJoin('users', 'users.user_id', 'buyers.user_id')
             ->leftJoin('paid_projects',  'buyers.buyer_id','paid_projects.buyer_id')
             ->select('buyers.*', 'users.profile_img', 'users.name', 'users.profession',DB::raw('count(paid_projects.id) as complete_projects'))
+            // ->where('paid_projects.status', 'completed')->orWhere('paid_projects.status', 'awaiting for feedback')
             ->groupBy('buyers.buyer_id')->orderBy('complete_projects', 'DESC')->take(4)->get();
         @endphp
         <center>
@@ -638,7 +640,7 @@
         <div class="container-12">
             <div class="flex-box-12">
                 <div class="text-center">
-                    <h2 style="color: #B0CDE0">Our Top <span>Trainers</span>.</h2>
+                    <h2 style="color: #B0CDE0">Our Top <span style="color: #0f1137">Trainers</span>.</h2>
             </div>
         @php
             $trainers = DB::table('trainers')->leftJoin('users', 'users.user_id', 'trainers.user_id')
@@ -883,12 +885,12 @@
             <div class="container-9">
                 <div class="row">
                     <div class="col-4">
-                        <h1 style="color: #5298D2; font-weight:bolder;">Interested?</h4>
-                            <span style="color: #5298D2;">Avail This Opportunity Now !!</span>
+                        <h1 style="color: #0f1137; font-weight:bolder;">Interested?</h4>
+                            <span style="color: #0f1137;">Avail This Opportunity Now !!</span>
                     </div>
 
                     <div class="col-8">
-                        <a href="/signup" class="col-4 btn btn-primary btn-lg">Get Started</a>
+                        <a href="/signup" class="col-4 btn btn-primary btn-lg" style="color: #0f1137; background-color:#B0CDE0; border:none; border-radius:0.4em">Get Started</a>
 
                     </div>
                 </div>

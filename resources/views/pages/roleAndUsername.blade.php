@@ -25,7 +25,7 @@
             @endif
         </div>
 <div class="text-center">
-    <h4  style="color:#5298D2">Select your User Role and Username</h5>
+    <h3>Select your User Role and Username</h3>
 <br>
 <input type="hidden" name="user_id" value="{{ $LoggedUserInfo->user_id }}">
         <div class="form-group">
@@ -42,7 +42,7 @@
             <span class="text-danger">@error('username') {{ $message }} @enderror</span>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg" style="background-color:#5298D2">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Submit</button>
         </div>
 </div>
     </form>

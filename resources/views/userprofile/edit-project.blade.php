@@ -3,9 +3,9 @@
 @section('usercontent')
     <link rel="stylesheet" href="/assets/css/signup.css">
 
-    <div class="signup-form" style="width: 90%; color:#5298D2 !important">
+    <div class="signup-form" style="width: 90%; color:#0f1137 !important">
 
-        <form style="color:#5298D2 !important" action="/update/{{ $project->project_id }}" method="PUT" enctype="multipart/form-data">
+        <form style="color:#0f1137 !important" action="/update/{{ $project->project_id }}" method="PUT" enctype="multipart/form-data">
 
             @csrf
 
@@ -120,7 +120,7 @@
             <br><br>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2; border: 0ch">Update
+                <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Update
                     Project</button>
             </div>
 

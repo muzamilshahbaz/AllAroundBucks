@@ -68,8 +68,13 @@
                             <div class="card-body">
                                 {{-- <div class="badge bg-success float-right">5</div> --}}
                                 <div class="d-flex align-items-start">
+                                    @if ($chat->sender_img == NULL)
+                                    <img src="/assets/users/userprofile/defaultprofilepic.png"
+                                    class="rounded-circle mr-1" alt="" width="40" height="40">
+                                    @else
                                     <img src="/assets/users/userprofile/{{ $chat->sender_img }}"
-                                        class="rounded-circle mr-1" alt="" width="40" height="40">
+                                    class="rounded-circle mr-1" alt="" width="40" height="40">
+                                    @endif
                                     <div class="flex-grow-1 ml-3">
                                         {{ $chat->sender_name }}
                                         {{-- <div class="small"><span class="fas fa-circle chat-online"></span> Online</div> --}}
