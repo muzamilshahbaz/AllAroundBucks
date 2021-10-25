@@ -62,11 +62,11 @@ class RegisterController extends Controller
             $query = $user->save();
 
 
-            // $code = [
-            //     'userID'=>$user->user_id,
-            //     'vCode'=>$user->verify_code
-            // ];
-            // Mail::to($user->email)->send(new VerifyEmail($code));
+            $code = [
+                'userID'=>$user->user_id,
+                'vCode'=>$user->verify_code
+            ];
+            Mail::to($user->email)->send(new VerifyEmail($code));
 
             if ($query) {
                 # code...
