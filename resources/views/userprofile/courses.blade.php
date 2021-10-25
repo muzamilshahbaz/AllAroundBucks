@@ -53,7 +53,7 @@
                             <span style="font-size:0.9em !important">@include('userprofile.courserating')</span>
                         </div>
                         <div class="col-5">
-                            <span style="font-size:0.9em !important; text-align: right; color:#5298D2">Price: ${{ $course->course_price }}</span>
+                            <span style="font-size:0.9em !important; text-align: right; color:#0f1137">Price: ${{ $course->course_price }}</span>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
 
 <div class="col-lg-12">
 
-    <a href="/addCourseForm" class="btn btn-primary" style="background-color:#5298D2; border-radius:0.5em">Add New Course</a>
+    <a href="/addCourseForm" class="btn btn-primary" id="submit-btn">Add New Course</a>
 
 </div>
 
@@ -116,7 +116,7 @@
                             <span style="font-size:0.9em !important">@include('userprofile.courserating')</span>
                         </div>
                         <div class="col-5">
-                            <span style="font-size:0.9em !important; text-align: right; color:#5298D2">Price: ${{ $course->course_price }}</span>
+                            <span style="font-size:0.9em !important; text-align: right; color:#0f1137">Price: ${{ $course->course_price }}</span>
                         </div>
                     </div>
 

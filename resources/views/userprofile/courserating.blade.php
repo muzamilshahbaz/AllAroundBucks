@@ -125,13 +125,55 @@
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star-o"></i>
+@elseif ($course->rating == '4.1')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+@elseif ($course->rating == '4.2')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+@elseif ($course->rating == '4.3')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half" style="color: orange"></i>
+@elseif ($course->rating == '4.4')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half" style="color: orange"></i>
 @elseif ($course->rating == '4.5')
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star-half" style="color: orange"></i>
+@elseif ($course->rating == '4.6')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half" style="color: orange"></i>
+@elseif ($course->rating == '4.7')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half" style="color: orange"></i>
 @elseif ($course->rating == '4.8')
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star" style="color: orange"></i>
+<i class="fa fa-star-half" style="color: orange"></i>
+@elseif ($course->rating == '4.9')
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>
 <i class="fa fa-star" style="color: orange"></i>

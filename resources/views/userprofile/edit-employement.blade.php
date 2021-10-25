@@ -3,8 +3,8 @@
 @section('usercontent')
 
     <link rel="stylesheet" href="/assets/css/signup.css">
-    <div class="signup-form" style="width: 80%">
-        <form action="{{ route('employement-history.update', $employement->id) }}" method="POST">
+    <div class="signup-form" style="width: 80%; color:#0f1137">
+        <form style="color:#0f1137" action="{{ route('employement-history.update', $employement->id) }}" method="POST">
             @method('PATCH')
             @csrf
 
@@ -26,7 +26,7 @@
                 @endif
             </div>
             <div class="text-center">
-                <h4 style="color:#5298D2">Edit Employement</h5>
+                <h4 style="color:#0f1137">Edit Employement</h5>
                     <br>
 
                     {{-- <div class="form-group">
@@ -80,7 +80,7 @@
 
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg" style="background-color:#5298D2">Update
+                        <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Update
                             Employement</button>
                     </div>
             </div>

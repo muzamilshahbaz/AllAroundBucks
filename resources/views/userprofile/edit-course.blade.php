@@ -7,7 +7,7 @@
     <div class="signup-form" style="width:90%">
 
         <form action="/update/{{ $course->course_id }}" method="POST" enctype="multipart/form-data"
-            style="color:#5298D2 !important">
+            style="color:#0f1137 !important">
 
             @csrf
             @method('PUT')
@@ -115,7 +115,7 @@
 
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2; border: 0ch">Update
+                <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Update
                     Course</button>
             </div>
     </div>

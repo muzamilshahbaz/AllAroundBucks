@@ -8,7 +8,7 @@
 
     <div class="signup-form" style="width:70%">
 
-        <form action="/course-video/update/{{ $course_video->id }}" method="PUT" enctype="multipart/form-data" style="color: #5298D2">
+        <form action="/course-video/update/{{ $course_video->id }}" method="PUT" enctype="multipart/form-data" style="color: #0f1137">
             @csrf
 
 @method('PUT')
@@ -54,7 +54,7 @@
                 <span class="text-danger">@error('video_url') {{ $message }} @enderror</span>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Update
+                <button type="submit" class="btn btn-primary" id="submit-btn">Update
                     Video</button>
             </div>
         </form>

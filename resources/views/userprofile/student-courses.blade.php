@@ -54,7 +54,7 @@
                         <span style="font-size:0.9em !important">@include('userprofile.courserating')</span>
                     </div>
                     <div class="col-5">
-                        <span style="font-size:0.9em !important; text-align: right; color:#5298D2">Price: ${{ $course->price }}</span>
+                        <span style="font-size:0.9em !important; text-align: right; color:#0f1137">Price: ${{ $course->price }}</span>
                     </div>
                 </div>
 

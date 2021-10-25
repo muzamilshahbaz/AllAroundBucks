@@ -4,9 +4,9 @@
 
 
 <link rel="stylesheet" href="/assets/css/signup.css">
-    <div class="signup-form" style="width:90%">
+    <div class="signup-form" style="width:90%; color:#0f1137 !important">
 
-        <form action="/addCourse" method="POST" enctype="multipart/form-data" style="color:#5298D2 !important">
+        <form style="color: #0f1137" action="/addCourse" method="POST" enctype="multipart/form-data" style="color:#5298D2 !important">
 
             @csrf
 
@@ -108,7 +108,7 @@
 
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg" style="background-color: #5298D2; border: 0ch">Add
+                <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Add
                     Course</button>
             </div>
     </div>

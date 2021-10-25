@@ -53,7 +53,7 @@
         </div>
 
         <div>
-            <a href="/withdraw" class="btn btn-primary" style="background-color: #5298D2; border-radius:0.5rem">Withdraw Amount</a>
+            <a href="/withdraw" class="btn btn-primary" id="submit-btn">Withdraw Amount</a>
 
         </div>
 
