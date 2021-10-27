@@ -23,7 +23,7 @@
     <div class="signup-form" style="width:55%">
         <form role="form" action="/withdraw-earnings" method="POST" class="require-withdraw-validation"
             {{-- data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" --}} id="withdraw-form"
-            style="color: #5298D2">
+            style="color: #0f1137">
             @csrf
 
             <div class="text-center">
@@ -52,7 +52,7 @@
             </div>
             <br>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Withdraw
+                <button type="submit" class="btn btn-primary" id="submit-btn">Withdraw
                     ${{ $withdrawal_user->amount_for_withdrawals }}</button>
             </div>
 

@@ -5,7 +5,7 @@
     <div class="card" style="padding: 5px; border-radius:0.5em; border:none;">
         <div class="card-body">
             <div class="card-title">
-                <h4>Payment for the <b style="color: #5298D2"><i>"{{ $course->course_title }}"</i></b> Course</h4>
+                <h4>Payment for the <b style="color: #0f1137"><i>"{{ $course->course_title }}"</i></b> Course</h4>
             </div>
             <br>
             <h5><b>Trainer: </b>{{ $course->trainer }}</h5>
@@ -44,7 +44,7 @@
                 class="require-validation"
                 data-cc-on-file="false"
                 data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                id="payment-form" style="color: #5298D2">
+                id="payment-form" style="color: #0f1137">
             @csrf
 
 
@@ -99,7 +99,7 @@
             </div>
 <br>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary" style="background-color: #5298D2; border: 0ch">Pay
+                <button type="submit" class="btn btn-primary" id="submit-btn">Pay
                     ${{ $course->course_price }}</button>
             </div>
 

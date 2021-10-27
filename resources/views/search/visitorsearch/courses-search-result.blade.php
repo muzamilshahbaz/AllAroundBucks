@@ -22,8 +22,6 @@
 
     @foreach ($courses as $course)
 
-
-
         <div class="col-4">
            <a id="course-search-result" href="/signup">
             <div class="card" style="width:100%; height:auto; padding: 5px; border-radius:0.5em; border:none;">
@@ -44,7 +42,7 @@
                             <span style="font-size:0.9em !important">@include('userprofile.courserating')</span>
                         </div>
                         <div class="col-5">
-                            <span style="font-size:0.9em !important; text-align: right; color:#5298D2">Price: ${{ $course->course_price }}</span>
+                            <span style="font-size:0.9em !important; text-align: right; color:#0f1137">Price: ${{ $course->course_price }}</span>
                         </div>
                     </div>
 

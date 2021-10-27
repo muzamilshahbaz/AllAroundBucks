@@ -7,7 +7,7 @@
         <div class="card-body">
 
             <div class="card-title">
-                <h2 style="color: #5298D2; font-weight:bold">{{ $course_video->video_title }}</h2>
+                <h2 style="color: #0f1137; font-weight:bold">{{ $course_video->video_title }}</h2>
 
             </div>
 
@@ -69,7 +69,7 @@
                         @if ($LoggedUserInfo->user_role == 'Trainer')
                             <span class="offset-1"> <a href="/course-video/create/{{ $course_video->course_id }}"
                                     class="btn btn-primary btn-sm mr-3"
-                                    style="background-color: #5298D2; border-radius:0.5em">Add Video</a></span>
+                                    id="submit-btn">Add Video</a></span>
                         @endif
                     </h4>
                     <ol style="overflow-y:scroll; height:300px; padding:3px">
@@ -78,10 +78,10 @@
 
                             <a href="/course-video/watch/{{ $video->id }}"
                                 style="text-decoration:none; ">
-                               <div class="card" style="color: #5298D2; border-radius: 0.5em; text-align:left;">
+                               <div class="card" style="color: #0f1137; border-radius: 0.5em; text-align:left;">
                                    <div class="card-body">
                                     <li style="padding: 8px;">
-                                           <span style="color:#5298D2"> {{ $video->video_title }}</span>
+                                           <span style="color:#0f1137"> {{ $video->video_title }}</span>
 
                                     </li>
                                    </div>
@@ -93,7 +93,7 @@
                             <div class="text-center">
                                 <h4>There is no further videos.</h4>
                                 <a href="/course-video/create/{{ $course->course_id }}" class="btn btn-primary mr-3"
-                                    style="background-color: #5298D2; border-radius:0.5em">Add Video</a>
+                                    id="submit-btn">Add Video</a>
                             </div>
                         @endforelse
                     </ol>
@@ -101,7 +101,7 @@
 
                         <div class="text-center">
                             <a href="/course-video/edit/{{ $course_video->id }}" class="btn btn-primary mr-3"
-                                style="background-color: #5298D2; border-radius:0.5em">Edit</a>
+                                id="submit-btn">Edit</a>
                             <a href="/course-video/delete/{{ $course_video->id }}" class="btn btn-danger"
                                 style="border-radius:0.5em">Delete</a>
                         </div>

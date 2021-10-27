@@ -6,7 +6,7 @@
 
         <div class="card-body">
             <b>
-                <h3 class="display-6" style="color:#5298D2">
+                <h3 class="display-6" style="color: #0f1137">
                     {{ $project->project_title }}
                 </h3>
             </b>
@@ -47,8 +47,8 @@
 
                 @endif
             </div>
-            <div class="signup-form" style="width: 90%; color:#5298D2">
-                <form style="color:#5298D2" action="/send-proposal/{{ $project->project_id }}" method="post"
+            <div class="signup-form" style="width: 90%; color: #0f1137">
+                <form style="color: #0f1137" action="/send-proposal/{{ $project->project_id }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="text-center">
@@ -104,7 +104,7 @@
 
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary btn-lg"
-                            style="background-color: #5298D2; border: 0ch">Send Proposal</button>
+                        id="submit-btn">Send Proposal</button>
 
                     </div>
 

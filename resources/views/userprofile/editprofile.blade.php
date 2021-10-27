@@ -159,7 +159,7 @@
                     <span class="text-danger">@error('skills') {{ $message }} @enderror</span>
                 </div>
 
-            @elseif ($LoggedUserInfo->user_role == 'Trainer' || $LoggedUserInfo->user_role == 'Student')
+            @elseif ($LoggedUserInfo->user_role == 'Trainer')
 
 
 
@@ -169,7 +169,19 @@
                 <br>
                 <span class="text-danger">@error('skills') {{ $message }} @enderror</span>
             </div>
+            @elseif ($LoggedUserInfo->user_role == 'Student')
+
+
+
+            <div class="form-group">
+                <label for="Skills">Skills (Seperated by commas(,))</label>
+                <input type="text" class="form-control" name="skills" value="{{ $student->skills }}">
+                <br>
+                <span class="text-danger">@error('skills') {{ $message }} @enderror</span>
+            </div>
             @endif
+
+
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Submit</button>
             </div>

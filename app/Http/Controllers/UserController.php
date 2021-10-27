@@ -143,8 +143,8 @@ class UserController extends Controller
             if ($userProfile->user_id == $user->user_id) {
                 return redirect('profile');
             } else {
-                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
-                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+                $employement_history = EmployementHistory::where('user_id', $userProfile->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $userProfile->user_id)->get();
                 if ($userProfile->user_role == 'Seller') {
                     $seller = Seller::where('user_id', $userProfile->user_id)->first();
                     $projects = PaidProject::where('seller_id', $seller->seller_id)->get();
@@ -199,8 +199,8 @@ class UserController extends Controller
             if ($userProfile->user_id == $user->user_id) {
                 return redirect('profile');
             } else {
-                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
-                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+                $employement_history = EmployementHistory::where('user_id', $userProfile->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $userProfile->user_id)->get();
 
                 $seller = Seller::where('user_id', $userProfile->user_id)->first();
                 if ($seller) {
@@ -234,8 +234,8 @@ class UserController extends Controller
             if ($userProfile->user_id == $user->user_id) {
                 return redirect('profile');
             } else {
-                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
-                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+                $employement_history = EmployementHistory::where('user_id', $userProfile->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $userProfile->user_id)->get();
 
                 $buyer = Buyer::where('user_id', $userProfile->user_id)->first();
                 // $buyer->increment('views');
@@ -272,8 +272,8 @@ class UserController extends Controller
             if ($userProfile->user_id == $user->user_id) {
                 return redirect('profile');
             } else {
-                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
-                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+                $employement_history = EmployementHistory::where('user_id', $userProfile->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $userProfile->user_id)->get();
 
                 $trainer = Trainer::where('user_id', $userProfile->user_id)->first();
                 if ($trainer) {
@@ -307,8 +307,8 @@ class UserController extends Controller
             if ($userProfile->user_id == $user->user_id) {
                 return redirect('profile');
             } else {
-                $employement_history = EmployementHistory::where('user_id', $user->user_id)->get();
-                $education_history = EducationHistory::where('user_id', $user->user_id)->get();
+                $employement_history = EmployementHistory::where('user_id', $userProfile->user_id)->get();
+                $education_history = EducationHistory::where('user_id', $userProfile->user_id)->get();
 
                 $student = Student::where('user_id', $userProfile->user_id)->first();
                 if ($student) {

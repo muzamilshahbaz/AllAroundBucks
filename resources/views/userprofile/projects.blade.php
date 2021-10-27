@@ -226,7 +226,7 @@
 
 
                         <div class="mr-3">
-                            <a href="/approve-project/{{ $project->id }}" class="btn btn-success text-white"  id="submit-btn">Approve</a>
+                            <a href="/approve-project/{{ $project->id }}" class="btn btn-success"  id="submit-btn">Approve</a>
                         </div>
 
                         <div class="mr-3">

@@ -3,12 +3,12 @@
 @section('usercontent')
 
 @forelse ($proposals as $proposal)
-<div class="card" style="padding: 5px; border-radius:0.5em; border:none">
+<div class="card" style="padding: 5px; border-radius:0.5em; border:none; color: #0f1137 !important">
 
     <div class="card-body">
         <b>
             <h3>
-              <a href="/project/{{ $proposal->project_id }}" style="color: #5298D2">  {{ $proposal->project_title }}</a>
+              <a href="/project/{{ $proposal->project_id }}" style="color: #0f1137">  {{ $proposal->project_title }}</a>
             </h3>
 
         </b>
