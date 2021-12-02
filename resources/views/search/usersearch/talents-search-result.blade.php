@@ -65,8 +65,7 @@
 
                         <div class="col-2">
 
-                            <a href="/user/{{ $seller->seller_username }}" class="btn btn-primary"
-                                id="submit-btn">
+                            <a href="/user/{{ $seller->seller_username }}" class="btn btn-primary" id="submit-btn">
                                 <center>Hire Now</center>
                             </a>
                         </div>
@@ -84,7 +83,7 @@
 
 
 
-<br>
+                    <br>
 
 
                     <div class="row" style="font-size:14px">

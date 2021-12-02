@@ -37,7 +37,7 @@
                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required><br>
                         <textarea id="message" class="form-control" name="message" placeholder="Write Your Message To Us.." style="height:100px" required></textarea>
                         <br>
-                        <button type="submit" name="send" id="send" class="btn btn-primary btn-lg">Send</button>
+                        <button type="submit" name="send" id="submit-btn" class="btn btn-primary btn-lg">Send</button>
 
                     </div>
                 </form>
