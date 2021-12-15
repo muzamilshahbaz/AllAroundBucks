@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="180"
+        {{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="180"
             viewBox="0 0 1920 230" class="fadeIn second">
             <defs>
                 <filter id="Rectangle_612" x="178" y="27" width="516" height="183" filterUnits="userSpaceOnUse">
@@ -76,13 +76,13 @@
             </text>
             <text id="_1M_" data-name="1M+" transform="translate(231 67)" fill="#0f1137" font-size="80"
                 font-family="Montserrat-Bold, Montserrat" font-weight="700">
-                <tspan x="0" y="77">1M+</tspan>
+                <tspan x="0" y="77">One</tspan>
             </text>
             <text id="Opportunities_for_all" data-name="Opportunities for all" transform="translate(826.5 138.5)"
                 fill="#0f1137" font-size="65" font-family="Montserrat-Bold, Montserrat" font-weight="700">
                 <tspan x="0" y="0">OPPORTUNITIES FOR ALL</tspan>
             </text>
-        </svg>
+        </svg> --}}
 
         {{-- <div class="flex-box-2">
             <div class="container-2">
@@ -248,7 +248,7 @@
 
                         <div class="row">
 
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="380"
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="380"
                                 height="90" viewBox="0 0 599 190">
                                 <a href="/signup" class="btn btn-secondary" style="text-decoration: none">
                                     <defs>
@@ -279,7 +279,7 @@
                                         <tspan x="0" y="51">Oppurtunities</tspan>
                                     </text>
                                 </a>
-                            </svg>
+                            </svg> --}}
 
 
                         </div>
@@ -890,7 +890,7 @@
                     </div>
 
                     <div class="col-8">
-                        <a href="/signup" class="col-4 btn btn-primary btn-lg" id="get-started-btn">Get Started</a>
+                        <a href="/signup" class="col-4 btn btn-primary btn-lg" id="get-started-btn">Join Our Community</a>
 
                     </div>
                 </div>
